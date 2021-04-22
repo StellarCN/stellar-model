@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "stellar-model"
+version = "0.1.0"
+description = "Parse the raw Stellar data into Python object."
+authors = ["overcat <4catcode@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
