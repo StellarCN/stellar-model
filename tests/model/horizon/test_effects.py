@@ -14,6 +14,7 @@ done = [
     3,
     4,
     5,
+    6,
     7,
     10,
     11,
@@ -31,10 +32,12 @@ done = [
     42,
     50,
     51,
+    52,
     60,
     63,
     65,
     69,
+    71,
     72,
     74,
 ]
@@ -162,7 +165,22 @@ class TestEffects(unittest.TestCase):
         self.assertEqual(parsed_data.home_domain, "lobstr.co")
 
     def test_valid_account_flags_updated(self):
-        pass
+        raw_data = load_horizon_file("effects/account_flags_updated.json")
+        parsed_data = AccountFlagsUpdatedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0150740432828043265-0000000001")
+        self.assertEqual(parsed_data.paging_token, "150740432828043265-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GAZKVM2K3G3EICVODZHRW3CGEVIQOAMWJV6K77DFM246PIVBDYWNIHHW",
+        )
+        self.assertEqual(parsed_data.type, "account_flags_updated")
+        self.assertEqual(parsed_data.type_i, 6)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 4, 25, 9, 46, 54, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(parsed_data.auth_required_flag, True)
+        self.assertEqual(parsed_data.auth_revokable_flag, None)
 
     def test_valid_account_inflation_destination_updated(self):
         raw_data = load_horizon_file(
@@ -556,7 +574,29 @@ class TestEffects(unittest.TestCase):
         )
 
     def test_valid_claimable_balance_claimed(self):
-        pass
+        raw_data = load_horizon_file("effects/claimable_balance_claimed.json")
+        parsed_data = ClaimableBalanceClaimedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0150803053451329538-0000000001")
+        self.assertEqual(parsed_data.paging_token, "150803053451329538-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GANVXZ2DQ2FFLVCBSVMBBNVWSXS6YVEDP247EN4C3CM3I32XR4U3OU2I",
+        )
+        self.assertEqual(parsed_data.type, "claimable_balance_claimed")
+        self.assertEqual(parsed_data.type_i, 52)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 4, 26, 7, 35, 19, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.asset,
+            "USDC:GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN",
+        )
+        self.assertEqual(
+            parsed_data.balance_id,
+            "0000000016cbeff27945d389e9123231ec916f7bb848c0579ceca12e2bfab5c34ce0da24",
+        )
+        self.assertEqual(parsed_data.amount, Decimal("1"))
 
     def test_valid_account_sponsorship_created(self):
         raw_data = load_horizon_file("effects/account_sponsorship_created.json")
@@ -674,7 +714,30 @@ class TestEffects(unittest.TestCase):
         pass
 
     def test_valid_claimable_balance_sponsorship_removed(self):
-        pass
+        raw_data = load_horizon_file(
+            "effects/claimable_balance_sponsorship_removed.json"
+        )
+        parsed_data = ClaimableBalanceSponsorshipRemovedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0150803053451329538-0000000003")
+        self.assertEqual(parsed_data.paging_token, "150803053451329538-3")
+        self.assertEqual(
+            parsed_data.account,
+            "GANVXZ2DQ2FFLVCBSVMBBNVWSXS6YVEDP247EN4C3CM3I32XR4U3OU2I",
+        )
+        self.assertEqual(parsed_data.type, "claimable_balance_sponsorship_removed")
+        self.assertEqual(parsed_data.type_i, 71)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 4, 26, 7, 35, 19, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.balance_id,
+            "0000000016cbeff27945d389e9123231ec916f7bb848c0579ceca12e2bfab5c34ce0da24",
+        )
+        self.assertEqual(
+            parsed_data.former_sponsor,
+            "GDDGK5C7UQWC7AEFZZVO7KXRXZVP2BBQJ2IQFAIROKME2O3XQR2CMVC7",
+        )
 
     def test_valid_signer_sponsorship_created(self):
         raw_data = load_horizon_file("effects/signer_sponsorship_created.json")

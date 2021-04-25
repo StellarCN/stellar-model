@@ -39,7 +39,7 @@
 |    3   |                account_debited               |   yes  |
 |    4   |          account_thresholds_updated          |   yes  |
 |    5   |          account_home_domain_updated         |   yes  |
-|    6   |             account_flags_updated            |   no   |
+|    6   |             account_flags_updated            |   yes  |
 |    7   |     account_inflation_destination_updated    |   yes  |
 |   10   |                signer_created                |   yes  |
 |   11   |                signer_removed                |   yes  |
@@ -61,7 +61,7 @@
 |   43   |                sequence_bumped               |   no   |
 |   50   |           claimable_balance_created          |   yes  |
 |   51   |      claimable_balance_claimant_created      |   yes  |
-|   52   |           claimable_balance_claimed          |   no   |
+|   52   |           claimable_balance_claimed          |   yes  |
 |   60   |          account_sponsorship_created         |   yes  |
 |   61   |          account_sponsorship_updated         |   no   |
 |   62   |          account_sponsorship_removed         |   no   |
@@ -73,7 +73,7 @@
 |   68   |           data_sponsorship_removed           |   no   |
 |   69   |     claimable_balance_sponsorship_created    |   yes  |
 |   70   |     claimable_balance_sponsorship_updated    |   no   |
-|   71   |     claimable_balance_sponsorship_removed    |   no   |
+|   71   |     claimable_balance_sponsorship_removed    |   yes  |
 |   72   |          signer_sponsorship_created          |   yes  |
 |   73   |          signer_sponsorship_updated          |   no   |
 |   74   |          signer_sponsorship_removed          |   yes  |
