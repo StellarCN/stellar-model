@@ -1,5 +1,12 @@
 stellar-model
 =============
+.. image:: https://img.shields.io/github/workflow/status/StellarCN/stellar-model/GitHub%20Action/main?style=flat&maxAge=1800
+    :alt: GitHub Action
+    :target: https://github.com/StellarCN/stellar-model/actions
+
+.. image:: https://img.shields.io/readthedocs/stellar-model.svg?style=flat&maxAge=1800
+    :alt: Read the Docs
+    :target: https://stellar-model.readthedocs.io/en/latest/
 
 .. image:: https://img.shields.io/pypi/v/stellar-model.svg?style=flat&maxAge=1800
     :alt: PyPI
@@ -26,7 +33,7 @@ Installing
 
 .. code-block:: text
 
-    pip install stellar-model==0.1.0
+    pip install stellar-model==0.1.0b0
 
 Example
 -------
@@ -41,7 +48,7 @@ Example
     print(f"Account Sequence: {parsed_resp.sequence}")
 
 
-Of course you can also use it with `stellar-sdk`_.
+Of course you can use it with `stellar-sdk`_.
 
 .. code-block:: python
 
@@ -54,6 +61,10 @@ Of course you can also use it with `stellar-sdk`_.
     parsed_resp = AccountResponse.parse_obj(raw_resp)
     print(f"Account Sequence: {parsed_resp.sequence}")
 
+
+Documentation
+-------------
+stellar-model's documentation can be found at https://stellar-model.readthedocs.io
 
 
 .. _stellar-model: https://github.com/overcat/stellar-model
