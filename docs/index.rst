@@ -1,11 +1,10 @@
 .. include:: ../README.rst
 
 API Reference
--------------
+=============
 
-==============
 Response Model
-==============
+--------------
 
 AccountDataResponse
 ^^^^^^^^^^^^^^^^^^^

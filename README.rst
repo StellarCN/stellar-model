@@ -1,3 +1,4 @@
+=============
 stellar-model
 =============
 .. image:: https://img.shields.io/github/workflow/status/StellarCN/stellar-model/GitHub%20Action/main?style=flat&maxAge=1800
@@ -29,14 +30,14 @@ returned by `Stellar Horizon`_ into Python models, through it, you can get a bet
 development experience in the editor with things like code completion, type hints, and more.
 
 Installing
-----------
+==========
 
 .. code-block:: text
 
     pip install stellar-model==0.1.0b0
 
 Example
--------
+=======
 .. code-block:: python
 
     import requests
@@ -63,7 +64,7 @@ Of course you can use it with `stellar-sdk`_.
 
 
 Documentation
--------------
+=============
 stellar-model's documentation can be found at https://stellar-model.readthedocs.io
 
 
