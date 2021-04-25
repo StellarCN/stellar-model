@@ -67,7 +67,7 @@ Documentation
 stellar-model's documentation can be found at https://stellar-model.readthedocs.io
 
 
-.. _stellar-model: https://github.com/overcat/stellar-model
+.. _stellar-model: https://github.com/StellarCN/stellar-model
 .. _pydantic: https://pydantic-docs.helpmanual.io/
 .. _Stellar Horizon: https://developers.stellar.org/api/resources/
 .. _stellar-sdk: https://github.com/StellarCN/py-stellar-base

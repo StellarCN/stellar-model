@@ -4,8 +4,8 @@ version = "0.1.0b0"
 description = "Parse the raw Stellar data into Python models."
 authors = ["overcat <4catcode@gmail.com>"]
 readme = "README.rst"
-homepage = "https://github.com/overcat/stellar-model"
-repository = "https://github.com/overcat/stellar-model"
+homepage = "https://github.com/StellarCN/stellar-model"
+repository = "https://github.com/StellarCN/stellar-model"
 documentation = "https://stellar-model.readthedocs.io"
 keywords = ["stellar", "stellar-model", "pydantic"]
 license = "Apache License 2.0"
@@ -39,7 +39,7 @@ Sphinx = "^3.5.4"
 #sphinx-jsonschema = "1.15"  # See: https://github.com/Zsailer/sphinx-pydantic/pull/6
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/overcat/stellar-mode/issues"
+"Bug Tracker" = "https://github.com/StellarCN/stellar-mode/issues"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
