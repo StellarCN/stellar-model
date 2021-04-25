@@ -1,0 +1,31 @@
+{
+  "_links": {
+    "toml": {
+      "href": "https://naobtc.com/.well-known/stellar.toml"
+    }
+  },
+  "asset_type": "credit_alphanum4",
+  "asset_code": "BTC",
+  "asset_issuer": "GATEMHCCKCY67ZUCKTROYN24ZYT5GK4EQZ65JJLDHKHRUZI3EUEKMTCH",
+  "paging_token": "BTC_GATEMHCCKCY67ZUCKTROYN24ZYT5GK4EQZ65JJLDHKHRUZI3EUEKMTCH_credit_alphanum4",
+  "accounts": {
+    "authorized": 7377,
+    "authorized_to_maintain_liabilities": 0,
+    "unauthorized": 0
+  },
+  "num_claimable_balances": 0,
+  "amount": "989.9464476",
+  "balances": {
+    "authorized": "989.9464476",
+    "authorized_to_maintain_liabilities": "0.0000000",
+    "unauthorized": "0.0000000"
+  },
+  "claimable_balances_amount": "0.0000000",
+  "num_accounts": 7377,
+  "flags": {
+    "auth_required": false,
+    "auth_revocable": false,
+    "auth_immutable": false,
+    "auth_clawback_enabled": false
+  }
+}

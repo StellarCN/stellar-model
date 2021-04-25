@@ -1,0 +1,29 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://horizon.stellar.org/offers/544689347"
+    },
+    "offer_maker": {
+      "href": "https://horizon.stellar.org/accounts/GBB7HYFEUJLJLABG7EGSY54HM3QISTVCS4O3EANIGX5YFCOJK7A6MZAA"
+    }
+  },
+  "id": "544689347",
+  "paging_token": "544689347",
+  "seller": "GBB7HYFEUJLJLABG7EGSY54HM3QISTVCS4O3EANIGX5YFCOJK7A6MZAA",
+  "selling": {
+    "asset_type": "native"
+  },
+  "buying": {
+    "asset_type": "credit_alphanum4",
+    "asset_code": "SLVR",
+    "asset_issuer": "GBZVELEQD3WBN3R3VAG64HVBDOZ76ZL6QPLSFGKWPFED33Q3234NSLVR"
+  },
+  "amount": "677.1953280",
+  "price_r": {
+    "n": 10000000,
+    "d": 17500001
+  },
+  "price": "0.5714285",
+  "last_modified_ledger": 35067578,
+  "last_modified_time": "2021-04-23T13:34:40Z"
+}

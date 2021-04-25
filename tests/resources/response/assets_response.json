@@ -1,0 +1,637 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://horizon.stellar.org/assets?cursor=&limit=20&order=desc"
+    },
+    "next": {
+      "href": "https://horizon.stellar.org/assets?cursor=ZYH_GAPBH5XTXAF4QYLIS4BBFXJPUA6WBLGUYCD62LWCPHY2NEGUQTE6QHTF_credit_alphanum4&limit=20&order=desc"
+    },
+    "prev": {
+      "href": "https://horizon.stellar.org/assets?cursor=zzzx_GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI_credit_alphanum4&limit=20&order=asc"
+    }
+  },
+  "_embedded": {
+    "records": [
+      {
+        "_links": {
+          "toml": {
+            "href": "https://btcard.info/.well-known/stellar.toml"
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "zzzx",
+        "asset_issuer": "GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI",
+        "paging_token": "zzzx_GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI_credit_alphanum4",
+        "accounts": {
+          "authorized": 1,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "0.0000000",
+        "balances": {
+          "authorized": "0.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 1,
+        "flags": {
+          "auth_required": true,
+          "auth_revocable": true,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": "https://btcard.info/.well-known/stellar.toml"
+          }
+        },
+        "asset_type": "credit_alphanum12",
+        "asset_code": "zzzit",
+        "asset_issuer": "GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI",
+        "paging_token": "zzzit_GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI_credit_alphanum12",
+        "accounts": {
+          "authorized": 12,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "1000000000.0000000",
+        "balances": {
+          "authorized": "1000000000.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 12,
+        "flags": {
+          "auth_required": true,
+          "auth_revocable": true,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": ""
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "ZZZ",
+        "asset_issuer": "GCLCYDPGX7YBYMV627KV2GAXFEYYKJYZBCZEFVKELIHJ62SLKFAREUWH",
+        "paging_token": "ZZZ_GCLCYDPGX7YBYMV627KV2GAXFEYYKJYZBCZEFVKELIHJ62SLKFAREUWH_credit_alphanum4",
+        "accounts": {
+          "authorized": 18,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 2
+        },
+        "num_claimable_balances": 0,
+        "amount": "922337203684.7500000",
+        "balances": {
+          "authorized": "922337203684.7500000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.2500000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 18,
+        "flags": {
+          "auth_required": true,
+          "auth_revocable": true,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": "https://borchardconsult.com/.well-known/stellar.toml"
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "ZZZ",
+        "asset_issuer": "GBYMZE2O2CCLYVZKDBSE4SBWYSMFGYSAX3QN5KY4EV32ADEKVY5WIXWC",
+        "paging_token": "ZZZ_GBYMZE2O2CCLYVZKDBSE4SBWYSMFGYSAX3QN5KY4EV32ADEKVY5WIXWC_credit_alphanum4",
+        "accounts": {
+          "authorized": 3,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 3
+        },
+        "num_claimable_balances": 0,
+        "amount": "922337203685.0000000",
+        "balances": {
+          "authorized": "922337203685.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 3,
+        "flags": {
+          "auth_required": true,
+          "auth_revocable": true,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": ""
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "ZZZ",
+        "asset_issuer": "GBKSCKCMFEIZSELRVTYO5XWGSEYURZY7AEV35MYW65DBS6FT6OHKP5IZ",
+        "paging_token": "ZZZ_GBKSCKCMFEIZSELRVTYO5XWGSEYURZY7AEV35MYW65DBS6FT6OHKP5IZ_credit_alphanum4",
+        "accounts": {
+          "authorized": 1,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "398.0000000",
+        "balances": {
+          "authorized": "398.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 1,
+        "flags": {
+          "auth_required": false,
+          "auth_revocable": false,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": "https://kiss.tomlhosting.com/.well-known/stellar.toml"
+          }
+        },
+        "asset_type": "credit_alphanum12",
+        "asset_code": "ZZYZX",
+        "asset_issuer": "GA4DIX2AQJFDZRALZLRRWERDHOFLQZ25GXPXBEA6UULMFE6ZYJEPZMQX",
+        "paging_token": "ZZYZX_GA4DIX2AQJFDZRALZLRRWERDHOFLQZ25GXPXBEA6UULMFE6ZYJEPZMQX_credit_alphanum12",
+        "accounts": {
+          "authorized": 1,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "99000000000.0000000",
+        "balances": {
+          "authorized": "99000000000.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 1,
+        "flags": {
+          "auth_required": false,
+          "auth_revocable": false,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": "https://btcard.info/.well-known/stellar.toml"
+          }
+        },
+        "asset_type": "credit_alphanum12",
+        "asset_code": "zzxzq",
+        "asset_issuer": "GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI",
+        "paging_token": "zzxzq_GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI_credit_alphanum12",
+        "accounts": {
+          "authorized": 13,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "100000.0000000",
+        "balances": {
+          "authorized": "100000.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 13,
+        "flags": {
+          "auth_required": true,
+          "auth_revocable": true,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": "https://btcard.info/.well-known/stellar.toml"
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "ZZWJ",
+        "asset_issuer": "GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI",
+        "paging_token": "ZZWJ_GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI_credit_alphanum4",
+        "accounts": {
+          "authorized": 1,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "0.0000000",
+        "balances": {
+          "authorized": "0.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 1,
+        "flags": {
+          "auth_required": true,
+          "auth_revocable": true,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": ""
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "ZZW",
+        "asset_issuer": "GCLNRSF6BZYCXPGGR5NUGAKBRYFZNFVCAYZNTXZPMJJYHLYUZ23KZUSQ",
+        "paging_token": "ZZW_GCLNRSF6BZYCXPGGR5NUGAKBRYFZNFVCAYZNTXZPMJJYHLYUZ23KZUSQ_credit_alphanum4",
+        "accounts": {
+          "authorized": 1,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "1001.0000000",
+        "balances": {
+          "authorized": "1001.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 1,
+        "flags": {
+          "auth_required": false,
+          "auth_revocable": false,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": "https://btcard.info/.well-known/stellar.toml"
+          }
+        },
+        "asset_type": "credit_alphanum12",
+        "asset_code": "zztcs",
+        "asset_issuer": "GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI",
+        "paging_token": "zztcs_GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI_credit_alphanum12",
+        "accounts": {
+          "authorized": 3,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "0.0000000",
+        "balances": {
+          "authorized": "0.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 3,
+        "flags": {
+          "auth_required": true,
+          "auth_revocable": true,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": "https://btcard.info/.well-known/stellar.toml"
+          }
+        },
+        "asset_type": "credit_alphanum12",
+        "asset_code": "ZZLTD",
+        "asset_issuer": "GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI",
+        "paging_token": "ZZLTD_GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI_credit_alphanum12",
+        "accounts": {
+          "authorized": 4,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "0.0000000",
+        "balances": {
+          "authorized": "0.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 4,
+        "flags": {
+          "auth_required": true,
+          "auth_revocable": true,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": "https://btcard.info/.well-known/stellar.toml"
+          }
+        },
+        "asset_type": "credit_alphanum12",
+        "asset_code": "ZZDLYA",
+        "asset_issuer": "GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI",
+        "paging_token": "ZZDLYA_GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI_credit_alphanum12",
+        "accounts": {
+          "authorized": 12,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "10000.0000000",
+        "balances": {
+          "authorized": "10000.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 12,
+        "flags": {
+          "auth_required": true,
+          "auth_revocable": true,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": "https://btcard.info/.well-known/stellar.toml"
+          }
+        },
+        "asset_type": "credit_alphanum12",
+        "asset_code": "ZZDLY",
+        "asset_issuer": "GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI",
+        "paging_token": "ZZDLY_GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI_credit_alphanum12",
+        "accounts": {
+          "authorized": 12,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "100000.0000000",
+        "balances": {
+          "authorized": "100000.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 12,
+        "flags": {
+          "auth_required": true,
+          "auth_revocable": true,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": ""
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "ZZC",
+        "asset_issuer": "GCHFKT3NH2MRLTZPKQ4XUACF2P7BG5QKBBMD7Z33XN346XS7JQ2RPEX5",
+        "paging_token": "ZZC_GCHFKT3NH2MRLTZPKQ4XUACF2P7BG5QKBBMD7Z33XN346XS7JQ2RPEX5_credit_alphanum4",
+        "accounts": {
+          "authorized": 1,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "100.0000000",
+        "balances": {
+          "authorized": "100.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 1,
+        "flags": {
+          "auth_required": false,
+          "auth_revocable": false,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": ""
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "ZZB",
+        "asset_issuer": "GDZKS3NCFL2E2ZEJFNFIUAIYDOUFOEF5QYLKJVGI27566VI46LKZAQTM",
+        "paging_token": "ZZB_GDZKS3NCFL2E2ZEJFNFIUAIYDOUFOEF5QYLKJVGI27566VI46LKZAQTM_credit_alphanum4",
+        "accounts": {
+          "authorized": 1,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "100000.0000000",
+        "balances": {
+          "authorized": "100000.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 1,
+        "flags": {
+          "auth_required": false,
+          "auth_revocable": false,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": ""
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "Zz",
+        "asset_issuer": "GDAT7VK32COYZZMUTK2OMCYVUMABSPBRL2LNNUKID7YSSSJSRIB6LBKX",
+        "paging_token": "Zz_GDAT7VK32COYZZMUTK2OMCYVUMABSPBRL2LNNUKID7YSSSJSRIB6LBKX_credit_alphanum4",
+        "accounts": {
+          "authorized": 1,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "25000000.0000000",
+        "balances": {
+          "authorized": "25000000.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 1,
+        "flags": {
+          "auth_required": false,
+          "auth_revocable": false,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": ""
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "zyv",
+        "asset_issuer": "GD4LEUMY2TNVGSP3OJRNWBWNED6Y2RDT5CDTRGX2WA5SGWBWNEV3F6IB",
+        "paging_token": "zyv_GD4LEUMY2TNVGSP3OJRNWBWNED6Y2RDT5CDTRGX2WA5SGWBWNEV3F6IB_credit_alphanum4",
+        "accounts": {
+          "authorized": 1,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "100.0000000",
+        "balances": {
+          "authorized": "100.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 1,
+        "flags": {
+          "auth_required": false,
+          "auth_revocable": false,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": ""
+          }
+        },
+        "asset_type": "credit_alphanum12",
+        "asset_code": "ZyJQLmhn10c",
+        "asset_issuer": "GBFNJFUQCQK5AXJFBDAUGQHP3LC2ESUVB5MJVII2VMGAJ7EK7XCC5MD5",
+        "paging_token": "ZyJQLmhn10c_GBFNJFUQCQK5AXJFBDAUGQHP3LC2ESUVB5MJVII2VMGAJ7EK7XCC5MD5_credit_alphanum12",
+        "accounts": {
+          "authorized": 11,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "20.0000000",
+        "balances": {
+          "authorized": "20.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 11,
+        "flags": {
+          "auth_required": false,
+          "auth_revocable": false,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": ""
+          }
+        },
+        "asset_type": "credit_alphanum12",
+        "asset_code": "ZyJQLmhn10",
+        "asset_issuer": "GBFNJFUQCQK5AXJFBDAUGQHP3LC2ESUVB5MJVII2VMGAJ7EK7XCC5MD5",
+        "paging_token": "ZyJQLmhn10_GBFNJFUQCQK5AXJFBDAUGQHP3LC2ESUVB5MJVII2VMGAJ7EK7XCC5MD5_credit_alphanum12",
+        "accounts": {
+          "authorized": 10,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "20.0000000",
+        "balances": {
+          "authorized": "20.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 10,
+        "flags": {
+          "auth_required": false,
+          "auth_revocable": false,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      },
+      {
+        "_links": {
+          "toml": {
+            "href": ""
+          }
+        },
+        "asset_type": "credit_alphanum4",
+        "asset_code": "ZYH",
+        "asset_issuer": "GAPBH5XTXAF4QYLIS4BBFXJPUA6WBLGUYCD62LWCPHY2NEGUQTE6QHTF",
+        "paging_token": "ZYH_GAPBH5XTXAF4QYLIS4BBFXJPUA6WBLGUYCD62LWCPHY2NEGUQTE6QHTF_credit_alphanum4",
+        "accounts": {
+          "authorized": 1,
+          "authorized_to_maintain_liabilities": 0,
+          "unauthorized": 0
+        },
+        "num_claimable_balances": 0,
+        "amount": "10000000.0000000",
+        "balances": {
+          "authorized": "10000000.0000000",
+          "authorized_to_maintain_liabilities": "0.0000000",
+          "unauthorized": "0.0000000"
+        },
+        "claimable_balances_amount": "0.0000000",
+        "num_accounts": 1,
+        "flags": {
+          "auth_required": false,
+          "auth_revocable": false,
+          "auth_immutable": false,
+          "auth_clawback_enabled": false
+        }
+      }
+    ]
+  }
+}

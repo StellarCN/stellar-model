@@ -1,0 +1,103 @@
+{
+  "_embedded": {
+    "records": [
+      {
+        "source_asset_type": "credit_alphanum4",
+        "source_asset_code": "CNY",
+        "source_asset_issuer": "GAREELUB43IRHWEASCFBLKHURCGMHE5IF6XSE7EXDLACYHGRHM43RFOX",
+        "source_amount": "37.6703170",
+        "destination_asset_type": "credit_alphanum4",
+        "destination_asset_code": "BB1",
+        "destination_asset_issuer": "GD5J6HLF5666X4AZLTFTXLY46J5SW7EXRKBLEYPJP33S33MXZGV6CWFN",
+        "destination_amount": "5.0000000",
+        "path": [
+          {
+            "asset_type": "native"
+          }
+        ]
+      },
+      {
+        "source_asset_type": "credit_alphanum4",
+        "source_asset_code": "CNY",
+        "source_asset_issuer": "GAREELUB43IRHWEASCFBLKHURCGMHE5IF6XSE7EXDLACYHGRHM43RFOX",
+        "source_amount": "38.1225529",
+        "destination_asset_type": "credit_alphanum4",
+        "destination_asset_code": "BB1",
+        "destination_asset_issuer": "GD5J6HLF5666X4AZLTFTXLY46J5SW7EXRKBLEYPJP33S33MXZGV6CWFN",
+        "destination_amount": "5.0000000",
+        "path": [
+          {
+            "asset_type": "credit_alphanum4",
+            "asset_code": "USDC",
+            "asset_issuer": "GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN"
+          },
+          {
+            "asset_type": "native"
+          }
+        ]
+      },
+      {
+        "source_asset_type": "credit_alphanum4",
+        "source_asset_code": "CNY",
+        "source_asset_issuer": "GAREELUB43IRHWEASCFBLKHURCGMHE5IF6XSE7EXDLACYHGRHM43RFOX",
+        "source_amount": "39.6289101",
+        "destination_asset_type": "credit_alphanum4",
+        "destination_asset_code": "BB1",
+        "destination_asset_issuer": "GD5J6HLF5666X4AZLTFTXLY46J5SW7EXRKBLEYPJP33S33MXZGV6CWFN",
+        "destination_amount": "5.0000000",
+        "path": [
+          {
+            "asset_type": "credit_alphanum4",
+            "asset_code": "XCN",
+            "asset_issuer": "GCNY5OXYSY4FKHOPT2SPOQZAOEIGXB5LBYW3HVU3OWSTQITS65M5RCNY"
+          },
+          {
+            "asset_type": "native"
+          }
+        ]
+      },
+      {
+        "source_asset_type": "credit_alphanum4",
+        "source_asset_code": "CNY",
+        "source_asset_issuer": "GAREELUB43IRHWEASCFBLKHURCGMHE5IF6XSE7EXDLACYHGRHM43RFOX",
+        "source_amount": "40.5979474",
+        "destination_asset_type": "credit_alphanum4",
+        "destination_asset_code": "BB1",
+        "destination_asset_issuer": "GD5J6HLF5666X4AZLTFTXLY46J5SW7EXRKBLEYPJP33S33MXZGV6CWFN",
+        "destination_amount": "5.0000000",
+        "path": [
+          {
+            "asset_type": "native"
+          },
+          {
+            "asset_type": "credit_alphanum4",
+            "asset_code": "EURT",
+            "asset_issuer": "GAP5LETOV6YIE62YAM56STDANPRDO7ZFDBGSNHJQIYGGKSMOZAHOOS2S"
+          }
+        ]
+      },
+      {
+        "source_asset_type": "credit_alphanum4",
+        "source_asset_code": "CNY",
+        "source_asset_issuer": "GAREELUB43IRHWEASCFBLKHURCGMHE5IF6XSE7EXDLACYHGRHM43RFOX",
+        "source_amount": "40.8141558",
+        "destination_asset_type": "credit_alphanum4",
+        "destination_asset_code": "BB1",
+        "destination_asset_issuer": "GD5J6HLF5666X4AZLTFTXLY46J5SW7EXRKBLEYPJP33S33MXZGV6CWFN",
+        "destination_amount": "5.0000000",
+        "path": [
+          {
+            "asset_type": "credit_alphanum4",
+            "asset_code": "USDC",
+            "asset_issuer": "GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN"
+          },
+          {
+            "asset_type": "credit_alphanum4",
+            "asset_code": "EURT",
+            "asset_issuer": "GAP5LETOV6YIE62YAM56STDANPRDO7ZFDBGSNHJQIYGGKSMOZAHOOS2S"
+          }
+        ]
+      }
+    ]
+  }
+}
