@@ -58,13 +58,13 @@
 |   40   |                 data_created                 |   yes  |
 |   41   |                 data_removed                 |   yes  |
 |   42   |                 data_updated                 |   yes  |
-|   43   |                sequence_bumped               |   no   |
+|   43   |                sequence_bumped               |   yes  |
 |   50   |           claimable_balance_created          |   yes  |
 |   51   |      claimable_balance_claimant_created      |   yes  |
 |   52   |           claimable_balance_claimed          |   yes  |
 |   60   |          account_sponsorship_created         |   yes  |
 |   61   |          account_sponsorship_updated         |   no   |
-|   62   |          account_sponsorship_removed         |   no   |
+|   62   |          account_sponsorship_removed         |   yes  |
 |   63   |         trustline_sponsorship_created        |   yes  |
 |   64   |         trustline_sponsorship_updated        |   no   |
 |   65   |         trustline_sponsorship_removed        |   yes  |
