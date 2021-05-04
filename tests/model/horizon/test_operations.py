@@ -370,8 +370,27 @@ class TestOperations(unittest.TestCase):
         )
 
     def test_valid_inflation_operation(self):
-        # TODO: not found
-        pass
+        raw_data = load_horizon_file("operations/inflation.json")
+        parsed_data = InflationOperation.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "85376614040350721")
+        self.assertEqual(parsed_data.paging_token, "85376614040350721")
+        self.assertEqual(parsed_data.transaction_successful, False)
+        self.assertEqual(
+            parsed_data.source_account,
+            "GDC2XPNEM4YAH22FK2TW7FSVGWQRGZGXLA3DAJLHNJ7YL5L5RSIXXXXX",
+        )
+        self.assertEqual(parsed_data.type, "inflation")
+        self.assertEqual(parsed_data.type_i, 9)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2018, 9, 8, 5, 0, 7, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.transaction_hash,
+            "25fca20b8d726ecced601b5ec230c3ef02852bbdc3aa082e9f6131a0ccf50ece",
+        )
+        self.assertEqual(parsed_data.transaction, None)
+        self.assertEqual(parsed_data.sponsor, None)
 
     def test_valid_manage_data_operation(self):
         raw_data = load_horizon_file("operations/manage_data.json")

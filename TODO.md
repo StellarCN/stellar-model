@@ -15,7 +15,7 @@
 |    6   |           change_trust           |   yes  |
 |    7   |            allow_trust           |   yes  |
 |    8   |           account_merge          |   yes  |
-|    9   |             inflation            |   no   |
+|    9   |             inflation            |   yes  |
 |   10   |            manage_data           |   yes  |
 |   11   |           bump_sequence          |   yes  |
 |   12   |         manage_buy_offer         |   yes  |
