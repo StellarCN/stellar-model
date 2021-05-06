@@ -519,7 +519,25 @@ class TestEffects(unittest.TestCase):
         self.assertEqual(parsed_data.name, "MESSAGE_DATA_0")
 
     def test_valid_data_updated(self):
-        pass
+        raw_data = load_horizon_file("effects/data_updated.json")
+        parsed_data = DataUpdatedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0150661027472793603-0000000001")
+        self.assertEqual(parsed_data.paging_token, "150661027472793603-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GCPNXP5WSNEXM2QNJYBOSWB6NGB6G37ZF2ODHYE7D4P5BCTBSYSO4E2R",
+        )
+        self.assertEqual(parsed_data.type, "data_updated")
+        self.assertEqual(parsed_data.type_i, 42)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 4, 24, 6, 0, 34, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(parsed_data.name, "MESSAGE_DATA_0")
+        self.assertEqual(
+            parsed_data.value,
+            "UW1VNnU3UWZZcG9iZkRUTGt6N0VYTmpxZ1o5bkYza2lMTllQWHl1VzE0YTNGcw==",
+        )
 
     def test_valid_sequence_bumped(self):
         raw_data = load_horizon_file("effects/sequence_bumped.json")
