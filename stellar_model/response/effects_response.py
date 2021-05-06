@@ -15,8 +15,8 @@ __all__ = ["EffectsResponse"]
 class Embedded(BaseModel):
     records: List[_EFFECT_TYPE_UNION]
 
-    def __init__(self, records, **data):
-        super().__init__(records=records, **data)
+    def __init__(self, records):
+        model_records: List[_EFFECT_TYPE_UNION] = []
         for record in records:
             if "type_i" not in record:
                 raise ValueError(
@@ -32,7 +32,8 @@ class Embedded(BaseModel):
                 )
             parser = _EFFECT_TYPE_I_MAP[effect_type]
             model = parser.parse_obj(record)
-            self.records.append(model)
+            model_records.append(model)
+        super().__init__(records=model_records)
 
 
 class EffectsResponse(PageModel):
