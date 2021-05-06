@@ -39,7 +39,7 @@ class TestOperationsResponse(TestCase):
         for record in parsed_data.embedded.records:
             self.assertTrue(record.type in ops)
             class_type = ops[record.type]
-            self.assertTrue(isinstance(record, class_type), record)
+            self.assertTrue(isinstance(record, class_type))
 
         self.assertEqual(
             parsed_data.links.self.href,

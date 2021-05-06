@@ -14,6 +14,7 @@ done = [
     3,
     4,
     5,
+    6,
     7,
     10,
     11,
@@ -29,14 +30,21 @@ done = [
     40,
     41,
     42,
+    43,
     50,
     51,
+    52,
     60,
+    62,
     63,
     65,
+    66,
+    68,
     69,
+    71,
     72,
     74,
+    80,
 ]
 
 """
@@ -162,7 +170,22 @@ class TestEffects(unittest.TestCase):
         self.assertEqual(parsed_data.home_domain, "lobstr.co")
 
     def test_valid_account_flags_updated(self):
-        pass
+        raw_data = load_horizon_file("effects/account_flags_updated.json")
+        parsed_data = AccountFlagsUpdatedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0150740432828043265-0000000001")
+        self.assertEqual(parsed_data.paging_token, "150740432828043265-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GAZKVM2K3G3EICVODZHRW3CGEVIQOAMWJV6K77DFM246PIVBDYWNIHHW",
+        )
+        self.assertEqual(parsed_data.type, "account_flags_updated")
+        self.assertEqual(parsed_data.type_i, 6)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 4, 25, 9, 46, 54, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(parsed_data.auth_required_flag, True)
+        self.assertEqual(parsed_data.auth_revokable_flag, None)
 
     def test_valid_account_inflation_destination_updated(self):
         raw_data = load_horizon_file(
@@ -496,10 +519,42 @@ class TestEffects(unittest.TestCase):
         self.assertEqual(parsed_data.name, "MESSAGE_DATA_0")
 
     def test_valid_data_updated(self):
-        pass
+        raw_data = load_horizon_file("effects/data_updated.json")
+        parsed_data = DataUpdatedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0150661027472793603-0000000001")
+        self.assertEqual(parsed_data.paging_token, "150661027472793603-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GCPNXP5WSNEXM2QNJYBOSWB6NGB6G37ZF2ODHYE7D4P5BCTBSYSO4E2R",
+        )
+        self.assertEqual(parsed_data.type, "data_updated")
+        self.assertEqual(parsed_data.type_i, 42)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 4, 24, 6, 0, 34, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(parsed_data.name, "MESSAGE_DATA_0")
+        self.assertEqual(
+            parsed_data.value,
+            "UW1VNnU3UWZZcG9iZkRUTGt6N0VYTmpxZ1o5bkYza2lMTllQWHl1VzE0YTNGcw==",
+        )
 
     def test_valid_sequence_bumped(self):
-        pass
+        raw_data = load_horizon_file("effects/sequence_bumped.json")
+        parsed_data = SequenceBumpedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0151249850311778305-0000000001")
+        self.assertEqual(parsed_data.paging_token, "151249850311778305-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GALG2O3DFETG4MKQGB52GRSASJWDSF62NZQTE25WG3CU7UTXP4GSWMWD",
+        )
+        self.assertEqual(parsed_data.type, "sequence_bumped")
+        self.assertEqual(parsed_data.type_i, 43)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 2, 18, 42, 31, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(parsed_data.new_seq, 108136397361122527)
 
     def test_valid_claimable_balance_created(self):
         raw_data = load_horizon_file("effects/claimable_balance_created.json")
@@ -556,7 +611,29 @@ class TestEffects(unittest.TestCase):
         )
 
     def test_valid_claimable_balance_claimed(self):
-        pass
+        raw_data = load_horizon_file("effects/claimable_balance_claimed.json")
+        parsed_data = ClaimableBalanceClaimedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0150803053451329538-0000000001")
+        self.assertEqual(parsed_data.paging_token, "150803053451329538-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GANVXZ2DQ2FFLVCBSVMBBNVWSXS6YVEDP247EN4C3CM3I32XR4U3OU2I",
+        )
+        self.assertEqual(parsed_data.type, "claimable_balance_claimed")
+        self.assertEqual(parsed_data.type_i, 52)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 4, 26, 7, 35, 19, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.asset,
+            "USDC:GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN",
+        )
+        self.assertEqual(
+            parsed_data.balance_id,
+            "0000000016cbeff27945d389e9123231ec916f7bb848c0579ceca12e2bfab5c34ce0da24",
+        )
+        self.assertEqual(parsed_data.amount, Decimal("1"))
 
     def test_valid_account_sponsorship_created(self):
         raw_data = load_horizon_file("effects/account_sponsorship_created.json")
@@ -582,7 +659,24 @@ class TestEffects(unittest.TestCase):
         pass
 
     def test_valid_account_sponsorship_removed(self):
-        pass
+        raw_data = load_horizon_file("effects/account_sponsorship_removed.json")
+        parsed_data = AccountSponsorshipRemovedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0151324471070908417-0000000004")
+        self.assertEqual(parsed_data.paging_token, "151324471070908417-4")
+        self.assertEqual(
+            parsed_data.account,
+            "GAHM22VLSTZHTY7RP64UYKG4VR7DDFGDGKJ4GVRRS77D7M6EMXG5XTNS",
+        )
+        self.assertEqual(parsed_data.type, "account_sponsorship_removed")
+        self.assertEqual(parsed_data.type_i, 62)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 3, 20, 29, 17, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.former_sponsor,
+            "GA7PT6IPFVC4FGG273ZHGCNGG2O52F3B6CLVSI4SNIYOXLUNIOSFCK4F",
+        )
 
     def test_valid_trustline_sponsorship_created(self):
         raw_data = load_horizon_file("effects/trustline_sponsorship_created.json")
@@ -636,13 +730,49 @@ class TestEffects(unittest.TestCase):
         )
 
     def test_valid_data_sponsorship_created(self):
-        pass
+        raw_data = load_horizon_file("effects/data_sponsorship_created.json")
+        parsed_data = DataSponsorshipCreatedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0003520460138483714-0000000002")
+        self.assertEqual(parsed_data.paging_token, "3520460138483714-2")
+        self.assertEqual(
+            parsed_data.account,
+            "GAJADTBH23KY25XZPBZDS5NKV5ZXTIMDGORKSQCHE4DVVLEHSXSV2EQK",
+        )
+        self.assertEqual(parsed_data.type, "data_sponsorship_created")
+        self.assertEqual(parsed_data.type_i, 66)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 6, 6, 1, 13, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(parsed_data.data_name, "hello")
+        self.assertEqual(
+            parsed_data.sponsor,
+            "GDDQTK5V3E3JFGLZZTJTKURTVY7QJPNQLTR5QS5HIWZWY5XPYIO5YELN",
+        )
 
     def test_valid_data_sponsorship_updated(self):
         pass
 
     def test_valid_data_sponsorship_removed(self):
-        pass
+        raw_data = load_horizon_file("effects/data_sponsorship_removed.json")
+        parsed_data = DataSponsorshipRemovedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0003520511678095361-0000000001")
+        self.assertEqual(parsed_data.paging_token, "3520511678095361-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GDDQTK5V3E3JFGLZZTJTKURTVY7QJPNQLTR5QS5HIWZWY5XPYIO5YELN",
+        )
+        self.assertEqual(parsed_data.type, "data_sponsorship_removed")
+        self.assertEqual(parsed_data.type_i, 68)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 6, 6, 2, 18, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(parsed_data.data_name, "hello")
+        self.assertEqual(
+            parsed_data.former_sponsor,
+            "GDDQTK5V3E3JFGLZZTJTKURTVY7QJPNQLTR5QS5HIWZWY5XPYIO5YELN",
+        )
 
     def test_valid_claimable_balance_sponsorship_created(self):
         raw_data = load_horizon_file(
@@ -674,7 +804,30 @@ class TestEffects(unittest.TestCase):
         pass
 
     def test_valid_claimable_balance_sponsorship_removed(self):
-        pass
+        raw_data = load_horizon_file(
+            "effects/claimable_balance_sponsorship_removed.json"
+        )
+        parsed_data = ClaimableBalanceSponsorshipRemovedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0150803053451329538-0000000003")
+        self.assertEqual(parsed_data.paging_token, "150803053451329538-3")
+        self.assertEqual(
+            parsed_data.account,
+            "GANVXZ2DQ2FFLVCBSVMBBNVWSXS6YVEDP247EN4C3CM3I32XR4U3OU2I",
+        )
+        self.assertEqual(parsed_data.type, "claimable_balance_sponsorship_removed")
+        self.assertEqual(parsed_data.type_i, 71)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 4, 26, 7, 35, 19, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.balance_id,
+            "0000000016cbeff27945d389e9123231ec916f7bb848c0579ceca12e2bfab5c34ce0da24",
+        )
+        self.assertEqual(
+            parsed_data.former_sponsor,
+            "GDDGK5C7UQWC7AEFZZVO7KXRXZVP2BBQJ2IQFAIROKME2O3XQR2CMVC7",
+        )
 
     def test_valid_signer_sponsorship_created(self):
         raw_data = load_horizon_file("effects/signer_sponsorship_created.json")
@@ -728,4 +881,21 @@ class TestEffects(unittest.TestCase):
         )
 
     def test_valid_claimable_balance_clawed_back(self):
-        pass
+        raw_data = load_horizon_file("effects/claimable_balance_clawed_back.json")
+        parsed_data = ClaimableBalanceClawedBackEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0003513936083165185-0000000001")
+        self.assertEqual(parsed_data.paging_token, "3513936083165185-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GD5YHBKE7FSUUZIOSL4ED6UKMM2HZAYBYGZI7KRCTMFDTOO6SGZCQB4Z",
+        )
+        self.assertEqual(parsed_data.type, "claimable_balance_clawed_back")
+        self.assertEqual(parsed_data.type_i, 80)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 6, 3, 48, 5, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.balance_id,
+            "000000001fe36f3ce6ab6a6423b18b5947ce8890157ae77bb17faeb765814ad040b74ce1",
+        )

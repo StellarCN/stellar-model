@@ -370,8 +370,27 @@ class TestOperations(unittest.TestCase):
         )
 
     def test_valid_inflation_operation(self):
-        # TODO: not found
-        pass
+        raw_data = load_horizon_file("operations/inflation.json")
+        parsed_data = InflationOperation.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "85376614040350721")
+        self.assertEqual(parsed_data.paging_token, "85376614040350721")
+        self.assertEqual(parsed_data.transaction_successful, False)
+        self.assertEqual(
+            parsed_data.source_account,
+            "GDC2XPNEM4YAH22FK2TW7FSVGWQRGZGXLA3DAJLHNJ7YL5L5RSIXXXXX",
+        )
+        self.assertEqual(parsed_data.type, "inflation")
+        self.assertEqual(parsed_data.type_i, 9)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2018, 9, 8, 5, 0, 7, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.transaction_hash,
+            "25fca20b8d726ecced601b5ec230c3ef02852bbdc3aa082e9f6131a0ccf50ece",
+        )
+        self.assertEqual(parsed_data.transaction, None)
+        self.assertEqual(parsed_data.sponsor, None)
 
     def test_valid_manage_data_operation(self):
         raw_data = load_horizon_file("operations/manage_data.json")
@@ -675,13 +694,99 @@ class TestOperations(unittest.TestCase):
         )
 
     def test_valid_clawback_operation(self):
-        # TODO: not found
-        pass
+        raw_data = load_horizon_file("operations/clawback.json")
+        parsed_data = ClawbackOperation.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "3510036252856321")
+        self.assertEqual(parsed_data.paging_token, "3510036252856321")
+        self.assertEqual(parsed_data.transaction_successful, True)
+        self.assertEqual(
+            parsed_data.source_account,
+            "GCHYD6AWPR2PN66JFFDR63OEFO5RMOUGFL7D3BBUEMTJDMUFHPLNX2SC",
+        )
+        self.assertEqual(parsed_data.type, "clawback")
+        self.assertEqual(parsed_data.type_i, 19)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 6, 2, 28, 28, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.transaction_hash,
+            "7c4b7f6ef383afba397b20628b1f2556d72eb092dc8b875093e9b92cde1b4889",
+        )
+        self.assertEqual(parsed_data.transaction, None)
+        self.assertEqual(parsed_data.sponsor, None)
+        self.assertEqual(parsed_data.asset_type, "credit_alphanum12")
+        self.assertEqual(parsed_data.asset_code, "Hello")
+        self.assertEqual(
+            parsed_data.asset_issuer,
+            "GCHYD6AWPR2PN66JFFDR63OEFO5RMOUGFL7D3BBUEMTJDMUFHPLNX2SC",
+        )
+        self.assertEqual(
+            parsed_data.from_,
+            "GCDG7N63GJMJDI4627LY3XKNZARQNX3QFY6HAWON3JDAS3SCGINGQHEQ",
+        )
+        self.assertEqual(parsed_data.amount, Decimal("1234"))
 
     def test_valid_clawback_claimable_balance_operation(self):
-        # TODO: not found
-        pass
+        raw_data = load_horizon_file("operations/clawback_claimable_balance.json")
+        parsed_data = ClawbackClaimableBalanceOperation.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "3513936083165185")
+        self.assertEqual(parsed_data.paging_token, "3513936083165185")
+        self.assertEqual(parsed_data.transaction_successful, True)
+        self.assertEqual(
+            parsed_data.source_account,
+            "GD5YHBKE7FSUUZIOSL4ED6UKMM2HZAYBYGZI7KRCTMFDTOO6SGZCQB4Z",
+        )
+        self.assertEqual(parsed_data.type, "clawback_claimable_balance")
+        self.assertEqual(parsed_data.type_i, 20)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 6, 3, 48, 5, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.transaction_hash,
+            "8820306ee424f47fd1c16b28ab034a3bdab0147fc16c65b145ba1df5f338c8a2",
+        )
+        self.assertEqual(parsed_data.transaction, None)
+        self.assertEqual(parsed_data.sponsor, None)
+        self.assertEqual(
+            parsed_data.balance_id,
+            "000000001fe36f3ce6ab6a6423b18b5947ce8890157ae77bb17faeb765814ad040b74ce1",
+        )
 
     def test_valid_set_trust_line_flags_operation(self):
-        # TODO: not found
-        pass
+        raw_data = load_horizon_file("operations/set_trust_line_flags.json")
+        parsed_data = SetTrustLineFlagsOperation.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "3513373442449409")
+        self.assertEqual(parsed_data.paging_token, "3513373442449409")
+        self.assertEqual(parsed_data.transaction_successful, True)
+        self.assertEqual(
+            parsed_data.source_account,
+            "GD5YHBKE7FSUUZIOSL4ED6UKMM2HZAYBYGZI7KRCTMFDTOO6SGZCQB4Z",
+        )
+        self.assertEqual(parsed_data.type, "set_trust_line_flags")
+        self.assertEqual(parsed_data.type_i, 21)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 6, 3, 36, 35, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.transaction_hash,
+            "b1e3090a209925e38cee64ce451a85e0a15cff311963b7548f1931dc3af5b7fb",
+        )
+        self.assertEqual(parsed_data.transaction, None)
+        self.assertEqual(parsed_data.sponsor, None)
+        self.assertEqual(parsed_data.asset_type, "credit_alphanum12")
+        self.assertEqual(parsed_data.asset_code, "Hello")
+        self.assertEqual(
+            parsed_data.asset_issuer,
+            "GD5YHBKE7FSUUZIOSL4ED6UKMM2HZAYBYGZI7KRCTMFDTOO6SGZCQB4Z",
+        )
+        self.assertEqual(
+            parsed_data.trustor,
+            "GAYWF2KJ4RVFBACNI7W2YVSLEQOUHEMPGJIZCDXHCF2BFR2V7O55UWBB",
+        )
+        self.assertEqual(parsed_data.set_flags, [1])
+        self.assertEqual(parsed_data.set_flags_s, ["authorized"])
+        self.assertEqual(parsed_data.clear_flags, [4])
+        self.assertEqual(parsed_data.clear_flags_s, ["clawback_enabled"])
