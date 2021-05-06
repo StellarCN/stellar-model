@@ -68,13 +68,13 @@
 |   63   |         trustline_sponsorship_created        |   yes  |
 |   64   |         trustline_sponsorship_updated        |   no   |
 |   65   |         trustline_sponsorship_removed        |   yes  |
-|   66   |           data_sponsorship_created           |   no   |
+|   66   |           data_sponsorship_created           |   yes  |
 |   67   |           data_sponsorship_updated           |   no   |
-|   68   |           data_sponsorship_removed           |   no   |
+|   68   |           data_sponsorship_removed           |   yes  |
 |   69   |     claimable_balance_sponsorship_created    |   yes  |
 |   70   |     claimable_balance_sponsorship_updated    |   no   |
 |   71   |     claimable_balance_sponsorship_removed    |   yes  |
 |   72   |          signer_sponsorship_created          |   yes  |
 |   73   |          signer_sponsorship_updated          |   no   |
 |   74   |          signer_sponsorship_removed          |   yes  |
-|   80   |         claimable_balance_clawed_back        |   no   |
+|   80   |         claimable_balance_clawed_back        |   yes  |

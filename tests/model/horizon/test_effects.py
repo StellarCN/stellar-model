@@ -38,6 +38,8 @@ done = [
     62,
     63,
     65,
+    66,
+    68,
     69,
     71,
     72,
@@ -710,13 +712,49 @@ class TestEffects(unittest.TestCase):
         )
 
     def test_valid_data_sponsorship_created(self):
-        pass
+        raw_data = load_horizon_file("effects/data_sponsorship_created.json")
+        parsed_data = DataSponsorshipCreatedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0003520460138483714-0000000002")
+        self.assertEqual(parsed_data.paging_token, "3520460138483714-2")
+        self.assertEqual(
+            parsed_data.account,
+            "GAJADTBH23KY25XZPBZDS5NKV5ZXTIMDGORKSQCHE4DVVLEHSXSV2EQK",
+        )
+        self.assertEqual(parsed_data.type, "data_sponsorship_created")
+        self.assertEqual(parsed_data.type_i, 66)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 6, 6, 1, 13, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(parsed_data.data_name, "hello")
+        self.assertEqual(
+            parsed_data.sponsor,
+            "GDDQTK5V3E3JFGLZZTJTKURTVY7QJPNQLTR5QS5HIWZWY5XPYIO5YELN",
+        )
 
     def test_valid_data_sponsorship_updated(self):
         pass
 
     def test_valid_data_sponsorship_removed(self):
-        pass
+        raw_data = load_horizon_file("effects/data_sponsorship_removed.json")
+        parsed_data = DataSponsorshipRemovedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0003520511678095361-0000000001")
+        self.assertEqual(parsed_data.paging_token, "3520511678095361-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GDDQTK5V3E3JFGLZZTJTKURTVY7QJPNQLTR5QS5HIWZWY5XPYIO5YELN",
+        )
+        self.assertEqual(parsed_data.type, "data_sponsorship_removed")
+        self.assertEqual(parsed_data.type_i, 68)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 6, 6, 2, 18, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(parsed_data.data_name, "hello")
+        self.assertEqual(
+            parsed_data.former_sponsor,
+            "GDDQTK5V3E3JFGLZZTJTKURTVY7QJPNQLTR5QS5HIWZWY5XPYIO5YELN",
+        )
 
     def test_valid_claimable_balance_sponsorship_created(self):
         raw_data = load_horizon_file(
