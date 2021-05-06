@@ -25,9 +25,9 @@
 |   16   | begin_sponsoring_future_reserves |   yes  |
 |   17   |  end_sponsoring_future_reserves  |   yes  |
 |   18   |        revoke_sponsorship        |   yes  |
-|   19   |             clawback             |   no   |
-|   20   |    clawback_claimable_balance    |   no   |
-|   21   |       set_trust_line_flags       |   no   |
+|   19   |             clawback             |   yes  |
+|   20   |    clawback_claimable_balance    |   yes  |
+|   21   |       set_trust_line_flags       |   yes  |
 
 ### effects
 
