@@ -42,6 +42,7 @@ done = [
     71,
     72,
     74,
+    80,
 ]
 
 """
@@ -824,4 +825,21 @@ class TestEffects(unittest.TestCase):
         )
 
     def test_valid_claimable_balance_clawed_back(self):
-        pass
+        raw_data = load_horizon_file("effects/claimable_balance_clawed_back.json")
+        parsed_data = ClaimableBalanceClawedBackEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0003513936083165185-0000000001")
+        self.assertEqual(parsed_data.paging_token, "3513936083165185-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GD5YHBKE7FSUUZIOSL4ED6UKMM2HZAYBYGZI7KRCTMFDTOO6SGZCQB4Z",
+        )
+        self.assertEqual(parsed_data.type, "claimable_balance_clawed_back")
+        self.assertEqual(parsed_data.type_i, 80)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 5, 6, 3, 48, 5, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.balance_id,
+            "000000001fe36f3ce6ab6a6423b18b5947ce8890157ae77bb17faeb765814ad040b74ce1",
+        )
