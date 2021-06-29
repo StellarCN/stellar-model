@@ -73,6 +73,8 @@ class BaseEffect(BaseModel):
     id: str
     paging_token: str
     account: str
+    account_muxed: Optional[str]
+    account_muxed_id: Optional[int]
     type: str
     type_i: int
     # The maximum year in Python is 9999
@@ -352,6 +354,8 @@ class TradeEffect(BaseEffect):
     """
 
     seller: str
+    seller_muxed: Optional[str]
+    seller_muxed_id: Optional[int]
     offer_id: str
     sold_amount: Decimal
     sold_asset_type: str

@@ -66,11 +66,23 @@ class Transaction(BaseModel):
     source_account: str = Field(
         description="The account that originates the transaction."
     )
+    account_muxed: Optional[str] = Field(
+        description="account_muxed for source_account."
+    )
+    account_muxed_id: Optional[int] = Field(
+        description="account_muxed_id for source_account."
+    )
     source_account_sequence: int = Field(
         description="The source account's sequence number that "
         "this transaction consumed."
     )
     fee_account: str = Field(description="Account for paying transaction fees.")
+    fee_account_muxed: Optional[str] = Field(
+        description="account_muxed for fee_account."
+    )
+    fee_account_muxed_id: Optional[int] = Field(
+        description="account_muxed_id for fee_account."
+    )
     fee_charged: int = Field(
         description="The fee (in stroops) paid by the fee account to "
         "apply this transaction to the ledger."

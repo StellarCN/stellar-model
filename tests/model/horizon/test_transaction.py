@@ -63,6 +63,10 @@ class TestTransaction(unittest.TestCase):
         self.assertEqual(parsed_data.valid_before, None)
         self.assertEqual(parsed_data.fee_bump_transaction, None)
         self.assertEqual(parsed_data.inner_transaction, None)
+        self.assertEqual(parsed_data.account_muxed, None)
+        self.assertEqual(parsed_data.account_muxed_id, None)
+        self.assertEqual(parsed_data.fee_account_muxed, None)
+        self.assertEqual(parsed_data.fee_account_muxed_id, None)
 
     def test_transaction_fee_bump_valid(self):
         raw_data = load_horizon_file("transaction_fee_bump.json")
@@ -145,6 +149,24 @@ class TestTransaction(unittest.TestCase):
             parsed_data.inner_transaction.signatures[0],
             "WP42QZNFKUtw9dzCQfxU4E3euT4HT1/VfHnuep0dv/W03JoOebax5ifH0FFUPwuGB0PjppN1wXepSQ0abQ9JCQ==",
         )
+        self.assertEqual(parsed_data.account_muxed, None)
+        self.assertEqual(parsed_data.account_muxed_id, None)
+        self.assertEqual(parsed_data.fee_account_muxed, None)
+        self.assertEqual(parsed_data.fee_account_muxed_id, None)
+
+    def test_transaction_muxed_account_valid(self):
+        raw_data = load_horizon_file("transaction_muxed_account.json")
+        parsed_data = Transaction.parse_obj(raw_data)
+        self.assertEqual(
+            parsed_data.account_muxed,
+            "MDSPXRRA5D4WD4LCR6NNZEHQJHHZ74UCPHXJT4SC7HCFWJFOFOLUUAAAAAAAAAAAPMRCO",
+        )
+        self.assertEqual(parsed_data.account_muxed_id, 123)
+        self.assertEqual(
+            parsed_data.fee_account_muxed,
+            "MDSPXRRA5D4WD4LCR6NNZEHQJHHZ74UCPHXJT4SC7HCFWJFOFOLUUAAAAAAAAAAAPMRCO",
+        )
+        self.assertEqual(parsed_data.fee_account_muxed_id, 123)
 
 
 if __name__ == "__main__":

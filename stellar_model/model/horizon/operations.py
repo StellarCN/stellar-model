@@ -61,6 +61,8 @@ class BaseOperation(BaseModel):
     source_account: str = Field(
         description="The account that originates the operation."
     )
+    source_account_muxed: Optional[str]
+    source_account_muxed_id: Optional[int]
     type: str = Field(description="The name of the operation type.")
     type_i: int = Field(description="A number indicating the operation type.")
     created_at: datetime = Field(description="The datetime this operation was created.")
@@ -119,6 +121,8 @@ class CreateAccountOperation(BaseOperation):
         description="The amount of XLM to send the newly created account."
     )
     funder: str = Field(description="The account that funds the new account.")
+    funder_muxed: Optional[str]
+    funder_muxed_id: Optional[int]
     account: str = Field(description="A new account that is funded.")
 
 
@@ -145,7 +149,11 @@ class PaymentOperation(BaseOperation):
         description="The payment sender’s public key. This variable should be called `from`, "
         "but `from` is a keyword in Python, so we named it `from_`.",
     )
+    from_muxed: Optional[str]
+    from_muxed_id: Optional[int]
     to: str = Field(description="The payment recipient’s public key.")
+    to_muxed: Optional[str]
+    to_muxed_id: Optional[int]
     amount: Decimal = Field(description="Amount sent.")
 
 
@@ -296,6 +304,8 @@ class ChangeTrustOperation(BaseOperation):
     )
     trustee: str = Field(description="The issuing account.")
     trustor: str = Field(description="The source account.")
+    trustor_muxed: Optional[str]
+    trustor_muxed_id: Optional[int]
 
 
 class AllowTrustOperation(BaseOperation):
@@ -320,6 +330,8 @@ class AllowTrustOperation(BaseOperation):
     trustee: str = Field(
         description="The issuing account, or source account in this instance."
     )
+    trustee_muxed: Optional[str]
+    trustee_muxed_id: Optional[int]
     trustor: str = Field(
         description="The trusting account, or the account being authorized or unauthorized."
     )
@@ -342,9 +354,13 @@ class AccountMergeOperation(BaseOperation):
     """
 
     account: str = Field(description="The Stellar address being removed.")
+    account_muxed: Optional[str]
+    account_muxed_id: Optional[int]
     into: str = Field(
         description="The Stellar address receiving the deleted account’s lumens."
     )
+    into_muxed: Optional[str]
+    into_muxed_id: Optional[int]
 
 
 class InflationOperation(BaseOperation):
@@ -481,6 +497,8 @@ class ClaimClaimableBalanceOperation(BaseOperation):
     claimant: str = Field(
         description="The id of the account which claimed the balance."
     )
+    claimant_muxed: Optional[str]
+    claimant_muxed_id: Optional[int]
 
 
 class BeginSponsoringFutureReservesOperation(BaseOperation):
@@ -507,6 +525,8 @@ class EndSponsoringFutureReservesOperation(BaseOperation):
     begin_sponsor: Optional[str] = Field(
         description="The id of the account which initiated the sponsorship."
     )
+    begin_sponsor_muxed: Optional[str]
+    begin_sponsor_muxed_id: Optional[int]
 
 
 class RevokeSponsorshipOperation(BaseOperation):
@@ -562,6 +582,8 @@ class ClawbackOperation(BaseOperation):
         description="This variable should be called `from`, "
         "but `from` is a keyword in Python, so we named it `from_`.",
     )
+    from_muxed: Optional[str]
+    from_muxed_id: Optional[int]
     amount: Decimal
 
 
