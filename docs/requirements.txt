@@ -1,1 +1,1 @@
-stellar-model==0.1.0b1
+stellar-model==0.2.0b0

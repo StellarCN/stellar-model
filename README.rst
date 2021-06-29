@@ -34,7 +34,7 @@ Installing
 
 .. code-block:: text
 
-    pip install stellar-model==0.1.0b1
+    pip install stellar-model==0.2.0b0
 
 Example
 =======
