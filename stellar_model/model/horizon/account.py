@@ -62,7 +62,7 @@ class AccountFlags(BaseModel):
     auth_immutable: bool = Field(
         description="If set to **true**, none of the following flags can be changed."
     )
-    auth_clawback_enabled: bool = Field(description="")
+    auth_clawback_enabled: Optional[bool] = Field(description="")
 
 
 class Balance(BaseModel):
