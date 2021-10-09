@@ -101,7 +101,7 @@ class ClaimableBalance(BaseModel):
     last_modified_ledger: int = Field(
         description="The sequence number of the last ledger in which this claimable balance was modified."
     )
-    last_modified_time: datetime = Field(
+    last_modified_time: Optional[datetime] = Field(
         description="The datetime of last modification time."
     )
     claimants: List[Claimant] = Field(

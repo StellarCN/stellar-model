@@ -43,7 +43,7 @@ class Offer(BaseModel):
         description="The sequence number of the last ledger "
         "in which this offer was modified."
     )
-    last_modified_time: datetime = Field(
+    last_modified_time: Optional[datetime] = Field(
         description="The time of the last ledger " "in which this offer was modified."
     )
     sponsor: Optional[str] = Field(
