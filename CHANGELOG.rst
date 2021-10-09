@@ -4,6 +4,10 @@ Change Log
 
 This document records all notable changes to `stellar-model <https://github.com/StellarCN/stellar-model/>`_.
 
+0.2.2b0 (Horizon v2.8.3)
+------------------------
+* fix: make `ClaimableBalance.last_modified_time` and `Offer.last_modified_time` optional.
+
 0.2.1b0 (Horizon v2.8.3)
 ------------------------
 * fix: make `Account.last_modified_time` optional. (`#19 <https://github.com/StellarCN/stellar-model/pull/19/>`_)
