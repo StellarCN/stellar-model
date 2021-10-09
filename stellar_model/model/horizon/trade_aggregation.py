@@ -3,19 +3,10 @@ from decimal import Decimal
 from pydantic import BaseModel
 from pydantic import Field
 
+from stellar_model.model.horizon.price import Price
+
 
 __all__ = ["TradeAggregation"]
-
-
-class TradeAggregationPrice(BaseModel):
-    """
-    Represents a trade aggregation price
-
-    See https://github.com/stellar/go/issues/2258
-    """
-
-    n: int = Field(description="The numerator.", alias="N")
-    d: int = Field(description="The denominator.", alias="D")
 
 
 class TradeAggregation(BaseModel):
@@ -34,18 +25,18 @@ class TradeAggregation(BaseModel):
         description="Weighted average price of counter asset in terms of base asset."
     )
     high: Decimal = Field(description="The highest price for this time period.")
-    high_r: TradeAggregationPrice = Field(
+    high_r: Price = Field(
         description="The highest price for this time period as a rational number."
     )
     low: Decimal = Field(description="The lowest price for this time period.")
-    low_r: TradeAggregationPrice = Field(
+    low_r: Price = Field(
         description="The lowest price for this time period as a rational number."
     )
     open: Decimal = Field(description="The price as seen on first trade aggregated.")
-    open_r: TradeAggregationPrice = Field(
+    open_r: Price = Field(
         description="The price as seen on first trade aggregated as a rational number."
     )
     close: Decimal = Field(description="The price as seen on last trade aggregated.")
-    close_r: TradeAggregationPrice = Field(
+    close_r: Price = Field(
         description="The price as seen on last trade aggregated as a rational number."
     )

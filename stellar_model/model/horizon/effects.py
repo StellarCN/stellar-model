@@ -1,5 +1,6 @@
 from datetime import datetime
 from decimal import Decimal
+from typing import List
 from typing import Optional
 from typing import Union
 
@@ -56,7 +57,17 @@ __all__ = [
     "SignerSponsorshipUpdatedEffect",
     "SignerSponsorshipRemovedEffect",
     "ClaimableBalanceClawedBackEffect",
+    "LiquidityPoolDepositedEffect",
+    "LiquidityPoolWithdrewEffect",
+    "LiquidityPoolTradeEffect",
+    "LiquidityPoolCreatedEffect",
+    "LiquidityPoolRemovedEffect",
+    "LiquidityPoolRevokedEffect",
 ]
+
+from stellar_model.model.horizon.liquidity_pool_asset_amount import (
+    LiquidityPoolAssetAmount,
+)
 
 
 class Links(BaseModel):
@@ -227,8 +238,9 @@ class TrustlineCreatedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset_code: str
-    asset_issuer: str
+    asset_code: Optional[str]
+    asset_issuer: Optional[str]
+    liquidity_pool_id: Optional[str]
     limit: Decimal
 
 
@@ -241,8 +253,9 @@ class TrustlineRemovedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset_code: str
-    asset_issuer: str
+    asset_code: Optional[str]
+    asset_issuer: Optional[str]
+    liquidity_pool_id: Optional[str]
     limit: Decimal
 
 
@@ -255,8 +268,9 @@ class TrustlineUpdatedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset_code: str
-    asset_issuer: str
+    asset_code: Optional[str]
+    asset_issuer: Optional[str]
+    liquidity_pool_id: Optional[str]
     limit: Decimal
 
 
@@ -495,7 +509,9 @@ class TrustlineSponsorshipCreatedEffect(BaseEffect):
     type_i: 63
     """
 
-    asset: str
+    asset_type: str
+    asset: Optional[str]
+    liquidity_pool_id: Optional[str]
     sponsor: str
 
 
@@ -507,7 +523,9 @@ class TrustlineSponsorshipUpdatedEffect(BaseEffect):
     type_i: 64
     """
 
-    asset: str
+    asset_type: str
+    asset: Optional[str]
+    liquidity_pool_id: Optional[str]
     former_sponsor: str
     new_sponsor: str
 
@@ -520,7 +538,9 @@ class TrustlineSponsorshipRemovedEffect(BaseEffect):
     type_i: 65
     """
 
-    asset: str
+    asset_type: str
+    asset: Optional[str]
+    liquidity_pool_id: Optional[str]
     former_sponsor: str
 
 
@@ -646,6 +666,93 @@ class ClaimableBalanceClawedBackEffect(BaseEffect):
     balance_id: str
 
 
+class LiquidityPool(BaseModel):
+    id: str
+    fee_bp: int
+    type: str
+    total_trustlines: int
+    total_shares: Decimal
+    reserves: List[LiquidityPoolAssetAmount]
+
+
+class LiquidityPoolDepositedEffect(BaseEffect):
+    """
+    Occurs when a liquidity pool incurs a deposit
+
+    type: liquidity_pool_deposited
+    type_i: 90
+    """
+
+    liquidity_pool: LiquidityPool
+    reserves_deposited: List[LiquidityPoolAssetAmount]
+    shares_received: Decimal
+
+
+class LiquidityPoolWithdrewEffect(BaseEffect):
+    """
+    Occurs when a liquidity pool incurs a withdrawal
+
+    type: liquidity_pool_withdrew
+    type_i: 91
+    """
+
+    liquidity_pool: LiquidityPool
+    reserves_received: List[LiquidityPoolAssetAmount]
+    shares_redeemed: Decimal
+
+
+class LiquidityPoolTradeEffect(BaseEffect):
+    """
+    Occurs when a trade happens in a liquidity pool
+
+    type: liquidity_pool_trade
+    type_i: 92
+    """
+
+    liquidity_pool: LiquidityPool
+    sold: LiquidityPoolAssetAmount
+    bought: LiquidityPoolAssetAmount
+
+
+class LiquidityPoolCreatedEffect(BaseEffect):
+    """
+    Occurs when a liquidity pool is created
+
+    type: liquidity_pool_created
+    type_i: 93
+    """
+
+    liquidity_pool: LiquidityPool
+
+
+class LiquidityPoolRemovedEffect(BaseEffect):
+    """
+    Occurs when a liquidity pool is removed
+
+    type: liquidity_pool_removed
+    type_i: 94
+    """
+
+    liquidity_pool: LiquidityPool
+
+
+class LiquidityPoolClaimableAssetAmount(LiquidityPoolAssetAmount):
+    claimable_balance_id: str
+
+
+class LiquidityPoolRevokedEffect(BaseEffect):
+    """
+    Occurs when a liquidity pool is revoked
+
+    type: liquidity_pool_revoked
+    type_i: 95
+    """
+
+    liquidity_pool: LiquidityPool
+    reserves_revoked: List[LiquidityPoolClaimableAssetAmount]
+    shares_revoked: Decimal
+
+
 _EFFECT_TYPE_I_MAP = {
     0: AccountCreatedEffect,
     1: AccountRemovedEffect,
@@ -692,6 +799,12 @@ _EFFECT_TYPE_I_MAP = {
     73: SignerSponsorshipUpdatedEffect,
     74: SignerSponsorshipRemovedEffect,
     80: ClaimableBalanceClawedBackEffect,
+    90: LiquidityPoolDepositedEffect,
+    91: LiquidityPoolWithdrewEffect,
+    92: LiquidityPoolTradeEffect,
+    93: LiquidityPoolCreatedEffect,
+    94: LiquidityPoolRemovedEffect,
+    95: LiquidityPoolRevokedEffect,
 }
 
 _EFFECT_TYPE_UNION = Union[
@@ -740,4 +853,10 @@ _EFFECT_TYPE_UNION = Union[
     SignerSponsorshipUpdatedEffect,
     SignerSponsorshipRemovedEffect,
     ClaimableBalanceClawedBackEffect,
+    LiquidityPoolDepositedEffect,
+    LiquidityPoolWithdrewEffect,
+    LiquidityPoolTradeEffect,
+    LiquidityPoolCreatedEffect,
+    LiquidityPoolRemovedEffect,
+    LiquidityPoolRevokedEffect,
 ]

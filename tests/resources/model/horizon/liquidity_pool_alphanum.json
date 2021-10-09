@@ -1,0 +1,33 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://horizon-testnet.stellar.org/liquidity_pools/2389378a6156eedfac66daa000d24c926431c3e667b9f754771964f27a6da6ab"
+    },
+    "transactions": {
+      "href": "https://horizon-testnet.stellar.org/liquidity_pools/2389378a6156eedfac66daa000d24c926431c3e667b9f754771964f27a6da6ab/transactions{?cursor,limit,order}",
+      "templated": true
+    },
+    "operations": {
+      "href": "https://horizon-testnet.stellar.org/liquidity_pools/2389378a6156eedfac66daa000d24c926431c3e667b9f754771964f27a6da6ab/operations{?cursor,limit,order}",
+      "templated": true
+    }
+  },
+  "id": "2389378a6156eedfac66daa000d24c926431c3e667b9f754771964f27a6da6ab",
+  "paging_token": "2389378a6156eedfac66daa000d24c926431c3e667b9f754771964f27a6da6ab",
+  "fee_bp": 30,
+  "type": "constant_product",
+  "total_trustlines": "1",
+  "total_shares": "25612.4969497",
+  "reserves": [
+    {
+      "asset": "COOL:GAZKB7OEYRUVL6TSBXI74D2IZS4JRCPBXJZ37MDDYAEYBOMHXUYIX5YL",
+      "amount": "1120.0000000"
+    },
+    {
+      "asset": "BTCLN:GD4UTLD46SWG5KCUVBRWFSFCUDISYNEJ2AF5FNB67ORAE6K7ZSAXH5O7",
+      "amount": "585905.8506615"
+    }
+  ],
+  "last_modified_ledger": 366227,
+  "last_modified_time": "2021-10-07T16:01:59Z"
+}

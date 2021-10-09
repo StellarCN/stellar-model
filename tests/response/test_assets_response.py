@@ -9,21 +9,21 @@ class TestAssetsResponse(TestCase):
     def test_valid(self):
         raw_data = load_response_file("assets_response.json")
         parsed_data = AssetsResponse.parse_obj(raw_data)
-        self.assertEqual(len(parsed_data.embedded.records), 20)
+        self.assertEqual(len(parsed_data.embedded.records), 100)
         for record in parsed_data.embedded.records:
             self.assertTrue(isinstance(record, AssetStat))
         self.assertEqual(
             parsed_data.links.self.href,
-            "https://horizon.stellar.org/assets?cursor=&limit=20&order=desc",
+            "https://horizon-testnet.stellar.org/assets?cursor=&limit=100&order=asc",
         )
         self.assertEqual(parsed_data.links.self.templated, None)
         self.assertEqual(
             parsed_data.links.next.href,
-            "https://horizon.stellar.org/assets?cursor=ZYH_GAPBH5XTXAF4QYLIS4BBFXJPUA6WBLGUYCD62LWCPHY2NEGUQTE6QHTF_credit_alphanum4&limit=20&order=desc",
+            "https://horizon-testnet.stellar.org/assets?cursor=00300076FD_GAFIQIKCKZFVB263EF2NUZDX6WLGNTVKNTQP6EYMZEBCASDOPFVBVHAA_credit_alphanum12&limit=100&order=asc",
         )
         self.assertEqual(parsed_data.links.next.templated, None)
         self.assertEqual(
             parsed_data.links.prev.href,
-            "https://horizon.stellar.org/assets?cursor=zzzx_GBIBNMZYLJ5P4B2YKFWWMJYEF4RP77HUGBZWQBRML74ZYEL5FKDQOOQI_credit_alphanum4&limit=20&order=asc",
+            "https://horizon-testnet.stellar.org/assets?cursor=0000158EEB_GA26RGSABBCQDHNGBS7X6OJPEN7F3WSJBQOCWUODMSLZCXRKPTTVBGI6_credit_alphanum12&limit=100&order=desc",
         )
         self.assertEqual(parsed_data.links.prev.templated, None)

@@ -73,14 +73,18 @@ class Balance(BaseModel):
     balance: Decimal = Field(
         description="The number of units of an asset held by this account."
     )
+    liquidity_pool_id: Optional[str] = Field(
+        description="This liquidity pool’s id encoded in a "
+        "hex string representation."
+    )
     limit: Optional[Decimal] = Field(
         description="The maximum amount of this asset that this account "
         "is willing to accept. Specified when opening a trustline."
     )
-    buying_liabilities: Decimal = Field(
+    buying_liabilities: Optional[Decimal] = Field(
         description="The sum of all buy offers owned by this account " "for this asset."
     )
-    selling_liabilities: Decimal = Field(
+    selling_liabilities: Optional[Decimal] = Field(
         description="The sum of all sell offers owned by this account "
         "for this asset."
     )
@@ -162,5 +166,5 @@ class Account(BaseModel):
         description="The account ID of the sponsor who is paying the "
         "reserves for this account."
     )
-    paging_token: str = Field(description="")
+    paging_token: str = Field(description="A cursor value for use in pagination.")
     links: Links = Field(alias="_links")

@@ -1,27 +1,29 @@
 {
   "_links": {
     "toml": {
-      "href": "https://naobtc.com/.well-known/stellar.toml"
+      "href": ""
     }
   },
   "asset_type": "credit_alphanum4",
-  "asset_code": "BTC",
-  "asset_issuer": "GATEMHCCKCY67ZUCKTROYN24ZYT5GK4EQZ65JJLDHKHRUZI3EUEKMTCH",
-  "paging_token": "BTC_GATEMHCCKCY67ZUCKTROYN24ZYT5GK4EQZ65JJLDHKHRUZI3EUEKMTCH_credit_alphanum4",
+  "asset_code": "ZX2",
+  "asset_issuer": "GDBSQA2GDRBRZVWOMRLZ6V4ZN2UESRQAEIHGKCZDR3YO4QIMC3CLHPR3",
+  "paging_token": "ZX2_GDBSQA2GDRBRZVWOMRLZ6V4ZN2UESRQAEIHGKCZDR3YO4QIMC3CLHPR3_credit_alphanum4",
+  "num_accounts": 1,
+  "num_claimable_balances": 0,
+  "num_liquidity_pools": 0,
+  "amount": "1001.0000000",
   "accounts": {
-    "authorized": 7377,
+    "authorized": 1,
     "authorized_to_maintain_liabilities": 0,
     "unauthorized": 0
   },
-  "num_claimable_balances": 0,
-  "amount": "989.9464476",
+  "claimable_balances_amount": "0.0000000",
+  "liquidity_pools_amount": "0.0000000",
   "balances": {
-    "authorized": "989.9464476",
+    "authorized": "1001.0000000",
     "authorized_to_maintain_liabilities": "0.0000000",
     "unauthorized": "0.0000000"
   },
-  "claimable_balances_amount": "0.0000000",
-  "num_accounts": 7377,
   "flags": {
     "auth_required": false,
     "auth_revocable": false,

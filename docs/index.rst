@@ -50,6 +50,14 @@ LedgersResponse
 ^^^^^^^^^^^^^^^
 .. autoclass:: stellar_model.response.LedgersResponse
 
+LiquidityPoolResponse
+^^^^^^^^^^^^^^^^^^^^^
+.. autoclass:: stellar_model.response.LiquidityPoolResponse
+
+LiquidityPoolsResponse
+^^^^^^^^^^^^^^^^^^^^^^
+.. autoclass:: stellar_model.response.LiquidityPoolsResponse
+
 OfferResponse
 ^^^^^^^^^^^^^
 .. autoclass:: stellar_model.response.OfferResponse
@@ -73,6 +81,10 @@ PathsResponse
 PaymentsResponse
 ^^^^^^^^^^^^^^^^
 .. autoclass:: stellar_model.response.PaymentsResponse
+
+RootResponse
+^^^^^^^^^^^^
+.. autoclass:: stellar_model.response.RootResponse
 
 TradeAggregationsResponse
 ^^^^^^^^^^^^^^^^^^^^^^^^^

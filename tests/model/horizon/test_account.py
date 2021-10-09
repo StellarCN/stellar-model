@@ -53,42 +53,54 @@ class TestAccount(unittest.TestCase):
             parsed_data.paging_token,
             "GDI73WJ4SX7LOG3XZDJC3KCK6ED6E5NBYK2JUBQSPBCNNWEG3ZN7T75U",
         )
-        self.assertEqual(len(parsed_data.balances), 2)
-        self.assertEqual(parsed_data.balances[0].balance, Decimal("426.3895513"))
+        self.assertEqual(len(parsed_data.balances), 3)
+        self.assertEqual(parsed_data.balances[0].balance, Decimal("400.0000000"))
+        self.assertEqual(
+            parsed_data.balances[0].liquidity_pool_id,
+            "2c0bfa623845dd101cbf074a1ca1ae4b2458cc8d0104ad65939ebe2cd9054355",
+        )
         self.assertEqual(parsed_data.balances[0].limit, Decimal("922337203685.4775807"))
+        self.assertEqual(parsed_data.balances[0].last_modified_ledger, 367662)
+        self.assertEqual(parsed_data.balances[0].is_authorized, False)
         self.assertEqual(
-            parsed_data.balances[0].buying_liabilities, Decimal("0.0000000")
+            parsed_data.balances[0].is_authorized_to_maintain_liabilities, False
         )
-        self.assertEqual(
-            parsed_data.balances[0].selling_liabilities, Decimal("0.0000000")
-        )
-        self.assertEqual(parsed_data.balances[0].last_modified_ledger, 34781475)
-        self.assertEqual(parsed_data.balances[0].is_authorized, True)
-        self.assertEqual(
-            parsed_data.balances[0].is_authorized_to_maintain_liabilities, True
-        )
-        self.assertEqual(parsed_data.balances[0].asset_type, "credit_alphanum4")
-        self.assertEqual(parsed_data.balances[0].asset_code, "EURT")
-        self.assertEqual(
-            parsed_data.balances[0].asset_issuer,
-            "GAP5LETOV6YIE62YAM56STDANPRDO7ZFDBGSNHJQIYGGKSMOZAHOOS2S",
-        )
-        self.assertEqual(parsed_data.balances[1].balance, Decimal("98.8944793"))
-        self.assertEqual(parsed_data.balances[1].limit, None)
+        self.assertEqual(parsed_data.balances[0].asset_type, "liquidity_pool_shares")
+        self.assertEqual(parsed_data.balances[1].balance, Decimal("426.3895513"))
+        self.assertEqual(parsed_data.balances[1].limit, Decimal("922337203685.4775807"))
         self.assertEqual(
             parsed_data.balances[1].buying_liabilities, Decimal("0.0000000")
         )
         self.assertEqual(
             parsed_data.balances[1].selling_liabilities, Decimal("0.0000000")
         )
-        self.assertEqual(parsed_data.balances[1].last_modified_ledger, None)
-        self.assertEqual(parsed_data.balances[1].is_authorized, None)
+        self.assertEqual(parsed_data.balances[1].last_modified_ledger, 34781475)
+        self.assertEqual(parsed_data.balances[1].is_authorized, True)
         self.assertEqual(
-            parsed_data.balances[1].is_authorized_to_maintain_liabilities, None
+            parsed_data.balances[1].is_authorized_to_maintain_liabilities, True
         )
-        self.assertEqual(parsed_data.balances[1].asset_type, "native")
-        self.assertEqual(parsed_data.balances[1].asset_code, None)
-        self.assertEqual(parsed_data.balances[1].asset_issuer, None)
+        self.assertEqual(parsed_data.balances[1].asset_type, "credit_alphanum4")
+        self.assertEqual(parsed_data.balances[1].asset_code, "EURT")
+        self.assertEqual(
+            parsed_data.balances[1].asset_issuer,
+            "GAP5LETOV6YIE62YAM56STDANPRDO7ZFDBGSNHJQIYGGKSMOZAHOOS2S",
+        )
+        self.assertEqual(parsed_data.balances[2].balance, Decimal("98.8944793"))
+        self.assertEqual(parsed_data.balances[2].limit, None)
+        self.assertEqual(
+            parsed_data.balances[2].buying_liabilities, Decimal("0.0000000")
+        )
+        self.assertEqual(
+            parsed_data.balances[2].selling_liabilities, Decimal("0.0000000")
+        )
+        self.assertEqual(parsed_data.balances[2].last_modified_ledger, None)
+        self.assertEqual(parsed_data.balances[2].is_authorized, None)
+        self.assertEqual(
+            parsed_data.balances[2].is_authorized_to_maintain_liabilities, None
+        )
+        self.assertEqual(parsed_data.balances[2].asset_type, "native")
+        self.assertEqual(parsed_data.balances[2].asset_code, None)
+        self.assertEqual(parsed_data.balances[2].asset_issuer, None)
 
 
 if __name__ == "__main__":
