@@ -134,7 +134,7 @@ class Account(BaseModel):
     last_modified_ledger: int = Field(
         description="The ID of the last ledger that included changes to this account."
     )
-    last_modified_time: datetime = Field(
+    last_modified_time: Optional[datetime] = Field(
         description="The time of the last ledger that included "
         "changes to this account."
     )
