@@ -13,9 +13,9 @@ stellar-model
     :alt: PyPI
     :target: https://pypi.python.org/pypi/stellar-model
 
-.. image:: https://img.shields.io/badge/Supported%20Horizon%20Version-2.2.0-blue?style=flat
+.. image:: https://img.shields.io/badge/Supported%20Horizon%20Version-2.8.3-blue?style=flat
     :alt: Supported Horizon Version
-    :target: https://github.com/stellar/go/releases/tag/horizon-v2.2.0
+    :target: https://github.com/stellar/go/releases/tag/horizon-v2.8.3
 
 .. image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8%20%7C%203.9-blue?style=flat
     :alt: Python - Version
@@ -32,9 +32,12 @@ development experience in the editor with things like code completion, type hint
 Installing
 ==========
 
+You need to choose a suitable stellar-model version according to the Horizon version number you are using.
+Please check the list `here <https://github.com/StellarCN/stellar-model/issues/20/>`_.
+
 .. code-block:: text
 
-    pip install stellar-model==0.2.0b0
+    pip install stellar-model==0.2.1b0
 
 Example
 =======
