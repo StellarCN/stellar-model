@@ -37,7 +37,7 @@ Please check the list `here <https://github.com/StellarCN/stellar-model/issues/2
 
 .. code-block:: text
 
-    pip install stellar-model==0.2.2b0
+    pip install stellar-model==0.3.0b0
 
 Example
 =======
