@@ -16,6 +16,7 @@
   "id": "150615114272284677-0",
   "paging_token": "150615114272284677-0",
   "ledger_close_time": "2021-04-23T13:55:52Z",
+  "trade_type": "orderbook",
   "offer_id": "544656471",
   "base_offer_id": "4762301132699672581",
   "base_account": "GAREHPOLONP4N5WJPF6EG676FAH3IEDUF5AXMZXGSVU3262XJETXOTLW",

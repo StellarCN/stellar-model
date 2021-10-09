@@ -7,46 +7,6 @@ from stellar_model.model.horizon.effects import *
 from tests.model.horizon import load_horizon_file
 
 
-done = [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    10,
-    11,
-    12,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26,
-    33,
-    40,
-    41,
-    42,
-    43,
-    50,
-    51,
-    52,
-    60,
-    62,
-    63,
-    65,
-    66,
-    68,
-    69,
-    71,
-    72,
-    74,
-    80,
-]
-
 """
         raw_data = load_horizon_file("effects/")
         parsed_data = AccountCreatedEffect.parse_obj(raw_data)
@@ -899,3 +859,273 @@ class TestEffects(unittest.TestCase):
             parsed_data.balance_id,
             "000000001fe36f3ce6ab6a6423b18b5947ce8890157ae77bb17faeb765814ad040b74ce1",
         )
+
+    def test_liquidity_pool_deposited(self):
+        raw_data = load_horizon_file("effects/liquidity_pool_deposited.json")
+        parsed_data = LiquidityPoolDepositedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0001579044726386689-0000000001")
+        self.assertEqual(parsed_data.paging_token, "1579044726386689-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GAQXAWHCM4A7SQCT3BOSVEGRI2OOB7LO2CMFOYFF6YRXU4VQSB5V2V2K",
+        )
+        self.assertEqual(
+            parsed_data.account_muxed,
+            "MAQXAWHCM4A7SQCT3BOSVEGRI2OOB7LO2CMFOYFF6YRXU4VQSB5V2AAAAAAAAE4DUGF2O",
+        )
+        self.assertEqual(
+            parsed_data.account_muxed_id,
+            1278881,
+        )
+        self.assertEqual(parsed_data.type, "liquidity_pool_deposited")
+        self.assertEqual(parsed_data.type_i, 90)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 10, 7, 18, 6, 32, tzinfo=datetime.timezone.utc),
+        )
+
+        self.assertEqual(
+            parsed_data.liquidity_pool.id,
+            "2c0bfa623845dd101cbf074a1ca1ae4b2458cc8d0104ad65939ebe2cd9054355",
+        )
+        self.assertEqual(parsed_data.liquidity_pool.fee_bp, 30)
+        self.assertEqual(parsed_data.liquidity_pool.type, "constant_product")
+        self.assertEqual(parsed_data.liquidity_pool.total_trustlines, 1)
+        self.assertEqual(
+            parsed_data.liquidity_pool.total_shares, Decimal("250.0000000")
+        )
+        self.assertEqual(len(parsed_data.liquidity_pool.reserves), 2)
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[0].asset.asset_type, "credit_alphanum4"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[0].asset.asset_code, "COOL"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[0].asset.asset_issuer,
+            "GAZKB7OEYRUVL6TSBXI74D2IZS4JRCPBXJZ37MDDYAEYBOMHXUYIX5YL",
+        )
+        self.assertEqual(parsed_data.liquidity_pool.reserves[0].amount, Decimal("250"))
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[1].asset.asset_type, "credit_alphanum12"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[1].asset.asset_code, "SONESO"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[1].asset.asset_issuer,
+            "GAOF7ARG3ZAVUA63GCLXG5JQTMBAH3ZFYHGLGJLDXGDSXQRHD72LLGOB",
+        )
+        self.assertEqual(parsed_data.liquidity_pool.reserves[1].amount, Decimal("250"))
+
+        self.assertEqual(len(parsed_data.liquidity_pool.reserves), 2)
+        self.assertEqual(
+            parsed_data.reserves_deposited[0].asset.asset_type, "credit_alphanum4"
+        )
+        self.assertEqual(parsed_data.reserves_deposited[0].asset.asset_code, "COOL")
+        self.assertEqual(
+            parsed_data.reserves_deposited[0].asset.asset_issuer,
+            "GAZKB7OEYRUVL6TSBXI74D2IZS4JRCPBXJZ37MDDYAEYBOMHXUYIX5YL",
+        )
+        self.assertEqual(parsed_data.reserves_deposited[0].amount, Decimal("250"))
+        self.assertEqual(
+            parsed_data.reserves_deposited[1].asset.asset_type, "credit_alphanum12"
+        )
+        self.assertEqual(parsed_data.reserves_deposited[1].asset.asset_code, "SONESO")
+        self.assertEqual(
+            parsed_data.reserves_deposited[1].asset.asset_issuer,
+            "GAOF7ARG3ZAVUA63GCLXG5JQTMBAH3ZFYHGLGJLDXGDSXQRHD72LLGOB",
+        )
+        self.assertEqual(parsed_data.reserves_deposited[1].amount, Decimal("250"))
+
+        self.assertEqual(parsed_data.shares_received, Decimal("250.0000000"))
+
+    def test_liquidity_pool_withdrew(self):
+        raw_data = load_horizon_file("effects/liquidity_pool_withdrew.json")
+        parsed_data = LiquidityPoolWithdrewEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0001579096265998337-0000000001")
+        self.assertEqual(parsed_data.paging_token, "1579096265998337-1")
+        self.assertEqual(
+            parsed_data.account,
+            "GAQXAWHCM4A7SQCT3BOSVEGRI2OOB7LO2CMFOYFF6YRXU4VQSB5V2V2K",
+        )
+        self.assertEqual(
+            parsed_data.account_muxed,
+            "MAQXAWHCM4A7SQCT3BOSVEGRI2OOB7LO2CMFOYFF6YRXU4VQSB5V2AAAAAAAAE4DUGF2O",
+        )
+        self.assertEqual(
+            parsed_data.account_muxed_id,
+            1278881,
+        )
+        self.assertEqual(parsed_data.type, "liquidity_pool_withdrew")
+        self.assertEqual(parsed_data.type_i, 91)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 10, 7, 18, 7, 37, tzinfo=datetime.timezone.utc),
+        )
+
+        self.assertEqual(
+            parsed_data.liquidity_pool.id,
+            "2c0bfa623845dd101cbf074a1ca1ae4b2458cc8d0104ad65939ebe2cd9054355",
+        )
+        self.assertEqual(parsed_data.liquidity_pool.fee_bp, 30)
+        self.assertEqual(parsed_data.liquidity_pool.type, "constant_product")
+        self.assertEqual(parsed_data.liquidity_pool.total_trustlines, 1)
+        self.assertEqual(
+            parsed_data.liquidity_pool.total_shares, Decimal("400.0000000")
+        )
+        self.assertEqual(len(parsed_data.liquidity_pool.reserves), 2)
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[0].asset.asset_type, "credit_alphanum4"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[0].asset.asset_code, "COOL"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[0].asset.asset_issuer,
+            "GAZKB7OEYRUVL6TSBXI74D2IZS4JRCPBXJZ37MDDYAEYBOMHXUYIX5YL",
+        )
+        self.assertEqual(parsed_data.liquidity_pool.reserves[0].amount, Decimal("400"))
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[1].asset.asset_type, "credit_alphanum12"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[1].asset.asset_code, "SONESO"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[1].asset.asset_issuer,
+            "GAOF7ARG3ZAVUA63GCLXG5JQTMBAH3ZFYHGLGJLDXGDSXQRHD72LLGOB",
+        )
+        self.assertEqual(parsed_data.liquidity_pool.reserves[1].amount, Decimal("400"))
+
+        self.assertEqual(len(parsed_data.liquidity_pool.reserves), 2)
+        self.assertEqual(
+            parsed_data.reserves_received[0].asset.asset_type, "credit_alphanum4"
+        )
+        self.assertEqual(parsed_data.reserves_received[0].asset.asset_code, "COOL")
+        self.assertEqual(
+            parsed_data.reserves_received[0].asset.asset_issuer,
+            "GAZKB7OEYRUVL6TSBXI74D2IZS4JRCPBXJZ37MDDYAEYBOMHXUYIX5YL",
+        )
+        self.assertEqual(parsed_data.reserves_received[0].amount, Decimal("100"))
+        self.assertEqual(
+            parsed_data.reserves_received[1].asset.asset_type, "credit_alphanum12"
+        )
+        self.assertEqual(parsed_data.reserves_received[1].asset.asset_code, "SONESO")
+        self.assertEqual(
+            parsed_data.reserves_received[1].asset.asset_issuer,
+            "GAOF7ARG3ZAVUA63GCLXG5JQTMBAH3ZFYHGLGJLDXGDSXQRHD72LLGOB",
+        )
+        self.assertEqual(parsed_data.reserves_received[1].amount, Decimal("100"))
+
+        self.assertEqual(parsed_data.shares_redeemed, Decimal("100.0000000"))
+
+    def test_liquidity_pool_trade(self):
+        raw_data = load_horizon_file("effects/liquidity_pool_trade.json")
+        parsed_data = LiquidityPoolTradeEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0001579418388553729-0000000003")
+        self.assertEqual(parsed_data.paging_token, "1579418388553729-3")
+        self.assertEqual(
+            parsed_data.account,
+            "GARIJI33DZEOA2HT7H5Q3E7W6KY2KBOYA6ZSUHKNNWNQR75JSQMU3SRJ",
+        )
+        self.assertEqual(
+            parsed_data.account_muxed,
+            None,
+        )
+        self.assertEqual(
+            parsed_data.account_muxed_id,
+            None,
+        )
+        self.assertEqual(parsed_data.type, "liquidity_pool_trade")
+        self.assertEqual(parsed_data.type_i, 92)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 10, 7, 18, 14, 6, tzinfo=datetime.timezone.utc),
+        )
+
+        self.assertEqual(
+            parsed_data.liquidity_pool.id,
+            "2c0bfa623845dd101cbf074a1ca1ae4b2458cc8d0104ad65939ebe2cd9054355",
+        )
+        self.assertEqual(parsed_data.liquidity_pool.fee_bp, 30)
+        self.assertEqual(parsed_data.liquidity_pool.type, "constant_product")
+        self.assertEqual(parsed_data.liquidity_pool.total_trustlines, 1)
+        self.assertEqual(
+            parsed_data.liquidity_pool.total_shares, Decimal("400.0000000")
+        )
+        self.assertEqual(len(parsed_data.liquidity_pool.reserves), 2)
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[0].asset.asset_type, "credit_alphanum4"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[0].asset.asset_code, "COOL"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[0].asset.asset_issuer,
+            "GAZKB7OEYRUVL6TSBXI74D2IZS4JRCPBXJZ37MDDYAEYBOMHXUYIX5YL",
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[0].amount, Decimal("381.0068105")
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[1].asset.asset_type, "credit_alphanum12"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[1].asset.asset_code, "SONESO"
+        )
+        self.assertEqual(
+            parsed_data.liquidity_pool.reserves[1].asset.asset_issuer,
+            "GAOF7ARG3ZAVUA63GCLXG5JQTMBAH3ZFYHGLGJLDXGDSXQRHD72LLGOB",
+        )
+        self.assertEqual(parsed_data.liquidity_pool.reserves[1].amount, Decimal("420"))
+
+        self.assertEqual(parsed_data.sold.asset.asset_type, "credit_alphanum4")
+        self.assertEqual(parsed_data.sold.asset.asset_code, "COOL")
+        self.assertEqual(
+            parsed_data.sold.asset.asset_issuer,
+            "GAZKB7OEYRUVL6TSBXI74D2IZS4JRCPBXJZ37MDDYAEYBOMHXUYIX5YL",
+        )
+        self.assertEqual(parsed_data.sold.amount, Decimal("18.9931895"))
+        self.assertEqual(parsed_data.bought.asset.asset_type, "credit_alphanum12")
+        self.assertEqual(parsed_data.bought.asset.asset_code, "SONESO")
+        self.assertEqual(
+            parsed_data.bought.asset.asset_issuer,
+            "GAOF7ARG3ZAVUA63GCLXG5JQTMBAH3ZFYHGLGJLDXGDSXQRHD72LLGOB",
+        )
+        self.assertEqual(parsed_data.bought.amount, Decimal("20"))
+
+    def test_liquidity_pool_created(self):
+        raw_data = load_horizon_file("effects/liquidity_pool_created.json")
+        parsed_data = LiquidityPoolCreatedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0001578868632723457-0000000002")
+        self.assertEqual(parsed_data.paging_token, "1578868632723457-2")
+        self.assertEqual(
+            parsed_data.account,
+            "GAQXAWHCM4A7SQCT3BOSVEGRI2OOB7LO2CMFOYFF6YRXU4VQSB5V2V2K",
+        )
+        self.assertEqual(
+            parsed_data.account_muxed,
+            "MAQXAWHCM4A7SQCT3BOSVEGRI2OOB7LO2CMFOYFF6YRXU4VQSB5V2AAAAAAAAE4DUGF2O",
+        )
+        self.assertEqual(
+            parsed_data.account_muxed_id,
+            1278881,
+        )
+        self.assertEqual(parsed_data.type, "liquidity_pool_created")
+        self.assertEqual(parsed_data.type_i, 93)
+        self.assertEqual(
+            parsed_data.created_at,
+            datetime.datetime(2021, 10, 7, 18, 2, 57, tzinfo=datetime.timezone.utc),
+        )
+
+        self.assertEqual(
+            parsed_data.liquidity_pool.id,
+            "2c0bfa623845dd101cbf074a1ca1ae4b2458cc8d0104ad65939ebe2cd9054355",
+        )
+
+    def test_liquidity_pool_removed(self):
+        pass
+
+    def test_liquidity_pool_revoked(self):
+        pass

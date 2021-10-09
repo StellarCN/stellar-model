@@ -53,6 +53,15 @@
   },
   "balances": [
     {
+      "balance": "400.0000000",
+      "liquidity_pool_id": "2c0bfa623845dd101cbf074a1ca1ae4b2458cc8d0104ad65939ebe2cd9054355",
+      "limit": "922337203685.4775807",
+      "last_modified_ledger": 367662,
+      "is_authorized": false,
+      "is_authorized_to_maintain_liabilities": false,
+      "asset_type": "liquidity_pool_shares"
+    },
+    {
       "balance": "426.3895513",
       "limit": "922337203685.4775807",
       "buying_liabilities": "0.0000000",

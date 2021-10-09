@@ -29,12 +29,22 @@ class Trade(BaseModel):
     ledger_close_time: datetime = Field(
         description="The datetime of when the ledger with this trade was closed."
     )
-    offer_id: str = Field(description="The sell offer ID. **DECPRECATED**")
-    base_offer_id: str = Field(
+    offer_id: Optional[str] = Field(description="The sell offer ID. **DECPRECATED**")
+    trade_type: str = Field(
+        default="Can be set to **all**, **orderbook**, "
+        "or **liquidity_pools** to filter only "
+        "trades executed across a given mechanism."
+    )
+    liquidity_pool_fee_bp: Optional[int]
+    base_liquidity_pool_id: Optional[str] = Field(
+        description="The base liquidity pool ID. If this trade "
+        "was executed against a liquidity pool."
+    )
+    base_offer_id: Optional[str] = Field(
         description="The base offer ID. If this offer was immediately and "
         "fully consumed, this will be a synethic ID."
     )
-    base_account: str = Field(
+    base_account: Optional[str] = Field(
         description="The account ID of the base party for this trade."
     )
     base_amount: Decimal = Field(
@@ -49,12 +59,16 @@ class Trade(BaseModel):
     base_asset_issuer: Optional[str] = Field(
         description="The Stellar address of the base asset's issuer."
     )
-    counter_offer_id: str = Field(
+    counter_liquidity_pool_id: Optional[str] = Field(
+        description="The counter liquidity pool ID. "
+        "If this trade was executed against a liquidity pool."
+    )
+    counter_offer_id: Optional[str] = Field(
         description="The counter offer ID. If this offer was "
         "immediately and fully consumed, this will "
         "be a synethic ID."
     )
-    counter_account: str = Field(
+    counter_account: Optional[str] = Field(
         description="The account ID of the counter party for this trade."
     )
     counter_amount: Decimal = Field(
@@ -72,7 +86,7 @@ class Trade(BaseModel):
         description="The Stellar address of the counter asset's issuer."
     )
     base_is_seller: bool = Field(description="Indicates with party is the seller.")
-    price: Price = Field(
+    price: Optional[Price] = Field(
         description="An object of a number numerator and number denominator that represents "
         "the original offer price. To derive the price, "
         "divide **n** by **d**."

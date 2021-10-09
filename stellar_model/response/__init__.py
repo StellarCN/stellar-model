@@ -9,6 +9,8 @@ from stellar_model.response.error_response import *
 from stellar_model.response.fee_stats_response import *
 from stellar_model.response.ledger_response import *
 from stellar_model.response.ledgers_response import *
+from stellar_model.response.liquidity_pool_response import *
+from stellar_model.response.liquidity_pools_response import *
 from stellar_model.response.offer_response import *
 from stellar_model.response.offers_response import *
 from stellar_model.response.operation_response import *

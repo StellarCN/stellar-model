@@ -10,6 +10,9 @@ from pydantic import Field
 from stellar_model.model.horizon.asset import Asset
 from stellar_model.model.horizon.claimable_balance import Claimant
 from stellar_model.model.horizon.link import Link
+from stellar_model.model.horizon.liquidity_pool_asset_amount import (
+    LiquidityPoolAssetAmount,
+)
 from stellar_model.model.horizon.price import Price
 from stellar_model.model.horizon.transaction import Transaction
 
@@ -37,6 +40,8 @@ __all__ = [
     "ClawbackOperation",
     "ClawbackClaimableBalanceOperation",
     "SetTrustLineFlagsOperation",
+    "LiquidityPoolDepositOperation",
+    "LiquidityPoolWithdrawOperation",
 ]
 
 
@@ -295,14 +300,19 @@ class ChangeTrustOperation(BaseOperation):
         description="The type of asset being trusted. Either **native**, "
         "**credit_alphanum4**, or **credit_alphanum12**."
     )
-    asset_code: str = Field(
-        description="The Stellar address of the asset being trusted."
+    asset_code: Optional[str] = Field(
+        description="The code of the asset being trusted."
     )
-    asset_issuer: str = Field(description="The code for the asset being trusted.")
+    asset_issuer: Optional[str] = Field(
+        description="The issuer for the asset being trusted."
+    )
+    liquidity_pool_id: Optional[str] = Field(
+        description="The id of the liquidity pool being trusted."
+    )
     limit: Decimal = Field(
         description="Limits the amount of an asset that the source account can hold."
     )
-    trustee: str = Field(description="The issuing account.")
+    trustee: Optional[str] = Field(description="The issuing account.")
     trustor: str = Field(description="The source account.")
     trustor_muxed: Optional[str]
     trustor_muxed_id: Optional[int]
@@ -555,6 +565,9 @@ class RevokeSponsorshipOperation(BaseOperation):
     trustline_account_id: Optional[str] = Field(
         description="The id of the account whose trustline is no longer sponsored."
     )
+    trustline_liquidity_pool_id: Optional[str] = Field(
+        default="The liquidity pool of the trustline which is no longer sponsored."
+    )
     trustline_asset: Optional[str] = Field(
         description="The asset of the trustline which is no longer sponsored."
     )
@@ -616,6 +629,38 @@ class SetTrustLineFlagsOperation(BaseOperation):
     clear_flags_s: Optional[List[str]]
 
 
+class LiquidityPoolDepositOperation(BaseOperation):
+    """
+    Represents a single operations whose type is LiquidityPoolDeposit.
+
+    type: liquidity_pool_deposit
+    type_i: 22
+    """
+
+    liquidity_pool_id: str
+    reserves_max: List[LiquidityPoolAssetAmount]
+    min_price: Decimal
+    min_price_r: Price
+    max_price: Decimal
+    max_price_r: Price
+    reserves_deposited: List[LiquidityPoolAssetAmount]
+    shares_received: Decimal
+
+
+class LiquidityPoolWithdrawOperation(BaseOperation):
+    """
+    Represents a single operations whose type is LiquidityPoolWithdraw.
+
+    type: liquidity_pool_withdraw
+    type_i: 23
+    """
+
+    liquidity_pool_id: str
+    reserves_min: List[LiquidityPoolAssetAmount]
+    shares: Decimal
+    reserves_received: List[LiquidityPoolAssetAmount]
+
+
 _OPERATION_TYPE_UNION = Union[
     CreateAccountOperation,
     PaymentOperation,
@@ -639,6 +684,8 @@ _OPERATION_TYPE_UNION = Union[
     ClawbackOperation,
     ClawbackClaimableBalanceOperation,
     SetTrustLineFlagsOperation,
+    LiquidityPoolDepositOperation,
+    LiquidityPoolWithdrawOperation,
 ]
 
 _PAYMENT_TYPE_UNION = Union[
@@ -672,4 +719,6 @@ _OPERATION_TYPE_I_MAP = {
     19: ClawbackOperation,
     20: ClawbackClaimableBalanceOperation,
     21: SetTrustLineFlagsOperation,
+    22: LiquidityPoolDepositOperation,
+    23: LiquidityPoolWithdrawOperation,
 }
