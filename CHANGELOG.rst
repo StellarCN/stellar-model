@@ -4,7 +4,11 @@ Change Log
 
 This document records all notable changes to `stellar-model <https://github.com/StellarCN/stellar-model/>`_.
 
-0.3.0b0 (Horizon v2.9.0~rc1)
+0.3.1b0
+----------------------------
+* fix: ClaimPredicate.rel_before, Optional[datetime] -> Optional[int]
+
+0.3.0b0
 ----------------------------
 This release contains breaking updates.
 
@@ -12,22 +16,22 @@ You can check the `release log of horizon-v2.9.0-rc1 <https://github.com/stellar
 
 * feat: add support for horizon-v2.9.0~rc1 (`#21 <https://github.com/StellarCN/stellar-model/pull/21/>`_)
 
-0.2.2b0 (Horizon v2.8.3)
+0.2.2b0
 ------------------------
 * fix: make `ClaimableBalance.last_modified_time` and `Offer.last_modified_time` optional.
 
-0.2.1b0 (Horizon v2.8.3)
+0.2.1b0
 ------------------------
 * fix: make `Account.last_modified_time` optional. (`#19 <https://github.com/StellarCN/stellar-model/pull/19/>`_)
 
-0.2.0b0 (Horizon v2.5.2)
+0.2.0b0
 ------------------------
 * feat: add support for muxed account.
 
-0.1.0b1 (Horizon v2.2.0)
+0.1.0b1
 ------------------------
 * Bug fix.
 
-0.1.0b0 (Horizon v2.2.0)
+0.1.0b0
 ------------------------
 * First beta release.
