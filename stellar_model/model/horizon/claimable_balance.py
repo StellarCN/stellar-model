@@ -58,7 +58,7 @@ class ClaimPredicate(BaseModel):
         "balance can be claimed. If the balance is claimed before the "
         "date then this clause of the condition is satisfied."
     )
-    rel_before: Optional[datetime] = Field(
+    rel_before: Optional[int] = Field(
         description="A relative deadline for when the claimable balance can be "
         "claimed. The value represents the number of seconds since the "
         "close time of the ledger which created the claimable balance."
