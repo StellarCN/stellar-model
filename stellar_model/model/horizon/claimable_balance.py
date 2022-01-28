@@ -58,6 +58,10 @@ class ClaimPredicate(BaseModel):
         "balance can be claimed. If the balance is claimed before the "
         "date then this clause of the condition is satisfied."
     )
+    abs_before_epoch: Optional[int] = Field(
+        "The Unix Epoch value represented by the same custom extended "
+        "ISO date value in the abs_before field."
+    )
     rel_before: Optional[int] = Field(
         description="A relative deadline for when the claimable balance can be "
         "claimed. The value represents the number of seconds since the "

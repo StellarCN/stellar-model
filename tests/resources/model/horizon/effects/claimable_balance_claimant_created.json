@@ -21,7 +21,8 @@
   "amount": "900.0000000",
   "predicate": {
     "not": {
-      "abs_before": "2021-04-26T04:00:00Z"
+      "abs_before": "2021-04-26T04:00:00Z",
+      "abs_before_epoch": 1619409600
     }
   }
 }

@@ -630,6 +630,10 @@ class TestOperations(unittest.TestCase):
             parsed_data.claimants[1].predicate.not_predicate.abs_before,
             datetime.datetime(2021, 4, 26, 4, 0, tzinfo=datetime.timezone.utc),
         )
+        self.assertEqual(
+            parsed_data.claimants[1].predicate.not_predicate.abs_before_epoch,
+            1619409600,
+        )
 
     def test_valid_claim_claimable_balance_operation(self):
         raw_data = load_horizon_file("operations/claim_claimable_balance.json")

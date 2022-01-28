@@ -53,7 +53,9 @@ class TestClaimableBalance(unittest.TestCase):
             parsed_data.claimants[0].predicate.abs_before,
             datetime.datetime(2021, 4, 21, 19, 3, 6, tzinfo=datetime.timezone.utc),
         )
-
+        self.assertEqual(
+            parsed_data.claimants[0].predicate.abs_before_epoch, 1619031786
+        )
         self.assertEqual(
             parsed_data.claimants[1].destination,
             "GDDAESY7RTZAZNWZLZD5RIKP2TWEAVISKQJZ43ZZ2YTMCNICRVW7OJP3",
@@ -61,4 +63,8 @@ class TestClaimableBalance(unittest.TestCase):
         self.assertEqual(
             parsed_data.claimants[1].predicate.not_predicate.abs_before,
             datetime.datetime(2021, 4, 21, 19, 3, 1, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.claimants[1].predicate.not_predicate.abs_before_epoch,
+            1619031781,
         )

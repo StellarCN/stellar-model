@@ -43,7 +43,8 @@
             "destination": "GCBMP2WKIAX7KVDRCSFXJWFM5P7HDCGTCC76U5XR52OYII6AOWS7G3DT",
             "predicate": {
               "not": {
-                "abs_before": "2021-04-26T04:00:00Z"
+                "abs_before": "2021-04-26T04:00:00Z",
+                "abs_before_epoch": 1619409600
               }
             }
           }

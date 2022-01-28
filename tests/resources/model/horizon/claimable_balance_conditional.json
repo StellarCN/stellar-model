@@ -22,14 +22,16 @@
     {
       "destination": "GCYTED6QWSGDNLQ2RBXDVYSKCOUB2BC6DLKGAU5QPNONMVN47ABUN6WE",
       "predicate": {
-        "abs_before": "2021-04-21T19:03:06Z"
+        "abs_before": "2021-04-21T19:03:06Z",
+        "abs_before_epoch": 1619031786
       }
     },
     {
       "destination": "GDDAESY7RTZAZNWZLZD5RIKP2TWEAVISKQJZ43ZZ2YTMCNICRVW7OJP3",
       "predicate": {
         "not": {
-          "abs_before": "2021-04-21T19:03:01Z"
+          "abs_before": "2021-04-21T19:03:01Z",
+          "abs_before_epoch": 1619031781
         }
       }
     }

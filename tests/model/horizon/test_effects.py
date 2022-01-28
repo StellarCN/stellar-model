@@ -569,6 +569,9 @@ class TestEffects(unittest.TestCase):
             parsed_data.predicate.not_predicate.abs_before,
             datetime.datetime(2021, 4, 26, 4, 0, tzinfo=datetime.timezone.utc),
         )
+        self.assertEqual(
+            parsed_data.predicate.not_predicate.abs_before_epoch, 1619409600
+        )
 
     def test_valid_claimable_balance_claimed(self):
         raw_data = load_horizon_file("effects/claimable_balance_claimed.json")
