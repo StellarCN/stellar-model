@@ -4,6 +4,10 @@ Change Log
 
 This document records all notable changes to `stellar-model <https://github.com/StellarCN/stellar-model/>`_.
 
+0.4.0b0
+----------------------------
+* feat: add support for horizon-v2.13.0
+
 0.3.1b0
 ----------------------------
 * fix: ClaimPredicate.rel_before, Optional[datetime] -> Optional[int]

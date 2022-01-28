@@ -1,5 +1,4 @@
-__version__ = "0.3.1b0"
-__supported_horizon_version__ = "2.9.0"
+__version__ = "0.4.0b0"
 __url__ = "https://github.com/StellarCN/stellar-model"
 __issues__ = f"{__url__}/issues"
 
