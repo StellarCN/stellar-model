@@ -15,6 +15,7 @@ from stellar_model.response.offer_response import *
 from stellar_model.response.offers_response import *
 from stellar_model.response.operation_response import *
 from stellar_model.response.operations_response import *
+from stellar_model.response.order_book_response import *
 from stellar_model.response.paths_response import *
 from stellar_model.response.payments_response import *
 from stellar_model.response.trade_aggregations_response import *
