@@ -4,6 +4,10 @@ Change Log
 
 This document records all notable changes to `stellar-model <https://github.com/StellarCN/stellar-model/>`_.
 
+0.4.1b0
+----------------------------
+* feat: add support for order book endpoint.
+
 0.4.0b0
 ----------------------------
 * feat: add support for horizon-v2.13.0

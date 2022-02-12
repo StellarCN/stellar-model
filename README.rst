@@ -13,16 +13,8 @@ stellar-model
     :alt: PyPI
     :target: https://pypi.python.org/pypi/stellar-model
 
-.. image:: https://img.shields.io/badge/Supported%20Horizon%20Version-2.13.0-blue?style=flat
-    :alt: Supported Horizon Version
-    :target: https://github.com/stellar/go/releases/tag/horizon-v2.13.0
-
 .. image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8%20%7C%203.9-blue?style=flat
     :alt: Python - Version
-    :target: https://pypi.python.org/pypi/stellar-model
-
-.. image:: https://img.shields.io/badge/implementation-cpython%20%7C%20pypy-blue?style=flat
-    :alt: PyPI - Implementation
     :target: https://pypi.python.org/pypi/stellar-model
 
 `stellar-model`_ is based on `pydantic`_, you can use it to parse the JSON
