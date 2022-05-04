@@ -44,6 +44,29 @@ class InnerTransaction(BaseModel):
     max_fee: int
 
 
+class TimeBounds(BaseModel):
+    min_time: Optional[datetime] = Field(
+        description="The datetime after which a transaction is valid."
+    )
+    max_time: Optional[datetime] = Field(
+        description="The datetime before which a transaction is valid."
+    )
+
+
+class LedgerBounds(BaseModel):
+    min_ledger: int
+    max_ledger: int
+
+
+class TransactionPreconditions(BaseModel):
+    timebounds: Optional[TimeBounds]
+    ledgerbounds: Optional[LedgerBounds]
+    min_account_sequence: Optional[int]
+    min_account_sequence_age: Optional[datetime]
+    min_account_sequence_ledger_gap: Optional[int]
+    extra_signers: Optional[List[str]]
+
+
 class Transaction(BaseModel):
     """
     Represents a single, successful transaction.
@@ -126,6 +149,7 @@ class Transaction(BaseModel):
     valid_before: Optional[datetime] = Field(
         description="The datetime before which a transaction is valid."
     )
+    preconditions: TransactionPreconditions
     # TODO: add description
     fee_bump_transaction: Optional[FeeBumpTransaction]
     inner_transaction: Optional[InnerTransaction]
