@@ -149,7 +149,7 @@ class Transaction(BaseModel):
     valid_before: Optional[datetime] = Field(
         description="The datetime before which a transaction is valid."
     )
-    preconditions: TransactionPreconditions
+    preconditions: Optional[TransactionPreconditions]
     # TODO: add description
     fee_bump_transaction: Optional[FeeBumpTransaction]
     inner_transaction: Optional[InnerTransaction]
