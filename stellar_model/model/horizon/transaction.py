@@ -44,6 +44,45 @@ class InnerTransaction(BaseModel):
     max_fee: int
 
 
+class TimeBounds(BaseModel):
+    min_time: Optional[datetime] = Field(description="The lower bound.")
+    max_time: Optional[datetime] = Field(description="The upper bound.")
+
+
+class LedgerBounds(BaseModel):
+    min_ledger: int = Field(description="The lower bound.")
+    max_ledger: int = Field(description="The lower bound.")
+
+
+class TransactionPreconditions(BaseModel):
+    timebounds: Optional[TimeBounds] = Field(
+        description="The time range for which this transaction is valid, "
+        "with bounds as unsigned 64-bit UNIX timestamps."
+    )
+    ledgerbounds: Optional[LedgerBounds] = Field(
+        description="The ledger range for which this transaction is valid, as unsigned 32-bit integers."
+    )
+    min_account_sequence: Optional[int] = Field(
+        description="Containing a positive, signed 64-bit "
+        "integer representing the lowest source account "
+        "sequence number for which the transaction is valid."
+    )
+    min_account_sequence_age: Optional[int] = Field(
+        description="The minimum duration of time (in seconds as an unsigned 64-bit "
+        "integer) that must have passed since the source account's sequence "
+        "number changed for the transaction to be valid."
+    )
+    min_account_sequence_ledger_gap: Optional[int] = Field(
+        description="An unsigned 32-bit integer representing the minimum number of "
+        "ledgers that must have closed since the source account's "
+        "sequence number changed for the transaction to be valid."
+    )
+    extra_signers: Optional[List[str]] = Field(
+        description="The list of up to two additional signers that must "
+        "have corresponding signatures for this transaction to be valid."
+    )
+
+
 class Transaction(BaseModel):
     """
     Represents a single, successful transaction.
@@ -121,12 +160,16 @@ class Transaction(BaseModel):
         description="An array of signatures used to sign this transaction."
     )
     valid_after: Optional[datetime] = Field(
-        description="The datetime after which a transaction is valid."
+        description="The datetime after which a transaction is valid. This field is deprecated in lieu "
+        "of `preconditions.time_bounds.min_time` and will be removed in Horizon v3."
     )
     valid_before: Optional[datetime] = Field(
-        description="The datetime before which a transaction is valid."
+        description="The datetime before which a transaction is valid. This field is deprecated in lieu "
+        "of `preconditions.time_bounds.max_time` and will be removed in Horizon v3."
     )
-    # TODO: add description
+    preconditions: Optional[TransactionPreconditions] = Field(
+        description="A set of transaction preconditions affecting its validity."
+    )
     fee_bump_transaction: Optional[FeeBumpTransaction]
     inner_transaction: Optional[InnerTransaction]
     links: Links = Field(alias="_links")

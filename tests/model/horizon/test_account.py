@@ -24,6 +24,11 @@ class TestAccount(unittest.TestCase):
             parsed_data.inflation_destination,
             "GDI73WJ4SX7LOG3XZDJC3KCK6ED6E5NBYK2JUBQSPBCNNWEG3ZN7T75U",
         )
+        self.assertEqual(parsed_data.sequence_ledger, 774)
+        self.assertEqual(
+            parsed_data.sequence_time,
+            datetime.datetime(2022, 5, 6, 5, 29, 20, tzinfo=datetime.timezone.utc),
+        )
         self.assertEqual(parsed_data.home_domain, "tempo.eu.com")
         self.assertEqual(parsed_data.last_modified_ledger, 34720451)
         self.assertEqual(
