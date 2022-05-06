@@ -59,8 +59,36 @@ class TestTransaction(unittest.TestCase):
             parsed_data.signatures[0],
             "zktIGIVFAq0VhE+k1pvBW68iFlJVENpqN/QrNhqomaBpcCUVpM5jJhzXVi7FQzUXOXVVPhQRsjbYG87/wfNSBA==",
         )
-        self.assertEqual(parsed_data.valid_after, None)
-        self.assertEqual(parsed_data.valid_before, None)
+        self.assertEqual(
+            parsed_data.valid_after,
+            datetime.datetime(1970, 1, 1, 0, 0, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.valid_before,
+            datetime.datetime(2022, 5, 6, 5, 29, 45, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.preconditions.timebounds.min_time,
+            datetime.datetime(1970, 1, 1, 0, 0, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(
+            parsed_data.preconditions.timebounds.max_time,
+            datetime.datetime(2022, 5, 6, 5, 29, 45, tzinfo=datetime.timezone.utc),
+        )
+        self.assertEqual(parsed_data.preconditions.ledgerbounds.min_ledger, 1)
+        self.assertEqual(parsed_data.preconditions.ledgerbounds.max_ledger, 10000)
+        self.assertEqual(parsed_data.preconditions.min_account_sequence, 123)
+        self.assertEqual(parsed_data.preconditions.min_account_sequence_age, 300)
+        self.assertEqual(parsed_data.preconditions.min_account_sequence_ledger_gap, 120)
+        self.assertEqual(len(parsed_data.preconditions.extra_signers), 2)
+        self.assertEqual(
+            parsed_data.preconditions.extra_signers[0],
+            "GCT4SSY2KZLMKE4SNX4CHNBDFU5RBEDQV3AZG3XDGP6X2ASNAONW5OVR",
+        )
+        self.assertEqual(
+            parsed_data.preconditions.extra_signers[1],
+            "PAJFT5XMURWA3ZYIWGVB7YLKTIZQVJDPIC44XMVYCF4TV6QGISUWEAAAAACXIZLTOQYQAAAA2JNQ",
+        )
         self.assertEqual(parsed_data.fee_bump_transaction, None)
         self.assertEqual(parsed_data.inner_transaction, None)
         self.assertEqual(parsed_data.account_muxed, None)

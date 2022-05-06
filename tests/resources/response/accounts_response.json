@@ -49,6 +49,8 @@
         "id": "GDZZN7FHZUJ356OAGDPXAF5NYY7N3NCQG65NCMNVOX2PSW4AD4VISEBY",
         "account_id": "GDZZN7FHZUJ356OAGDPXAF5NYY7N3NCQG65NCMNVOX2PSW4AD4VISEBY",
         "sequence": "119383563794644996",
+        "sequence_ledger": 774,
+        "sequence_time": "1651814960",
         "subentry_count": 2,
         "last_modified_ledger": 34308260,
         "last_modified_time": "2021-03-06T20:19:30Z",
