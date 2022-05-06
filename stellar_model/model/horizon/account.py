@@ -128,8 +128,12 @@ class Account(BaseModel):
         description="This account's current sequence number. "
         "For use when submitting this account's next transaction."
     )
-    sequence_ledger: Optional[int]
-    sequence_time: Optional[datetime]
+    sequence_ledger: Optional[int] = Field(
+        description="The unsigned 32-bit ledger " "number of the sequence number's age."
+    )
+    sequence_time: Optional[datetime] = Field(
+        description="The time of the sequence number's age."
+    )
     subentry_count: int = Field(description="The number of subentries on this account.")
     inflation_destination: Optional[str] = Field(
         description="The inflation destination set for this account."
