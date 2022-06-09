@@ -11,9 +11,15 @@ __all__ = ["EffectResponse"]
 class EffectResponse(BaseModel):
     """
     Represents single effect response.
-    Can be used for the following endpoint(s):
-        - GET /effects/:effect_id
+    Can be used for parsing individual records returned from the following endpoint:
+
+        - GET /effects
+
     See `Effects <https://developers.stellar.org/api/resources/effects/>`_ on Stellar API Reference.
+
+    The primary intended use-case for this model is to allow parsing individual Effects using the relevant type
+    parser in situations where EffectsResponse cannot be used over the entire list, like if one or
+    more items in the list throws a ValidationError.
     """
 
     record: _EFFECT_TYPE_UNION
