@@ -6,6 +6,7 @@ from typing import Union
 
 from pydantic import BaseModel
 from pydantic import Field
+from pydantic import validator
 
 from stellar_model.model.horizon.asset import Asset
 from stellar_model.model.horizon.claimable_balance import Claimant
@@ -160,6 +161,22 @@ class PaymentOperation(BaseOperation):
     to_muxed: Optional[str]
     to_muxed_id: Optional[int]
     amount: Decimal = Field(description="Amount sent.")
+
+    @validator("asset_code")
+    def asset_code_none_check(cls, v, values, **kwargs):
+        if values["asset_type"] == "native" and v is not None:
+            raise ValueError("If the asset_type is native, the asset_code should be None")
+        elif values["asset_type"] != "native" and v is None:
+            raise ValueError("If the asset_type is not native, the asset_code should not be None")
+        return v
+
+    @validator("asset_issuer")
+    def asset_issuer_none_check(cls, v, values, **kwargs):
+        if values["asset_type"] == "native" and v is not None:
+            raise ValueError("If the asset_type is native, the asset_issuer should be None")
+        elif values["asset_type"] != "native" and v is None:
+            raise ValueError("If the asset_type is not native, the asset_issuer should not be None")
+        return v
 
 
 class PathPaymentStrictReceiveOperation(BaseOperation):
