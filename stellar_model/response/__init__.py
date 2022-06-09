@@ -4,6 +4,7 @@ from stellar_model.response.accounts_response import *
 from stellar_model.response.assets_response import *
 from stellar_model.response.claimable_balance_response import *
 from stellar_model.response.claimable_balances_response import *
+from stellar_model.response.effect_response import *
 from stellar_model.response.effects_response import *
 from stellar_model.response.error_response import *
 from stellar_model.response.fee_stats_response import *
