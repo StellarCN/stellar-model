@@ -34,7 +34,7 @@ python = ">=3.6.1"
 pydantic = "^1.8.1"
 
 [tool.poetry.dev-dependencies]
-Sphinx = "^5.2.1"
+Sphinx = "^5.2.2"
 #sphinx-pydantic = "0.1.1"
 #sphinx-jsonschema = "1.15"  # See: https://github.com/Zsailer/sphinx-pydantic/pull/6
 
