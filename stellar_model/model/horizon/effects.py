@@ -733,7 +733,7 @@ class LiquidityPoolRemovedEffect(BaseEffect):
     type_i: 94
     """
 
-    liquidity_pool: LiquidityPool
+    liquidity_pool_id: str
 
 
 class LiquidityPoolClaimableAssetAmount(LiquidityPoolAssetAmount):
