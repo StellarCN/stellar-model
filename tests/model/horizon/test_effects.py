@@ -1128,7 +1128,14 @@ class TestEffects(unittest.TestCase):
         )
 
     def test_liquidity_pool_removed(self):
-        pass
+        raw_data = load_horizon_file("effects/liquidity_pool_removed.json")
+        parsed_data = LiquidityPoolRemovedEffect.parse_obj(raw_data)
+        self.assertEqual(parsed_data.id, "0179972298072752130-0000000002")
+        self.assertEqual(parsed_data.paging_token, "179972298072752130-2")
+        self.assertEqual(
+            parsed_data.liquidity_pool_id,
+            "89c11017d16552c152536092d7440a2cd4cf4bf7df2c7e7552b56e6bcac98d95",
+        )
 
     def test_liquidity_pool_revoked(self):
         pass
