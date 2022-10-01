@@ -4,6 +4,10 @@ Change Log
 
 This document records all notable changes to `stellar-model <https://github.com/StellarCN/stellar-model/>`_.
 
+0.5.2
+----------------------------
+* fix: fix model for `LiquidityPoolRemovedEffect`. (`#43 <https://github.com/StellarCN/stellar-model/pull/43/>`_)
+
 0.5.1
 ----------------------------
 * feat: add `EffectResponse` to parse single effect. (`#36 <https://github.com/StellarCN/stellar-model/pull/36/>`_)
