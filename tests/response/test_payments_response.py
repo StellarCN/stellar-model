@@ -17,7 +17,7 @@ payment_ops = {
 class TestPaymentsResponse(TestCase):
     def test_valid(self):
         raw_data = load_response_file("payments_response.json")
-        parsed_data = PaymentsResponse.parse_obj(raw_data)
+        parsed_data = PaymentsResponse.model_validate(raw_data)
         self.assertEqual(len(parsed_data.embedded.records), 100)
         for record in parsed_data.embedded.records:
             self.assertTrue(record.type in payment_ops)

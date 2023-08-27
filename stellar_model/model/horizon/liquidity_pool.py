@@ -41,6 +41,7 @@ class LiquidityPool(BaseModel):
         "in which this offer was modified."
     )
     last_modified_time: Optional[datetime] = Field(
-        description="The time of the last ledger " "in which this offer was modified."
+        description="The time of the last ledger " "in which this offer was modified.",
+        default=None,
     )
     links: Links = Field(alias="_links")

@@ -9,7 +9,7 @@ from tests.model.horizon import load_horizon_file
 class TestPath(unittest.TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("path.json")
-        parsed_data = Path.parse_obj(raw_data)
+        parsed_data = Path.model_validate(raw_data)
         self.assertEqual(parsed_data.source_asset_type, "credit_alphanum4")
         self.assertEqual(parsed_data.source_asset_code, "CNY")
         self.assertEqual(

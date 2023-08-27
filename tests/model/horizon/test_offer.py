@@ -10,7 +10,7 @@ from tests.model.horizon import load_horizon_file
 class TestOffer(unittest.TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("offer.json")
-        parsed_data = Offer.parse_obj(raw_data)
+        parsed_data = Offer.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "544689347")
         self.assertEqual(parsed_data.paging_token, "544689347")
         self.assertEqual(

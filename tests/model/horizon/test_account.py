@@ -10,7 +10,7 @@ from tests.model.horizon import load_horizon_file
 class TestAccount(unittest.TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("account.json")
-        parsed_data = Account.parse_obj(raw_data)
+        parsed_data = Account.model_validate(raw_data)
         self.assertEqual(
             parsed_data.id, "GDI73WJ4SX7LOG3XZDJC3KCK6ED6E5NBYK2JUBQSPBCNNWEG3ZN7T75U"
         )

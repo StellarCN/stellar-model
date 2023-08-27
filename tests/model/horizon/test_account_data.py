@@ -7,7 +7,7 @@ from tests.model.horizon import load_horizon_file
 class TestAccountData(unittest.TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("account_data.json")
-        parsed_data = AccountData.parse_obj(raw_data)
+        parsed_data = AccountData.model_validate(raw_data)
         self.assertEqual(parsed_data.value, "MQ==")
         self.assertEqual(parsed_data.sponsor, None)
 

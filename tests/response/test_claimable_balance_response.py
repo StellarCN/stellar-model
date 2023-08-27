@@ -8,6 +8,6 @@ from tests.response import load_horizon_file
 class TestClaimableBalanceResponse(TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("claimable_balance_conditional.json")
-        parsed_data = ClaimableBalanceResponse.parse_obj(raw_data)
+        parsed_data = ClaimableBalanceResponse.model_validate(raw_data)
         self.assertTrue(isinstance(parsed_data, ClaimableBalanceResponse))
         self.assertTrue(isinstance(parsed_data, ClaimableBalance))

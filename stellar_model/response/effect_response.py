@@ -38,5 +38,5 @@ class EffectResponse(BaseModel):
                 f"Please try to upgrade the library or raise an issue at {__issues__}."
             )
         parser = _EFFECT_TYPE_I_MAP[effect_type]
-        record = parser.parse_obj(data)
+        record = parser.model_validate(data)
         super().__init__(record=record)

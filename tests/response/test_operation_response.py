@@ -57,7 +57,7 @@ class TestOperationResponse(TestCase):
     def test_valid(self):
         for op in ops:
             raw_data = load_horizon_file(f"operations/{op['filename']}")
-            parsed_data = OperationResponse.parse_obj(raw_data)
+            parsed_data = OperationResponse.model_validate(raw_data)
             self.assertTrue(isinstance(parsed_data, OperationResponse))
             self.assertTrue(isinstance(parsed_data.record, op["class"]))
             self.assertEqual(raw_data["id"], parsed_data.record.id)

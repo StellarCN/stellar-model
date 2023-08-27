@@ -10,7 +10,7 @@ from tests.model.horizon import load_horizon_file
 class TestLiquidityPool(unittest.TestCase):
     def test_valid_native(self):
         raw_data = load_horizon_file("liquidity_pool_native.json")
-        parsed_data = LiquidityPool.parse_obj(raw_data)
+        parsed_data = LiquidityPool.model_validate(raw_data)
         self.assertEqual(
             parsed_data.id,
             "2389378a6156eedfac66daa000d24c926431c3e667b9f754771964f27a6da6ab",
@@ -43,7 +43,7 @@ class TestLiquidityPool(unittest.TestCase):
 
     def test_valid_alphanum(self):
         raw_data = load_horizon_file("liquidity_pool_alphanum.json")
-        parsed_data = LiquidityPool.parse_obj(raw_data)
+        parsed_data = LiquidityPool.model_validate(raw_data)
         self.assertEqual(
             parsed_data.id,
             "2389378a6156eedfac66daa000d24c926431c3e667b9f754771964f27a6da6ab",

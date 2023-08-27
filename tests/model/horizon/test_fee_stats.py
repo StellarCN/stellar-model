@@ -9,7 +9,7 @@ from tests.model.horizon import load_horizon_file
 class TestFeeStats(unittest.TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("fee_stats.json")
-        parsed_data = FeeStats.parse_obj(raw_data)
+        parsed_data = FeeStats.model_validate(raw_data)
         self.assertEqual(parsed_data.last_ledger, 35068310)
         self.assertEqual(parsed_data.last_ledger_base_fee, 100)
         self.assertEqual(parsed_data.ledger_capacity_usage, Decimal("0.16"))

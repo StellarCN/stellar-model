@@ -18,5 +18,5 @@ class ErrorResponse(BaseModel):
     type: str
     title: str
     status: int
-    detail: Optional[str]
-    extras: Optional[Mapping[str, Any]]
+    detail: Optional[str] = None
+    extras: Optional[Mapping[str, Any]] = None

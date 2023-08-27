@@ -31,7 +31,7 @@ class Embedded(BaseModel):
                     f"Please try to upgrade the library or raise an issue at {__issues__}."
                 )
             parser = _OPERATION_TYPE_I_MAP[op_type]
-            model = parser.parse_obj(record)
+            model = parser.model_validate(record)
             model_records.append(model)
 
         super().__init__(records=model_records)

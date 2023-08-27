@@ -30,7 +30,8 @@ class Ledger(BaseModel):
         description="A hex-encoded SHA-256 hash of this ledger's XDR-encoded form."
     )
     prev_hash: Optional[str] = Field(
-        description="The hash of the ledger immediately preceding this ledger."
+        description="The hash of the ledger immediately preceding this ledger.",
+        default=None,
     )
     sequence: int = Field(
         description="The sequence number of this ledger, and the parameter used in Horizon "

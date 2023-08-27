@@ -111,7 +111,7 @@ class TestEffectResponse(TestCase):
     def test_valid(self):
         for op in ops:
             raw_data = load_horizon_file(f"effects/{op['filename']}")
-            parsed_data = EffectResponse.parse_obj(raw_data)
+            parsed_data = EffectResponse.model_validate(raw_data)
             self.assertTrue(isinstance(parsed_data, EffectResponse))
             self.assertTrue(isinstance(parsed_data.record, op["class"]))
             self.assertEqual(raw_data["id"], parsed_data.record.id)

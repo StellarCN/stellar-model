@@ -7,7 +7,7 @@ from tests.response import load_response_file
 class TestErrorResponse(TestCase):
     def test_valid(self):
         raw_data = load_response_file("error_response.json")
-        parsed_data = ErrorResponse.parse_obj(raw_data)
+        parsed_data = ErrorResponse.model_validate(raw_data)
         self.assertEqual(
             parsed_data.type, "https://stellar.org/horizon-errors/transaction_failed"
         )

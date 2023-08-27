@@ -9,7 +9,7 @@ from tests.model.horizon import load_horizon_file
 
 """
         raw_data = load_horizon_file("effects/")
-        parsed_data = AccountCreatedEffect.parse_obj(raw_data)
+        parsed_data = AccountCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "")
         self.assertEqual(parsed_data.paging_token, "")
         self.assertEqual(parsed_data.account, "")
@@ -22,7 +22,7 @@ from tests.model.horizon import load_horizon_file
 class TestEffects(unittest.TestCase):
     def test_valid_account_created(self):
         raw_data = load_horizon_file("effects/account_created.json")
-        parsed_data = AccountCreatedEffect.parse_obj(raw_data)
+        parsed_data = AccountCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661856401629185-0000000001")
         self.assertEqual(parsed_data.paging_token, "150661856401629185-1")
         self.assertEqual(
@@ -39,7 +39,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_account_removed(self):
         raw_data = load_horizon_file("effects/account_removed.json")
-        parsed_data = AccountRemovedEffect.parse_obj(raw_data)
+        parsed_data = AccountRemovedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661749027127297-0000000003")
         self.assertEqual(parsed_data.paging_token, "150661749027127297-3")
         self.assertEqual(
@@ -55,7 +55,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_account_credited(self):
         raw_data = load_horizon_file("effects/account_credited.json")
-        parsed_data = AccountCreditedEffect.parse_obj(raw_data)
+        parsed_data = AccountCreditedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661749027127297-0000000002")
         self.assertEqual(parsed_data.paging_token, "150661749027127297-2")
         self.assertEqual(
@@ -75,7 +75,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_account_debited(self):
         raw_data = load_horizon_file("effects/account_debited.json")
-        parsed_data = AccountDebitedEffect.parse_obj(raw_data)
+        parsed_data = AccountDebitedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661856401629185-0000000002")
         self.assertEqual(parsed_data.paging_token, "150661856401629185-2")
         self.assertEqual(
@@ -95,7 +95,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_account_thresholds_updated(self):
         raw_data = load_horizon_file("effects/account_thresholds_updated.json")
-        parsed_data = AccountThresholdsUpdatedEffect.parse_obj(raw_data)
+        parsed_data = AccountThresholdsUpdatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660954458435585-0000000001")
         self.assertEqual(parsed_data.paging_token, "150660954458435585-1")
         self.assertEqual(
@@ -114,7 +114,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_account_home_domain_updated(self):
         raw_data = load_horizon_file("effects/account_home_domain_updated.json")
-        parsed_data = AccountHomeDomainUpdatedEffect.parse_obj(raw_data)
+        parsed_data = AccountHomeDomainUpdatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150665691807358978-0000000001")
         self.assertEqual(parsed_data.paging_token, "150665691807358978-1")
         self.assertEqual(
@@ -131,7 +131,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_account_flags_updated(self):
         raw_data = load_horizon_file("effects/account_flags_updated.json")
-        parsed_data = AccountFlagsUpdatedEffect.parse_obj(raw_data)
+        parsed_data = AccountFlagsUpdatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150740432828043265-0000000001")
         self.assertEqual(parsed_data.paging_token, "150740432828043265-1")
         self.assertEqual(
@@ -151,7 +151,7 @@ class TestEffects(unittest.TestCase):
         raw_data = load_horizon_file(
             "effects/account_inflation_destination_updated.json"
         )
-        parsed_data = AccountInflationDestinationUpdatedEffect.parse_obj(raw_data)
+        parsed_data = AccountInflationDestinationUpdatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660920098471939-0000000002")
         self.assertEqual(parsed_data.paging_token, "150660920098471939-2")
         self.assertEqual(
@@ -167,7 +167,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_signer_created(self):
         raw_data = load_horizon_file("effects/signer_created.json")
-        parsed_data = SignerCreatedEffect.parse_obj(raw_data)
+        parsed_data = SignerCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661856401629185-0000000003")
         self.assertEqual(parsed_data.paging_token, "150661856401629185-3")
         self.assertEqual(
@@ -189,7 +189,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_signer_removed(self):
         raw_data = load_horizon_file("effects/signer_removed.json")
-        parsed_data = SignerRemovedEffect.parse_obj(raw_data)
+        parsed_data = SignerRemovedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661134846902279-0000000002")
         self.assertEqual(parsed_data.paging_token, "150661134846902279-2")
         self.assertEqual(
@@ -211,7 +211,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_signer_updated(self):
         raw_data = load_horizon_file("effects/signer_updated.json")
-        parsed_data = SignerUpdatedEffect.parse_obj(raw_data)
+        parsed_data = SignerUpdatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660954458435585-0000000002")
         self.assertEqual(parsed_data.paging_token, "150660954458435585-2")
         self.assertEqual(
@@ -233,7 +233,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_trustline_created(self):
         raw_data = load_horizon_file("effects/trustline_created.json")
-        parsed_data = TrustlineCreatedEffect.parse_obj(raw_data)
+        parsed_data = TrustlineCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660636630859777-0000000001")
         self.assertEqual(parsed_data.paging_token, "150660636630859777-1")
         self.assertEqual(
@@ -256,7 +256,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_trustline_removed(self):
         raw_data = load_horizon_file("effects/trustline_removed.json")
-        parsed_data = TrustlineRemovedEffect.parse_obj(raw_data)
+        parsed_data = TrustlineRemovedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660924393627649-0000000001")
         self.assertEqual(parsed_data.paging_token, "150660924393627649-1")
         self.assertEqual(
@@ -279,7 +279,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_trustline_updated(self):
         raw_data = load_horizon_file("effects/trustline_updated.json")
-        parsed_data = TrustlineUpdatedEffect.parse_obj(raw_data)
+        parsed_data = TrustlineUpdatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660975933218817-0000000001")
         self.assertEqual(parsed_data.paging_token, "150660975933218817-1")
         self.assertEqual(
@@ -302,7 +302,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_trustline_authorized(self):
         raw_data = load_horizon_file("effects/trustline_authorized.json")
-        parsed_data = TrustlineAuthorizedEffect.parse_obj(raw_data)
+        parsed_data = TrustlineAuthorizedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660791249526785-0000000001")
         self.assertEqual(parsed_data.paging_token, "150660791249526785-1")
         self.assertEqual(
@@ -324,7 +324,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_trustline_deauthorized(self):
         raw_data = load_horizon_file("effects/trustline_deauthorized.json")
-        parsed_data = TrustlineDeauthorizedEffect.parse_obj(raw_data)
+        parsed_data = TrustlineDeauthorizedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150662573661081605-0000000001")
         self.assertEqual(parsed_data.paging_token, "150662573661081605-1")
         self.assertEqual(
@@ -348,7 +348,7 @@ class TestEffects(unittest.TestCase):
         raw_data = load_horizon_file(
             "effects/trustline_authorized_to_maintain_liabilities.json"
         )
-        parsed_data = TrustlineAuthorizedToMaintainLiabilitiesEffect.parse_obj(raw_data)
+        parsed_data = TrustlineAuthorizedToMaintainLiabilitiesEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660791249526794-0000000001")
         self.assertEqual(parsed_data.paging_token, "150660791249526794-1")
         self.assertEqual(
@@ -372,7 +372,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_trustline_flags_updated(self):
         raw_data = load_horizon_file("effects/trustline_flags_updated.json")
-        parsed_data = TrustlineFlagsUpdatedEffect.parse_obj(raw_data)
+        parsed_data = TrustlineFlagsUpdatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660791249526785-0000000002")
         self.assertEqual(parsed_data.paging_token, "150660791249526785-2")
         self.assertEqual(
@@ -410,7 +410,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_trade(self):
         raw_data = load_horizon_file("effects/trade.json")
-        parsed_data = TradeEffect.parse_obj(raw_data)
+        parsed_data = TradeEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660580796153857-0000000001")
         self.assertEqual(parsed_data.paging_token, "150660580796153857-1")
         self.assertEqual(
@@ -442,7 +442,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_data_created(self):
         raw_data = load_horizon_file("effects/data_created.json")
-        parsed_data = DataCreatedEffect.parse_obj(raw_data)
+        parsed_data = DataCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660636630765571-0000000001")
         self.assertEqual(parsed_data.paging_token, "150660636630765571-1")
         self.assertEqual(
@@ -463,7 +463,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_data_removed(self):
         raw_data = load_horizon_file("effects/data_removed.json")
-        parsed_data = DataRemovedEffect.parse_obj(raw_data)
+        parsed_data = DataRemovedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150660636630765572-0000000001")
         self.assertEqual(parsed_data.paging_token, "150660636630765572-1")
         self.assertEqual(
@@ -480,7 +480,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_data_updated(self):
         raw_data = load_horizon_file("effects/data_updated.json")
-        parsed_data = DataUpdatedEffect.parse_obj(raw_data)
+        parsed_data = DataUpdatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661027472793603-0000000001")
         self.assertEqual(parsed_data.paging_token, "150661027472793603-1")
         self.assertEqual(
@@ -501,7 +501,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_sequence_bumped(self):
         raw_data = load_horizon_file("effects/sequence_bumped.json")
-        parsed_data = SequenceBumpedEffect.parse_obj(raw_data)
+        parsed_data = SequenceBumpedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0151249850311778305-0000000001")
         self.assertEqual(parsed_data.paging_token, "151249850311778305-1")
         self.assertEqual(
@@ -518,7 +518,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_claimable_balance_created(self):
         raw_data = load_horizon_file("effects/claimable_balance_created.json")
-        parsed_data = ClaimableBalanceCreatedEffect.parse_obj(raw_data)
+        parsed_data = ClaimableBalanceCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150684654087864322-0000000001")
         self.assertEqual(parsed_data.paging_token, "150684654087864322-1")
         self.assertEqual(
@@ -543,7 +543,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_claimable_balance_claimant_created(self):
         raw_data = load_horizon_file("effects/claimable_balance_claimant_created.json")
-        parsed_data = ClaimableBalanceClaimantCreatedEffect.parse_obj(raw_data)
+        parsed_data = ClaimableBalanceClaimantCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150684654087864322-0000000003")
         self.assertEqual(parsed_data.paging_token, "150684654087864322-3")
         self.assertEqual(
@@ -575,7 +575,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_claimable_balance_claimed(self):
         raw_data = load_horizon_file("effects/claimable_balance_claimed.json")
-        parsed_data = ClaimableBalanceClaimedEffect.parse_obj(raw_data)
+        parsed_data = ClaimableBalanceClaimedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150803053451329538-0000000001")
         self.assertEqual(parsed_data.paging_token, "150803053451329538-1")
         self.assertEqual(
@@ -600,7 +600,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_account_sponsorship_created(self):
         raw_data = load_horizon_file("effects/account_sponsorship_created.json")
-        parsed_data = AccountSponsorshipCreatedEffect.parse_obj(raw_data)
+        parsed_data = AccountSponsorshipCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661134846902274-0000000004")
         self.assertEqual(parsed_data.paging_token, "150661134846902274-4")
         self.assertEqual(
@@ -623,7 +623,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_account_sponsorship_removed(self):
         raw_data = load_horizon_file("effects/account_sponsorship_removed.json")
-        parsed_data = AccountSponsorshipRemovedEffect.parse_obj(raw_data)
+        parsed_data = AccountSponsorshipRemovedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0151324471070908417-0000000004")
         self.assertEqual(parsed_data.paging_token, "151324471070908417-4")
         self.assertEqual(
@@ -643,7 +643,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_trustline_sponsorship_created(self):
         raw_data = load_horizon_file("effects/trustline_sponsorship_created.json")
-        parsed_data = TrustlineSponsorshipCreatedEffect.parse_obj(raw_data)
+        parsed_data = TrustlineSponsorshipCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661134846902276-0000000002")
         self.assertEqual(parsed_data.paging_token, "150661134846902276-2")
         self.assertEqual(
@@ -670,7 +670,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_trustline_sponsorship_removed(self):
         raw_data = load_horizon_file("effects/trustline_sponsorship_removed.json")
-        parsed_data = TrustlineSponsorshipRemovedEffect.parse_obj(raw_data)
+        parsed_data = TrustlineSponsorshipRemovedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150671008977530881-0000000002")
         self.assertEqual(parsed_data.paging_token, "150671008977530881-2")
         self.assertEqual(
@@ -694,7 +694,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_data_sponsorship_created(self):
         raw_data = load_horizon_file("effects/data_sponsorship_created.json")
-        parsed_data = DataSponsorshipCreatedEffect.parse_obj(raw_data)
+        parsed_data = DataSponsorshipCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0003520460138483714-0000000002")
         self.assertEqual(parsed_data.paging_token, "3520460138483714-2")
         self.assertEqual(
@@ -718,7 +718,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_data_sponsorship_removed(self):
         raw_data = load_horizon_file("effects/data_sponsorship_removed.json")
-        parsed_data = DataSponsorshipRemovedEffect.parse_obj(raw_data)
+        parsed_data = DataSponsorshipRemovedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0003520511678095361-0000000001")
         self.assertEqual(parsed_data.paging_token, "3520511678095361-1")
         self.assertEqual(
@@ -741,7 +741,7 @@ class TestEffects(unittest.TestCase):
         raw_data = load_horizon_file(
             "effects/claimable_balance_sponsorship_created.json"
         )
-        parsed_data = ClaimableBalanceSponsorshipCreatedEffect.parse_obj(raw_data)
+        parsed_data = ClaimableBalanceSponsorshipCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150684654087864322-0000000005")
         self.assertEqual(parsed_data.paging_token, "150684654087864322-5")
         self.assertEqual(
@@ -770,7 +770,7 @@ class TestEffects(unittest.TestCase):
         raw_data = load_horizon_file(
             "effects/claimable_balance_sponsorship_removed.json"
         )
-        parsed_data = ClaimableBalanceSponsorshipRemovedEffect.parse_obj(raw_data)
+        parsed_data = ClaimableBalanceSponsorshipRemovedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150803053451329538-0000000003")
         self.assertEqual(parsed_data.paging_token, "150803053451329538-3")
         self.assertEqual(
@@ -794,7 +794,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_signer_sponsorship_created(self):
         raw_data = load_horizon_file("effects/signer_sponsorship_created.json")
-        parsed_data = SignerSponsorshipCreatedEffect.parse_obj(raw_data)
+        parsed_data = SignerSponsorshipCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661134846902275-0000000002")
         self.assertEqual(parsed_data.paging_token, "150661134846902275-2")
         self.assertEqual(
@@ -821,7 +821,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_signer_sponsorship_removed(self):
         raw_data = load_horizon_file("effects/signer_sponsorship_removed.json")
-        parsed_data = SignerSponsorshipRemovedEffect.parse_obj(raw_data)
+        parsed_data = SignerSponsorshipRemovedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0150661624473337857-0000000002")
         self.assertEqual(parsed_data.paging_token, "150661624473337857-2")
         self.assertEqual(
@@ -845,7 +845,7 @@ class TestEffects(unittest.TestCase):
 
     def test_valid_claimable_balance_clawed_back(self):
         raw_data = load_horizon_file("effects/claimable_balance_clawed_back.json")
-        parsed_data = ClaimableBalanceClawedBackEffect.parse_obj(raw_data)
+        parsed_data = ClaimableBalanceClawedBackEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0003513936083165185-0000000001")
         self.assertEqual(parsed_data.paging_token, "3513936083165185-1")
         self.assertEqual(
@@ -865,7 +865,7 @@ class TestEffects(unittest.TestCase):
 
     def test_liquidity_pool_deposited(self):
         raw_data = load_horizon_file("effects/liquidity_pool_deposited.json")
-        parsed_data = LiquidityPoolDepositedEffect.parse_obj(raw_data)
+        parsed_data = LiquidityPoolDepositedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0001579044726386689-0000000001")
         self.assertEqual(parsed_data.paging_token, "1579044726386689-1")
         self.assertEqual(
@@ -945,7 +945,7 @@ class TestEffects(unittest.TestCase):
 
     def test_liquidity_pool_withdrew(self):
         raw_data = load_horizon_file("effects/liquidity_pool_withdrew.json")
-        parsed_data = LiquidityPoolWithdrewEffect.parse_obj(raw_data)
+        parsed_data = LiquidityPoolWithdrewEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0001579096265998337-0000000001")
         self.assertEqual(parsed_data.paging_token, "1579096265998337-1")
         self.assertEqual(
@@ -1025,7 +1025,7 @@ class TestEffects(unittest.TestCase):
 
     def test_liquidity_pool_trade(self):
         raw_data = load_horizon_file("effects/liquidity_pool_trade.json")
-        parsed_data = LiquidityPoolTradeEffect.parse_obj(raw_data)
+        parsed_data = LiquidityPoolTradeEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0001579418388553729-0000000003")
         self.assertEqual(parsed_data.paging_token, "1579418388553729-3")
         self.assertEqual(
@@ -1100,7 +1100,7 @@ class TestEffects(unittest.TestCase):
 
     def test_liquidity_pool_created(self):
         raw_data = load_horizon_file("effects/liquidity_pool_created.json")
-        parsed_data = LiquidityPoolCreatedEffect.parse_obj(raw_data)
+        parsed_data = LiquidityPoolCreatedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0001578868632723457-0000000002")
         self.assertEqual(parsed_data.paging_token, "1578868632723457-2")
         self.assertEqual(
@@ -1129,7 +1129,7 @@ class TestEffects(unittest.TestCase):
 
     def test_liquidity_pool_removed(self):
         raw_data = load_horizon_file("effects/liquidity_pool_removed.json")
-        parsed_data = LiquidityPoolRemovedEffect.parse_obj(raw_data)
+        parsed_data = LiquidityPoolRemovedEffect.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "0179972298072752130-0000000002")
         self.assertEqual(parsed_data.paging_token, "179972298072752130-2")
         self.assertEqual(

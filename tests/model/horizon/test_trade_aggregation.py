@@ -9,7 +9,7 @@ from tests.model.horizon import load_horizon_file
 class TestTradeAggregation(unittest.TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("trade_aggregation.json")
-        parsed_data = TradeAggregation.parse_obj(raw_data)
+        parsed_data = TradeAggregation.model_validate(raw_data)
         self.assertEqual(parsed_data.timestamp, 1619081700000)
         self.assertEqual(parsed_data.trade_count, 1)
         self.assertEqual(parsed_data.base_volume, Decimal("3.9000000"))

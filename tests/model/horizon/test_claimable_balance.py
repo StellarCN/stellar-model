@@ -10,7 +10,7 @@ from tests.model.horizon import load_horizon_file
 class TestClaimableBalance(unittest.TestCase):
     def test_unconditional_valid(self):
         raw_data = load_horizon_file("claimable_balance_unconditional.json")
-        parsed_data = ClaimableBalance.parse_obj(raw_data)
+        parsed_data = ClaimableBalance.model_validate(raw_data)
         self.assertEqual(
             parsed_data.id,
             "0000000035950db8eb2f303c37b67890aff15a26b5c16693aba4b40dcd31b54162e60456",
@@ -43,7 +43,7 @@ class TestClaimableBalance(unittest.TestCase):
 
     def test_conditional_valid(self):
         raw_data = load_horizon_file("claimable_balance_conditional.json")
-        parsed_data = ClaimableBalance.parse_obj(raw_data)
+        parsed_data = ClaimableBalance.model_validate(raw_data)
         self.assertEqual(len(parsed_data.claimants), 2)
         self.assertEqual(
             parsed_data.claimants[0].destination,

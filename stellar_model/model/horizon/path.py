@@ -21,10 +21,10 @@ class Path(BaseModel):
         "**credit_alphanum4**, or **credit_alphanum12**."
     )
     source_asset_code: Optional[str] = Field(
-        description="The code for the source asset."
+        description="The code for the source asset.", default=None
     )
     source_asset_issuer: Optional[str] = Field(
-        description="The Stellar address of the source asset's issuer."
+        description="The Stellar address of the source asset's issuer.", default=None
     )
     source_amount: Decimal = Field(
         description="An estimated cost for making a payment of destination_amount on "
@@ -36,10 +36,11 @@ class Path(BaseModel):
         "**credit_alphanum4**, or **credit_alphanum12**."
     )
     destination_asset_code: Optional[str] = Field(
-        description="The code for the destination asset."
+        description="The code for the destination asset.", default=None
     )
     destination_asset_issuer: Optional[str] = Field(
-        description="The Stellar address of the destination asset's issuer."
+        description="The Stellar address of the destination asset's issuer.",
+        default=None,
     )
     destination_amount: Decimal = Field(
         description="The destination amount specified in the s"

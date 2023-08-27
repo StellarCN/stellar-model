@@ -14,4 +14,4 @@ class AccountData(BaseModel):
 
     value: str = Field(description="The key value for this data.")
     # TODO: add description
-    sponsor: Optional[str]
+    sponsor: Optional[str] = None

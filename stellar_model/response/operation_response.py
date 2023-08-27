@@ -36,5 +36,5 @@ class OperationResponse(BaseModel):
                 f"Please try to upgrade the library or raise an issue at {__issues__}."
             )
         parser = _OPERATION_TYPE_I_MAP[op_type]
-        record = parser.parse_obj(data)
+        record = parser.model_validate(data)
         super().__init__(record=record)

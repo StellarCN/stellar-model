@@ -18,7 +18,7 @@ class Links(BaseModel):
     assets: Link
     effects: Link
     fee_stats: Link
-    friendbot: Optional[Link]
+    friendbot: Optional[Link] = None
     ledger: Link
     ledgers: Link
     offer: Link
