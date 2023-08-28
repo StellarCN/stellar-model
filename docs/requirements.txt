@@ -1,1 +1,1 @@
-stellar-model==0.5.2
+Sphinx==7.2.3
