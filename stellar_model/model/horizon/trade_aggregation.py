@@ -1,10 +1,8 @@
 from decimal import Decimal
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.price import Price
-
 
 __all__ = ["TradeAggregation"]
 

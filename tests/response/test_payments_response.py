@@ -4,7 +4,6 @@ from stellar_model import PaymentsResponse
 from stellar_model.model.horizon.operations import *
 from tests.response import load_response_file
 
-
 payment_ops = {
     "create_account": CreateAccountOperation,
     "payment": PaymentOperation,

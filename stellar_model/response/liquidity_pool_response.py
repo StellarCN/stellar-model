@@ -1,6 +1,5 @@
 from stellar_model.model.horizon.liquidity_pool import LiquidityPool
 
-
 __all__ = ["LiquidityPoolResponse"]
 
 

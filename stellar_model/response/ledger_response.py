@@ -1,6 +1,5 @@
 from stellar_model.model.horizon.ledger import Ledger
 
-
 __all__ = ["LedgerResponse"]
 
 

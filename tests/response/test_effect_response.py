@@ -4,7 +4,6 @@ from stellar_model import EffectResponse
 from stellar_model.model.horizon.effects import *
 from tests.response import load_horizon_file
 
-
 ops = [
     {"filename": "account_created.json", "class": AccountCreatedEffect},
     {"filename": "account_removed.json", "class": AccountRemovedEffect},

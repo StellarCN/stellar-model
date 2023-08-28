@@ -1,11 +1,9 @@
 from typing import List
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.transaction import Transaction
 from stellar_model.response.page_model import PageModel
-
 
 __all__ = ["TransactionsResponse"]
 

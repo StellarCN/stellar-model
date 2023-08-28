@@ -1,5 +1,4 @@
 import unittest
-
 from decimal import Decimal
 
 from stellar_model.model.horizon.trade_aggregation import TradeAggregation

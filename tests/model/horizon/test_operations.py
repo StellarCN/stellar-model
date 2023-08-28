@@ -1,11 +1,9 @@
 import datetime
 import unittest
-
 from decimal import Decimal
 
 from stellar_model.model.horizon.operations import *
 from tests.model.horizon import load_horizon_file
-
 
 """
         raw_data = load_horizon_file("operations/")

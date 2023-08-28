@@ -4,7 +4,6 @@ from stellar_model import OperationResponse
 from stellar_model.model.horizon.operations import *
 from tests.response import load_horizon_file
 
-
 ops = [
     {"filename": "create_account.json", "class": CreateAccountOperation},
     {"filename": "payment.json", "class": PaymentOperation},

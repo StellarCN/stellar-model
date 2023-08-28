@@ -1,9 +1,7 @@
 from pydantic import BaseModel
 
 from stellar_model import __issues__
-from stellar_model.model.horizon.effects import _EFFECT_TYPE_I_MAP
-from stellar_model.model.horizon.effects import _EFFECT_TYPE_UNION
-
+from stellar_model.model.horizon.effects import _EFFECT_TYPE_I_MAP, _EFFECT_TYPE_UNION
 
 __all__ = ["EffectResponse"]
 

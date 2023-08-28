@@ -1,10 +1,8 @@
 from typing import List
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.path import Path
-
 
 __all__ = ["PathsResponse"]
 

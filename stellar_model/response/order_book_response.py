@@ -1,6 +1,5 @@
 from stellar_model.model.horizon.order_book_summary import OrderBookSummary
 
-
 __all__ = ["OrderBookResponse"]
 
 

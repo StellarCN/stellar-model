@@ -1,6 +1,5 @@
 import datetime
 import unittest
-
 from decimal import Decimal
 
 from stellar_model.model.horizon.trade import Trade

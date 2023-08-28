@@ -1,11 +1,9 @@
 import datetime
 import unittest
-
 from decimal import Decimal
 
 from stellar_model.model.horizon.effects import *
 from tests.model.horizon import load_horizon_file
-
 
 """
         raw_data = load_horizon_file("effects/")
@@ -348,7 +346,9 @@ class TestEffects(unittest.TestCase):
         raw_data = load_horizon_file(
             "effects/trustline_authorized_to_maintain_liabilities.json"
         )
-        parsed_data = TrustlineAuthorizedToMaintainLiabilitiesEffect.model_validate(raw_data)
+        parsed_data = TrustlineAuthorizedToMaintainLiabilitiesEffect.model_validate(
+            raw_data
+        )
         self.assertEqual(parsed_data.id, "0150660791249526794-0000000001")
         self.assertEqual(parsed_data.paging_token, "150660791249526794-1")
         self.assertEqual(

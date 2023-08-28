@@ -1,12 +1,9 @@
 from decimal import Decimal
-from typing import List
-from typing import Optional
+from typing import List, Optional
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.asset import Asset
-
 
 __all__ = ["Path"]
 

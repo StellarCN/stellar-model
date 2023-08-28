@@ -4,7 +4,6 @@ from pydantic import BaseModel
 
 from stellar_model.model.horizon.asset import Asset
 
-
 __all__ = ["LiquidityPoolAssetAmount"]
 
 
