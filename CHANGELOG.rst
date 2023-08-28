@@ -4,6 +4,11 @@ Change Log
 
 This document records all notable changes to `stellar-model <https://github.com/StellarCN/stellar-model/>`_.
 
+0.5.3
+----------------------------
+* deps: bump pydantic to v2. (`#48 <https://github.com/StellarCN/stellar-model/pull/48/>`_)
+* fix: bug fixes.
+
 0.5.2
 ----------------------------
 * fix: fix model for `LiquidityPoolRemovedEffect`. (`#43 <https://github.com/StellarCN/stellar-model/pull/43/>`_)
