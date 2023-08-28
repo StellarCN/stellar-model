@@ -1,7 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 
 class Asset(BaseModel):
@@ -13,7 +12,9 @@ class Asset(BaseModel):
         description="The type for this asset. Either **native**, "
         "**credit_alphanum4**, or **credit_alphanum12**."
     )
-    asset_code: Optional[str] = Field(description="The code for this asset.")
+    asset_code: Optional[str] = Field(
+        description="The code for this asset.", default=None
+    )
     asset_issuer: Optional[str] = Field(
-        description="The Stellar address of this asset's issuer."
+        description="The Stellar address of this asset's issuer.", default=None
     )

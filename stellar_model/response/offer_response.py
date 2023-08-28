@@ -1,6 +1,5 @@
 from stellar_model.model.horizon.offer import Offer
 
-
 __all__ = ["OfferResponse"]
 
 

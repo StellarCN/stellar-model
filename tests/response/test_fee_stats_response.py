@@ -8,6 +8,6 @@ from tests.response import load_horizon_file
 class TestFeeStatsResponse(TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("fee_stats.json")
-        parsed_data = FeeStatsResponse.parse_obj(raw_data)
+        parsed_data = FeeStatsResponse.model_validate(raw_data)
         self.assertTrue(isinstance(parsed_data, FeeStatsResponse))
         self.assertTrue(isinstance(parsed_data, FeeStats))

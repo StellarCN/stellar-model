@@ -1,6 +1,5 @@
 from stellar_model.model.horizon.claimable_balance import ClaimableBalance
 
-
 __all__ = ["ClaimableBalanceResponse"]
 
 

@@ -1,15 +1,11 @@
 from datetime import datetime
 from decimal import Decimal
-from typing import List
-from typing import Optional
-from typing import Union
+from typing import List, Optional, Union
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.claimable_balance import ClaimPredicate
 from stellar_model.model.horizon.link import Link
-
 
 __all__ = [
     "AccountCreatedEffect",
@@ -84,8 +80,8 @@ class BaseEffect(BaseModel):
     id: str
     paging_token: str
     account: str
-    account_muxed: Optional[str]
-    account_muxed_id: Optional[int]
+    account_muxed: Optional[str] = None
+    account_muxed_id: Optional[int] = None
     type: str
     type_i: int
     # The maximum year in Python is 9999
@@ -123,8 +119,8 @@ class AccountCreditedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset_code: Optional[str]
-    asset_issuer: Optional[str]
+    asset_code: Optional[str] = None
+    asset_issuer: Optional[str] = None
     amount: Decimal
 
 
@@ -137,8 +133,8 @@ class AccountDebitedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset_code: Optional[str]
-    asset_issuer: Optional[str]
+    asset_code: Optional[str] = None
+    asset_issuer: Optional[str] = None
     amount: Decimal
 
 
@@ -175,8 +171,8 @@ class AccountFlagsUpdatedEffect(BaseEffect):
     type_i: 6
     """
 
-    auth_required_flag: Optional[bool]
-    auth_revokable_flag: Optional[bool]
+    auth_required_flag: Optional[bool] = None
+    auth_revokable_flag: Optional[bool] = None
 
 
 class AccountInflationDestinationUpdatedEffect(BaseEffect):
@@ -238,9 +234,9 @@ class TrustlineCreatedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset_code: Optional[str]
-    asset_issuer: Optional[str]
-    liquidity_pool_id: Optional[str]
+    asset_code: Optional[str] = None
+    asset_issuer: Optional[str] = None
+    liquidity_pool_id: Optional[str] = None
     limit: Decimal
 
 
@@ -253,9 +249,9 @@ class TrustlineRemovedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset_code: Optional[str]
-    asset_issuer: Optional[str]
-    liquidity_pool_id: Optional[str]
+    asset_code: Optional[str] = None
+    asset_issuer: Optional[str] = None
+    liquidity_pool_id: Optional[str] = None
     limit: Decimal
 
 
@@ -268,9 +264,9 @@ class TrustlineUpdatedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset_code: Optional[str]
-    asset_issuer: Optional[str]
-    liquidity_pool_id: Optional[str]
+    asset_code: Optional[str] = None
+    asset_issuer: Optional[str] = None
+    liquidity_pool_id: Optional[str] = None
     limit: Decimal
 
 
@@ -327,9 +323,9 @@ class TrustlineFlagsUpdatedEffect(BaseEffect):
     asset_code: str
     asset_issuer: str
     trustor: str
-    authorized_flag: Optional[bool]
-    authorized_to_maintain_liabilites_flag: Optional[bool]
-    clawback_enabled_flag: Optional[bool]
+    authorized_flag: Optional[bool] = None
+    authorized_to_maintain_liabilites_flag: Optional[bool] = None
+    clawback_enabled_flag: Optional[bool] = None
 
 
 class OfferCreatedEffect(BaseEffect):
@@ -368,17 +364,17 @@ class TradeEffect(BaseEffect):
     """
 
     seller: str
-    seller_muxed: Optional[str]
-    seller_muxed_id: Optional[int]
+    seller_muxed: Optional[str] = None
+    seller_muxed_id: Optional[int] = None
     offer_id: str
     sold_amount: Decimal
     sold_asset_type: str
-    sold_asset_code: Optional[str]
-    sold_asset_issuer: Optional[str]
+    sold_asset_code: Optional[str] = None
+    sold_asset_issuer: Optional[str] = None
     bought_amount: Decimal
     bought_asset_type: str
-    bought_asset_code: Optional[str]
-    bought_asset_issuer: Optional[str]
+    bought_asset_code: Optional[str] = None
+    bought_asset_issuer: Optional[str] = None
 
 
 class DataCreatedEffect(BaseEffect):
@@ -510,8 +506,8 @@ class TrustlineSponsorshipCreatedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset: Optional[str]
-    liquidity_pool_id: Optional[str]
+    asset: Optional[str] = None
+    liquidity_pool_id: Optional[str] = None
     sponsor: str
 
 
@@ -524,8 +520,8 @@ class TrustlineSponsorshipUpdatedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset: Optional[str]
-    liquidity_pool_id: Optional[str]
+    asset: Optional[str] = None
+    liquidity_pool_id: Optional[str] = None
     former_sponsor: str
     new_sponsor: str
 
@@ -539,8 +535,8 @@ class TrustlineSponsorshipRemovedEffect(BaseEffect):
     """
 
     asset_type: str
-    asset: Optional[str]
-    liquidity_pool_id: Optional[str]
+    asset: Optional[str] = None
+    liquidity_pool_id: Optional[str] = None
     former_sponsor: str
 
 

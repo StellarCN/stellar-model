@@ -8,7 +8,7 @@ from tests.model.horizon import load_horizon_file
 class TestRoot(unittest.TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("root.json")
-        parsed_data = Root.parse_obj(raw_data)
+        parsed_data = Root.model_validate(raw_data)
         self.assertEqual(
             parsed_data.horizon_version,
             "2.2.0-7d7e58007af55e7697223009fd24daf76aa908e2",

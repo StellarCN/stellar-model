@@ -1,6 +1,5 @@
 from stellar_model.model.horizon.fee_stats import FeeStats
 
-
 __all__ = ["FeeStatsResponse"]
 
 

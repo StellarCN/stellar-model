@@ -1,6 +1,5 @@
 import datetime
 import unittest
-
 from decimal import Decimal
 
 from stellar_model.model.horizon.trade import Trade
@@ -10,7 +9,7 @@ from tests.model.horizon import load_horizon_file
 class TestTrade(unittest.TestCase):
     def test_valid_orderbook(self):
         raw_data = load_horizon_file("trade_orderbook.json")
-        parsed_data = Trade.parse_obj(raw_data)
+        parsed_data = Trade.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150615114272284677-0")
         self.assertEqual(parsed_data.paging_token, "150615114272284677-0")
         self.assertEqual(
@@ -48,7 +47,7 @@ class TestTrade(unittest.TestCase):
 
     def test_valid_liquidity_pool(self):
         raw_data = load_horizon_file("trade_liquidity_pool.json")
-        parsed_data = Trade.parse_obj(raw_data)
+        parsed_data = Trade.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "1567602933510145-0")
         self.assertEqual(parsed_data.paging_token, "1567602933510145-0")
         self.assertEqual(

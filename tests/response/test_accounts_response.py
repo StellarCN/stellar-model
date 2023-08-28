@@ -8,7 +8,7 @@ from tests.response import load_response_file
 class TestAccountsResponse(TestCase):
     def test_valid(self):
         raw_data = load_response_file("accounts_response.json")
-        parsed_data = AccountsResponse.parse_obj(raw_data)
+        parsed_data = AccountsResponse.model_validate(raw_data)
         self.assertEqual(len(parsed_data.embedded.records), 10)
         for record in parsed_data.embedded.records:
             self.assertTrue(isinstance(record, Account))

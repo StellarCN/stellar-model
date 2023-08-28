@@ -1,9 +1,6 @@
-from typing import Any
-from typing import Mapping
-from typing import Optional
+from typing import Any, Mapping, Optional
 
 from pydantic import BaseModel
-
 
 __all__ = ["ErrorResponse"]
 
@@ -18,5 +15,5 @@ class ErrorResponse(BaseModel):
     type: str
     title: str
     status: int
-    detail: Optional[str]
-    extras: Optional[Mapping[str, Any]]
+    detail: Optional[str] = None
+    extras: Optional[Mapping[str, Any]] = None

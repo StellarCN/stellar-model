@@ -1,13 +1,10 @@
 from datetime import datetime
 from decimal import Decimal
-from typing import List
-from typing import Optional
+from typing import List, Optional
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.link import Link
-
 
 __all__ = ["ClaimableBalance"]
 
@@ -26,7 +23,8 @@ class ClaimPredicate(BaseModel):
     # TODO: add type in the future.
     unconditional: Optional[bool] = Field(
         description="If **True** it means this clause of the condition "
-        "is always satisfied."
+        "is always satisfied.",
+        default=None,
     )
     # https://pydantic-docs.helpmanual.io/usage/postponed_annotations/
     and_predicates: Optional[List["ClaimPredicate"]] = Field(
@@ -37,6 +35,7 @@ class ClaimPredicate(BaseModel):
         "condition is satisfied if both "
         "of the two elements in the array "
         "are satisfied.",
+        default=None,
     )
     or_predicates: Optional[List["ClaimPredicate"]] = Field(
         alias="or",
@@ -46,26 +45,31 @@ class ClaimPredicate(BaseModel):
         "condition is satisfied if at "
         "least one of the two elements "
         "in the array are satisfied.",
+        default=None,
     )
     not_predicate: Optional["ClaimPredicate"] = Field(
         alias="not",
         description="The value is also a predicate. This "
         "clause of the condition is satisfied "
         "if the value is not satisfied.",
+        default=None,
     )
     abs_before: Optional[datetime] = Field(
         description="The datetime representing a deadline for when the claimable "
         "balance can be claimed. If the balance is claimed before the "
-        "date then this clause of the condition is satisfied."
+        "date then this clause of the condition is satisfied.",
+        default=None,
     )
     abs_before_epoch: Optional[int] = Field(
-        "The Unix Epoch value represented by the same custom extended "
-        "ISO date value in the abs_before field."
+        description="The Unix Epoch value represented by the same custom extended "
+        "ISO date value in the abs_before field.",
+        default=None,
     )
     rel_before: Optional[int] = Field(
         description="A relative deadline for when the claimable balance can be "
         "claimed. The value represents the number of seconds since the "
-        "close time of the ledger which created the claimable balance."
+        "close time of the ledger which created the claimable balance.",
+        default=None,
     )
 
 
@@ -100,13 +104,14 @@ class ClaimableBalance(BaseModel):
     )
     amount: Decimal = Field(description="The amount of **asset** that can be claimed.")
     sponsor: Optional[str] = Field(
-        description="The account id of the sponsor who is paying the reserves for this claimable balance."
+        description="The account id of the sponsor who is paying the reserves for this claimable balance.",
+        default=None,
     )
     last_modified_ledger: int = Field(
         description="The sequence number of the last ledger in which this claimable balance was modified."
     )
     last_modified_time: Optional[datetime] = Field(
-        description="The datetime of last modification time."
+        description="The datetime of last modification time.", default=None
     )
     claimants: List[Claimant] = Field(
         description="The list of entries which could claim the claimable balance."

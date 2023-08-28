@@ -1,6 +1,5 @@
 from stellar_model.model.horizon.account_data import AccountData
 
-
 __all__ = ["AccountDataResponse"]
 
 

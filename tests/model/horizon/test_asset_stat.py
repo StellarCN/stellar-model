@@ -1,5 +1,4 @@
 import unittest
-
 from decimal import Decimal
 
 from stellar_model.model.horizon.asset_stat import AssetStat
@@ -9,7 +8,7 @@ from tests.model.horizon import load_horizon_file
 class TestAssetStat(unittest.TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("asset_stat.json")
-        parsed_data = AssetStat.parse_obj(raw_data)
+        parsed_data = AssetStat.model_validate(raw_data)
         self.assertEqual(parsed_data.asset_type, "credit_alphanum4")
         self.assertEqual(parsed_data.asset_code, "ZX2")
         self.assertEqual(

@@ -1,6 +1,5 @@
 import datetime
 import unittest
-
 from decimal import Decimal
 
 from stellar_model.model.horizon.ledger import Ledger
@@ -10,7 +9,7 @@ from tests.model.horizon import load_horizon_file
 class TestLedger(unittest.TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("ledger.json")
-        parsed_data = Ledger.parse_obj(raw_data)
+        parsed_data = Ledger.model_validate(raw_data)
         self.assertEqual(
             parsed_data.id,
             "548393ec23959e1959a62f003029ecf96be89e13df036073bf64918996ec4227",

@@ -4,7 +4,6 @@ from stellar_model import OperationResponse
 from stellar_model.model.horizon.operations import *
 from tests.response import load_horizon_file
 
-
 ops = [
     {"filename": "create_account.json", "class": CreateAccountOperation},
     {"filename": "payment.json", "class": PaymentOperation},
@@ -57,7 +56,7 @@ class TestOperationResponse(TestCase):
     def test_valid(self):
         for op in ops:
             raw_data = load_horizon_file(f"operations/{op['filename']}")
-            parsed_data = OperationResponse.parse_obj(raw_data)
+            parsed_data = OperationResponse.model_validate(raw_data)
             self.assertTrue(isinstance(parsed_data, OperationResponse))
             self.assertTrue(isinstance(parsed_data.record, op["class"]))
             self.assertEqual(raw_data["id"], parsed_data.record.id)

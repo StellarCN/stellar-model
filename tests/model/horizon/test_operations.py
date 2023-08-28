@@ -1,15 +1,13 @@
 import datetime
 import unittest
-
 from decimal import Decimal
 
 from stellar_model.model.horizon.operations import *
 from tests.model.horizon import load_horizon_file
 
-
 """
         raw_data = load_horizon_file("operations/")
-        parsed_data = CreateAccountOperation.parse_obj(raw_data)
+        parsed_data = CreateAccountOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "")
         self.assertEqual(parsed_data.paging_token, "")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -26,7 +24,7 @@ from tests.model.horizon import load_horizon_file
 class TestOperations(unittest.TestCase):
     def test_valid_create_account_operation(self):
         raw_data = load_horizon_file("operations/create_account.json")
-        parsed_data = CreateAccountOperation.parse_obj(raw_data)
+        parsed_data = CreateAccountOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150661852106629126")
         self.assertEqual(parsed_data.paging_token, "150661852106629126")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -58,7 +56,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_payment_operation(self):
         raw_data = load_horizon_file("operations/payment.json")
-        parsed_data = PaymentOperation.parse_obj(raw_data)
+        parsed_data = PaymentOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150661113372200961")
         self.assertEqual(parsed_data.paging_token, "150661113372200961")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -89,7 +87,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_path_payment_strict_receive_operation(self):
         raw_data = load_horizon_file("operations/path_payment_strict_receive.json")
-        parsed_data = PathPaymentStrictReceiveOperation.parse_obj(raw_data)
+        parsed_data = PathPaymentStrictReceiveOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150661572933464065")
         self.assertEqual(parsed_data.paging_token, "150661572933464065")
         self.assertEqual(parsed_data.transaction_successful, False)
@@ -141,7 +139,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_manage_sell_offer_operation(self):
         raw_data = load_horizon_file("operations/manage_sell_offer.json")
-        parsed_data = ManageSellOfferOperation.parse_obj(raw_data)
+        parsed_data = ManageSellOfferOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150661572935458818")
         self.assertEqual(parsed_data.paging_token, "150661572935458818")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -177,7 +175,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_create_passive_sell_offer_operation(self):
         raw_data = load_horizon_file("operations/create_passive_sell_offer.json")
-        parsed_data = CreatePassiveSellOfferOperation.parse_obj(raw_data)
+        parsed_data = CreatePassiveSellOfferOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150701833957081089")
         self.assertEqual(parsed_data.paging_token, "150701833957081089")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -216,7 +214,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_set_options_operation(self):
         raw_data = load_horizon_file("operations/set_options.json")
-        parsed_data = SetOptionsOperation.parse_obj(raw_data)
+        parsed_data = SetOptionsOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "2696453482881025")
         self.assertEqual(parsed_data.paging_token, "2696453482881025")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -262,7 +260,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_change_trust_operation_asset(self):
         raw_data = load_horizon_file("operations/change_trust_asset.json")
-        parsed_data = ChangeTrustOperation.parse_obj(raw_data)
+        parsed_data = ChangeTrustOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150661512804089860")
         self.assertEqual(parsed_data.paging_token, "150661512804089860")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -303,7 +301,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_change_trust_operation_liquidity_pool_id(self):
         raw_data = load_horizon_file("operations/change_trust_liquidity_pool_id.json")
-        parsed_data = ChangeTrustOperation.parse_obj(raw_data)
+        parsed_data = ChangeTrustOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "1578868632723457")
         self.assertEqual(parsed_data.paging_token, "1578868632723457")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -353,7 +351,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_allow_trust_operation(self):
         raw_data = load_horizon_file("operations/allow_trust.json")
-        parsed_data = AllowTrustOperation.parse_obj(raw_data)
+        parsed_data = AllowTrustOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150662449110290439")
         self.assertEqual(parsed_data.paging_token, "150662449110290439")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -391,7 +389,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_account_merge_operation(self):
         raw_data = load_horizon_file("operations/account_merge.json")
-        parsed_data = AccountMergeOperation.parse_obj(raw_data)
+        parsed_data = AccountMergeOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150661877876133889")
         self.assertEqual(parsed_data.paging_token, "150661877876133889")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -421,7 +419,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_inflation_operation(self):
         raw_data = load_horizon_file("operations/inflation.json")
-        parsed_data = InflationOperation.parse_obj(raw_data)
+        parsed_data = InflationOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "85376614040350721")
         self.assertEqual(parsed_data.paging_token, "85376614040350721")
         self.assertEqual(parsed_data.transaction_successful, False)
@@ -444,7 +442,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_manage_data_operation(self):
         raw_data = load_horizon_file("operations/manage_data.json")
-        parsed_data = ManageDataOperation.parse_obj(raw_data)
+        parsed_data = ManageDataOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150660585091022850")
         self.assertEqual(parsed_data.paging_token, "150660585091022850")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -472,7 +470,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_bump_sequence_operation(self):
         raw_data = load_horizon_file("operations/bump_sequence.json")
-        parsed_data = BumpSequenceOperation.parse_obj(raw_data)
+        parsed_data = BumpSequenceOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150675003296243713")
         self.assertEqual(parsed_data.paging_token, "150675003296243713")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -496,7 +494,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_manage_buy_offer_operation(self):
         raw_data = load_horizon_file("operations/manage_buy_offer.json")
-        parsed_data = ManageBuyOfferOperation.parse_obj(raw_data)
+        parsed_data = ManageBuyOfferOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150661598703333378")
         self.assertEqual(parsed_data.paging_token, "150661598703333378")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -533,7 +531,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_path_payment_strict_send_operation(self):
         raw_data = load_horizon_file("operations/path_payment_strict_send.json")
-        parsed_data = PathPaymentStrictSendOperation.parse_obj(raw_data)
+        parsed_data = PathPaymentStrictSendOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150660589386170369")
         self.assertEqual(parsed_data.paging_token, "150660589386170369")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -588,7 +586,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_create_claimable_balance_operation(self):
         raw_data = load_horizon_file("operations/create_claimable_balance.json")
-        parsed_data = CreateClaimableBalanceOperation.parse_obj(raw_data)
+        parsed_data = CreateClaimableBalanceOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150684654087864322")
         self.assertEqual(parsed_data.paging_token, "150684654087864322")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -637,7 +635,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_claim_claimable_balance_operation(self):
         raw_data = load_horizon_file("operations/claim_claimable_balance.json")
-        parsed_data = ClaimClaimableBalanceOperation.parse_obj(raw_data)
+        parsed_data = ClaimClaimableBalanceOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "2730894825627649")
         self.assertEqual(parsed_data.paging_token, "2730894825627649")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -668,7 +666,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_begin_sponsoring_future_reserves_operation(self):
         raw_data = load_horizon_file("operations/begin_sponsoring_future_reserves.json")
-        parsed_data = BeginSponsoringFutureReservesOperation.parse_obj(raw_data)
+        parsed_data = BeginSponsoringFutureReservesOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150660619450806273")
         self.assertEqual(parsed_data.paging_token, "150660619450806273")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -695,7 +693,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_end_sponsoring_future_reserves_operation(self):
         raw_data = load_horizon_file("operations/end_sponsoring_future_reserves.json")
-        parsed_data = EndSponsoringFutureReservesOperation.parse_obj(raw_data)
+        parsed_data = EndSponsoringFutureReservesOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "150660606565855256")
         self.assertEqual(parsed_data.paging_token, "150660606565855256")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -722,7 +720,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_revoke_sponsorship_operation(self):
         raw_data = load_horizon_file("operations/revoke_sponsorship.json")
-        parsed_data = RevokeSponsorshipOperation.parse_obj(raw_data)
+        parsed_data = RevokeSponsorshipOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "2731345797189633")
         self.assertEqual(parsed_data.paging_token, "2731345797189633")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -749,7 +747,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_clawback_operation(self):
         raw_data = load_horizon_file("operations/clawback.json")
-        parsed_data = ClawbackOperation.parse_obj(raw_data)
+        parsed_data = ClawbackOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "3510036252856321")
         self.assertEqual(parsed_data.paging_token, "3510036252856321")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -783,7 +781,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_clawback_claimable_balance_operation(self):
         raw_data = load_horizon_file("operations/clawback_claimable_balance.json")
-        parsed_data = ClawbackClaimableBalanceOperation.parse_obj(raw_data)
+        parsed_data = ClawbackClaimableBalanceOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "3513936083165185")
         self.assertEqual(parsed_data.paging_token, "3513936083165185")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -810,7 +808,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_set_trust_line_flags_operation(self):
         raw_data = load_horizon_file("operations/set_trust_line_flags.json")
-        parsed_data = SetTrustLineFlagsOperation.parse_obj(raw_data)
+        parsed_data = SetTrustLineFlagsOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "3513373442449409")
         self.assertEqual(parsed_data.paging_token, "3513373442449409")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -847,7 +845,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_liquidity_pool_deposit_operation(self):
         raw_data = load_horizon_file("operations/liquidity_pool_deposit.json")
-        parsed_data = LiquidityPoolDepositOperation.parse_obj(raw_data)
+        parsed_data = LiquidityPoolDepositOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "1579044726386689")
         self.assertEqual(parsed_data.paging_token, "1579044726386689")
         self.assertEqual(parsed_data.transaction_successful, True)
@@ -927,7 +925,7 @@ class TestOperations(unittest.TestCase):
 
     def test_valid_liquidity_pool_withdraw_operation(self):
         raw_data = load_horizon_file("operations/liquidity_pool_withdraw.json")
-        parsed_data = LiquidityPoolWithdrawOperation.parse_obj(raw_data)
+        parsed_data = LiquidityPoolWithdrawOperation.model_validate(raw_data)
         self.assertEqual(parsed_data.id, "1579096265998337")
         self.assertEqual(parsed_data.paging_token, "1579096265998337")
         self.assertEqual(parsed_data.transaction_successful, True)

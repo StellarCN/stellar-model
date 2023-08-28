@@ -8,7 +8,7 @@ from tests.model.horizon import load_horizon_file
 class TestTransaction(unittest.TestCase):
     def test_transaction_valid(self):
         raw_data = load_horizon_file("transaction.json")
-        parsed_data = Transaction.parse_obj(raw_data)
+        parsed_data = Transaction.model_validate(raw_data)
         self.assertEqual(
             parsed_data.id,
             "5ebd5c0af4385500b53dd63b0ef5f6e8feef1a7e1c86989be3cdcce825f3c0cc",
@@ -98,7 +98,7 @@ class TestTransaction(unittest.TestCase):
 
     def test_transaction_fee_bump_valid(self):
         raw_data = load_horizon_file("transaction_fee_bump.json")
-        parsed_data = Transaction.parse_obj(raw_data)
+        parsed_data = Transaction.model_validate(raw_data)
         self.assertEqual(
             parsed_data.id,
             "ac8cf91a1c0559091ba26573c0966191ae81466d5df4931af302f135d99c0d72",
@@ -184,7 +184,7 @@ class TestTransaction(unittest.TestCase):
 
     def test_transaction_muxed_account_valid(self):
         raw_data = load_horizon_file("transaction_muxed_account.json")
-        parsed_data = Transaction.parse_obj(raw_data)
+        parsed_data = Transaction.model_validate(raw_data)
         self.assertEqual(
             parsed_data.account_muxed,
             "MDSPXRRA5D4WD4LCR6NNZEHQJHHZ74UCPHXJT4SC7HCFWJFOFOLUUAAAAAAAAAAAPMRCO",

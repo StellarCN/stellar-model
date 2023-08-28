@@ -1,6 +1,5 @@
 from stellar_model.model.horizon.root import Root
 
-
 __all__ = ["RootResponse"]
 
 

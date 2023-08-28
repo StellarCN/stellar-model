@@ -1,5 +1,4 @@
 import unittest
-
 from decimal import Decimal
 
 from stellar_model.model.horizon.order_book_summary import OrderBookSummary
@@ -9,7 +8,7 @@ from tests.model.horizon import load_horizon_file
 class TestOrderBookSummary(unittest.TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("order_book_summary.json")
-        parsed_data = OrderBookSummary.parse_obj(raw_data)
+        parsed_data = OrderBookSummary.model_validate(raw_data)
         self.assertEqual(parsed_data.base.asset_type, "native")
         self.assertEqual(parsed_data.base.asset_code, None)
         self.assertEqual(parsed_data.base.asset_issuer, None)

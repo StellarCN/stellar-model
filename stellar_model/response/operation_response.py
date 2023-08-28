@@ -1,9 +1,10 @@
 from pydantic import BaseModel
 
 from stellar_model import __issues__
-from stellar_model.model.horizon.operations import _OPERATION_TYPE_I_MAP
-from stellar_model.model.horizon.operations import _OPERATION_TYPE_UNION
-
+from stellar_model.model.horizon.operations import (
+    _OPERATION_TYPE_I_MAP,
+    _OPERATION_TYPE_UNION,
+)
 
 __all__ = ["OperationResponse"]
 
@@ -36,5 +37,5 @@ class OperationResponse(BaseModel):
                 f"Please try to upgrade the library or raise an issue at {__issues__}."
             )
         parser = _OPERATION_TYPE_I_MAP[op_type]
-        record = parser.parse_obj(data)
+        record = parser.model_validate(data)
         super().__init__(record=record)

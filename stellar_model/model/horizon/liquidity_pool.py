@@ -1,16 +1,13 @@
 from datetime import datetime
 from decimal import Decimal
-from typing import List
-from typing import Optional
+from typing import List, Optional
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.link import Link
 from stellar_model.model.horizon.liquidity_pool_asset_amount import (
     LiquidityPoolAssetAmount,
 )
-
 
 __all__ = ["LiquidityPool"]
 
@@ -41,6 +38,7 @@ class LiquidityPool(BaseModel):
         "in which this offer was modified."
     )
     last_modified_time: Optional[datetime] = Field(
-        description="The time of the last ledger " "in which this offer was modified."
+        description="The time of the last ledger " "in which this offer was modified.",
+        default=None,
     )
     links: Links = Field(alias="_links")

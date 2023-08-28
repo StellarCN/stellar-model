@@ -1,11 +1,9 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.link import Link
-
 
 __all__ = ["Root"]
 
@@ -18,7 +16,7 @@ class Links(BaseModel):
     assets: Link
     effects: Link
     fee_stats: Link
-    friendbot: Optional[Link]
+    friendbot: Optional[Link] = None
     ledger: Link
     ledgers: Link
     offer: Link

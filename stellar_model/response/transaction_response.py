@@ -1,6 +1,5 @@
 from stellar_model.model.horizon.transaction import Transaction
 
-
 __all__ = ["TransactionResponse"]
 
 

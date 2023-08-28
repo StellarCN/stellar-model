@@ -8,6 +8,6 @@ from tests.response import load_horizon_file
 class TestLedgerResponse(TestCase):
     def test_valid(self):
         raw_data = load_horizon_file("ledger.json")
-        parsed_data = LedgerResponse.parse_obj(raw_data)
+        parsed_data = LedgerResponse.model_validate(raw_data)
         self.assertTrue(isinstance(parsed_data, LedgerResponse))
         self.assertTrue(isinstance(parsed_data, Ledger))

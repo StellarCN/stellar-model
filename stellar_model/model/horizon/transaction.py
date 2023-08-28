@@ -1,14 +1,10 @@
 import base64
-
 from datetime import datetime
-from typing import List
-from typing import Optional
+from typing import List, Optional
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.link import Link
-
 
 __all__ = ["Transaction"]
 
@@ -45,8 +41,8 @@ class InnerTransaction(BaseModel):
 
 
 class TimeBounds(BaseModel):
-    min_time: Optional[datetime] = Field(description="The lower bound.")
-    max_time: Optional[datetime] = Field(description="The upper bound.")
+    min_time: Optional[datetime] = Field(description="The lower bound.", default=None)
+    max_time: Optional[datetime] = Field(description="The upper bound.", default=None)
 
 
 class LedgerBounds(BaseModel):
@@ -57,29 +53,35 @@ class LedgerBounds(BaseModel):
 class TransactionPreconditions(BaseModel):
     timebounds: Optional[TimeBounds] = Field(
         description="The time range for which this transaction is valid, "
-        "with bounds as unsigned 64-bit UNIX timestamps."
+        "with bounds as unsigned 64-bit UNIX timestamps.",
+        default=None,
     )
     ledgerbounds: Optional[LedgerBounds] = Field(
-        description="The ledger range for which this transaction is valid, as unsigned 32-bit integers."
+        description="The ledger range for which this transaction is valid, as unsigned 32-bit integers.",
+        default=None,
     )
     min_account_sequence: Optional[int] = Field(
         description="Containing a positive, signed 64-bit "
         "integer representing the lowest source account "
-        "sequence number for which the transaction is valid."
+        "sequence number for which the transaction is valid.",
+        default=None,
     )
     min_account_sequence_age: Optional[int] = Field(
         description="The minimum duration of time (in seconds as an unsigned 64-bit "
         "integer) that must have passed since the source account's sequence "
-        "number changed for the transaction to be valid."
+        "number changed for the transaction to be valid.",
+        default=None,
     )
     min_account_sequence_ledger_gap: Optional[int] = Field(
         description="An unsigned 32-bit integer representing the minimum number of "
         "ledgers that must have closed since the source account's "
-        "sequence number changed for the transaction to be valid."
+        "sequence number changed for the transaction to be valid.",
+        default=None,
     )
     extra_signers: Optional[List[str]] = Field(
         description="The list of up to two additional signers that must "
-        "have corresponding signatures for this transaction to be valid."
+        "have corresponding signatures for this transaction to be valid.",
+        default=None,
     )
 
 
@@ -106,10 +108,10 @@ class Transaction(BaseModel):
         description="The account that originates the transaction."
     )
     account_muxed: Optional[str] = Field(
-        description="account_muxed for source_account."
+        description="account_muxed for source_account.", default=None
     )
     account_muxed_id: Optional[int] = Field(
-        description="account_muxed_id for source_account."
+        description="account_muxed_id for source_account.", default=None
     )
     source_account_sequence: int = Field(
         description="The source account's sequence number that "
@@ -117,10 +119,10 @@ class Transaction(BaseModel):
     )
     fee_account: str = Field(description="Account for paying transaction fees.")
     fee_account_muxed: Optional[str] = Field(
-        description="account_muxed for fee_account."
+        description="account_muxed for fee_account.", default=None
     )
     fee_account_muxed_id: Optional[int] = Field(
-        description="account_muxed_id for fee_account."
+        description="account_muxed_id for fee_account.", default=None
     )
     fee_charged: int = Field(
         description="The fee (in stroops) paid by the fee account to "
@@ -153,25 +155,28 @@ class Transaction(BaseModel):
         "**MEMO_ID**, **MEMO_HASH**, **MEMO_RETURN**."
     )
     memo: Optional[str] = Field(
-        description="The optional memo attached to a transaction."
+        description="The optional memo attached to a transaction.", default=None
     )
-    memo_bytes: Optional[bytes]
+    memo_bytes: Optional[bytes] = None
     signatures: List[str] = Field(
         description="An array of signatures used to sign this transaction."
     )
     valid_after: Optional[datetime] = Field(
         description="The datetime after which a transaction is valid. This field is deprecated in lieu "
-        "of `preconditions.time_bounds.min_time` and will be removed in Horizon v3."
+        "of `preconditions.time_bounds.min_time` and will be removed in Horizon v3.",
+        default=None,
     )
     valid_before: Optional[datetime] = Field(
         description="The datetime before which a transaction is valid. This field is deprecated in lieu "
-        "of `preconditions.time_bounds.max_time` and will be removed in Horizon v3."
+        "of `preconditions.time_bounds.max_time` and will be removed in Horizon v3.",
+        default=None,
     )
     preconditions: Optional[TransactionPreconditions] = Field(
-        description="A set of transaction preconditions affecting its validity."
+        description="A set of transaction preconditions affecting its validity.",
+        default=None,
     )
-    fee_bump_transaction: Optional[FeeBumpTransaction]
-    inner_transaction: Optional[InnerTransaction]
+    fee_bump_transaction: Optional[FeeBumpTransaction] = None
+    inner_transaction: Optional[InnerTransaction] = None
     links: Links = Field(alias="_links")
 
     def __init__(self, **data):

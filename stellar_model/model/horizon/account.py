@@ -1,14 +1,10 @@
 from datetime import datetime
 from decimal import Decimal
-from typing import List
-from typing import Mapping
-from typing import Optional
+from typing import List, Mapping, Optional
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.link import Link
-
 
 __all__ = ["Account"]
 
@@ -75,33 +71,40 @@ class Balance(BaseModel):
     )
     liquidity_pool_id: Optional[str] = Field(
         description="This liquidity pool’s id encoded in a "
-        "hex string representation."
+        "hex string representation.",
+        default=None,
     )
     limit: Optional[Decimal] = Field(
         description="The maximum amount of this asset that this account "
-        "is willing to accept. Specified when opening a trustline."
+        "is willing to accept. Specified when opening a trustline.",
+        default=None,
     )
     buying_liabilities: Optional[Decimal] = Field(
-        description="The sum of all buy offers owned by this account " "for this asset."
+        description="The sum of all buy offers owned by this account for this asset.",
+        default=None,
     )
     selling_liabilities: Optional[Decimal] = Field(
         description="The sum of all sell offers owned by this account "
-        "for this asset."
+        "for this asset.",
+        default=None,
     )
     sponsor: Optional[str] = Field(
         description="The account ID of the sponsor who is paying "
-        "the reserves for this trustline."
+        "the reserves for this trustline.",
+        default=None,
     )
-    last_modified_ledger: Optional[int]
-    is_authorized: Optional[bool]
-    is_authorized_to_maintain_liabilities: Optional[bool]
-    is_clawback_enabled: Optional[bool]
+    last_modified_ledger: Optional[int] = None
+    is_authorized: Optional[bool] = None
+    is_authorized_to_maintain_liabilities: Optional[bool] = None
+    is_clawback_enabled: Optional[bool] = None
     asset_type: str = Field(
         description="Either **native**, **credit_alphanum4**, or **credit_alphanum12**."
     )
-    asset_code: Optional[str] = Field(description="The code for this asset.")
+    asset_code: Optional[str] = Field(
+        description="The code for this asset.", default=None
+    )
     asset_issuer: Optional[str] = Field(
-        description="The Stellar address of this asset's issuer."
+        description="The Stellar address of this asset's issuer.", default=None
     )
 
 
@@ -129,24 +132,28 @@ class Account(BaseModel):
         "For use when submitting this account's next transaction."
     )
     sequence_ledger: Optional[int] = Field(
-        description="The unsigned 32-bit ledger " "number of the sequence number's age."
+        description="The unsigned 32-bit ledger "
+        "number of the sequence number's age.",
+        default=None,
     )
     sequence_time: Optional[datetime] = Field(
-        description="The time of the sequence number's age."
+        description="The time of the sequence number's age.", default=None
     )
     subentry_count: int = Field(description="The number of subentries on this account.")
     inflation_destination: Optional[str] = Field(
-        description="The inflation destination set for this account."
+        description="The inflation destination set for this account.", default=None
     )
     home_domain: Optional[str] = Field(
-        description="The domain that hosts this account's stellar.toml file."
+        description="The domain that hosts this account's stellar.toml file.",
+        default=None,
     )
     last_modified_ledger: int = Field(
         description="The ID of the last ledger that included changes to this account."
     )
     last_modified_time: Optional[datetime] = Field(
         description="The time of the last ledger that included "
-        "changes to this account."
+        "changes to this account.",
+        default=None,
     )
     thresholds: AccountThresholds = Field(
         description="Operations have varying levels of access. "
@@ -170,7 +177,8 @@ class Account(BaseModel):
     )
     sponsor: Optional[str] = Field(
         description="The account ID of the sponsor who is paying the "
-        "reserves for this account."
+        "reserves for this account.",
+        default=None,
     )
     paging_token: str = Field(description="A cursor value for use in pagination.")
     links: Links = Field(alias="_links")

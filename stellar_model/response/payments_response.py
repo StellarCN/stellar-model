@@ -1,13 +1,13 @@
 from typing import List
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model import __issues__
-from stellar_model.model.horizon.operations import _OPERATION_TYPE_I_MAP
-from stellar_model.model.horizon.operations import _PAYMENT_TYPE_UNION
+from stellar_model.model.horizon.operations import (
+    _OPERATION_TYPE_I_MAP,
+    _PAYMENT_TYPE_UNION,
+)
 from stellar_model.response.page_model import PageModel
-
 
 __all__ = ["PaymentsResponse"]
 
@@ -31,7 +31,7 @@ class Embedded(BaseModel):
                     f"Please try to upgrade the library or raise an issue at {__issues__}."
                 )
             parser = _OPERATION_TYPE_I_MAP[op_type]
-            model = parser.parse_obj(record)
+            model = parser.model_validate(record)
             model_records.append(model)
 
         super().__init__(records=model_records)

@@ -1,7 +1,7 @@
 =============
 stellar-model
 =============
-.. image:: https://img.shields.io/github/workflow/status/StellarCN/stellar-model/GitHub%20Action/main?style=flat&maxAge=1800
+.. image:: https://img.shields.io/github/actions/workflow/status/StellarCN/stellar-model/continuous-integration-workflow.yml?branch=main&style=flat&maxAge=1800
     :alt: GitHub Action
     :target: https://github.com/StellarCN/stellar-model/actions
 
@@ -40,7 +40,7 @@ Example
 
     url = "https://horizon.stellar.org/accounts/GALAXYVOIDAOPZTDLHILAJQKCVVFMD4IKLXLSZV5YHO7VY74IWZILUTO"
     raw_resp = requests.get(url).json()
-    parsed_resp = AccountResponse.parse_obj(raw_resp)
+    parsed_resp = AccountResponse.model_validate(raw_resp)
     print(f"Account Sequence: {parsed_resp.sequence}")
 
 
@@ -54,7 +54,7 @@ Of course you can use it with `stellar-sdk`_.
     server = Server("https://horizon.stellar.org")
     account_id = "GALAXYVOIDAOPZTDLHILAJQKCVVFMD4IKLXLSZV5YHO7VY74IWZILUTO"
     raw_resp = server.accounts().account_id(account_id).call()
-    parsed_resp = AccountResponse.parse_obj(raw_resp)
+    parsed_resp = AccountResponse.model_validate(raw_resp)
     print(f"Account Sequence: {parsed_resp.sequence}")
 
 

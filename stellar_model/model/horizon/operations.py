@@ -1,11 +1,8 @@
 from datetime import datetime
 from decimal import Decimal
-from typing import List
-from typing import Optional
-from typing import Union
+from typing import List, Optional, Union
 
-from pydantic import BaseModel
-from pydantic import Field
+from pydantic import BaseModel, Field
 
 from stellar_model.model.horizon.asset import Asset
 from stellar_model.model.horizon.claimable_balance import Claimant
@@ -15,7 +12,6 @@ from stellar_model.model.horizon.liquidity_pool_asset_amount import (
 )
 from stellar_model.model.horizon.price import Price
 from stellar_model.model.horizon.transaction import Transaction
-
 
 __all__ = [
     "CreateAccountOperation",
@@ -66,16 +62,16 @@ class BaseOperation(BaseModel):
     source_account: str = Field(
         description="The account that originates the operation."
     )
-    source_account_muxed: Optional[str]
-    source_account_muxed_id: Optional[int]
+    source_account_muxed: Optional[str] = None
+    source_account_muxed_id: Optional[int] = None
     type: str = Field(description="The name of the operation type.")
     type_i: int = Field(description="A number indicating the operation type.")
     created_at: datetime = Field(description="The datetime this operation was created.")
     transaction_hash: str = Field(
         description="A unique identifier for the transaction this operation belongs to."
     )
-    transaction: Optional[Transaction]
-    sponsor: Optional[str]
+    transaction: Optional[Transaction] = None
+    sponsor: Optional[str] = None
     links: Links = Field(alias="_links")
 
 
@@ -98,19 +94,23 @@ class BaseOfferOperation(BaseOperation):
         description="The type for the buying asset. Either **native**, **credit_alphanum4**, or **credit_alphanum12**."
     )
     buying_asset_code: Optional[str] = Field(
-        description="The Stellar address of the buying asset’s issuer. Appears if the **buying_asset_type** is not **native**."
+        description="The Stellar address of the buying asset’s issuer. Appears if the **buying_asset_type** is not **native**.",
+        default=None,
     )
     buying_asset_issuer: Optional[str] = Field(
-        description="The code for the buying asset.  Appears if the **buying_asset_type** is not **native**."
+        description="The code for the buying asset.  Appears if the **buying_asset_type** is not **native**.",
+        default=None,
     )
     selling_asset_type: str = Field(
         description="The type for the selling asset. Either **native**, **credit_alphanum4**, or **credit_alphanum12**."
     )
     selling_asset_code: Optional[str] = Field(
-        description="The Stellar address of the selling asset’s issuer. Appears if the **selling_asset_type** is not **native**."
+        description="The Stellar address of the selling asset’s issuer. Appears if the **selling_asset_type** is not **native**.",
+        default=None,
     )
     selling_asset_issuer: Optional[str] = Field(
-        description="The code for the selling asset.  Appears if the **selling_asset_type** is not **native**."
+        description="The code for the selling asset.  Appears if the **selling_asset_type** is not **native**.",
+        default=None,
     )
 
 
@@ -126,8 +126,8 @@ class CreateAccountOperation(BaseOperation):
         description="The amount of XLM to send the newly created account."
     )
     funder: str = Field(description="The account that funds the new account.")
-    funder_muxed: Optional[str]
-    funder_muxed_id: Optional[int]
+    funder_muxed: Optional[str] = None
+    funder_muxed_id: Optional[int] = None
     account: str = Field(description="A new account that is funded.")
 
 
@@ -143,22 +143,24 @@ class PaymentOperation(BaseOperation):
         description="The type of asset being sent. Either **native**, **credit_alphanum4**, or **credit_alphanum12**."
     )
     asset_code: Optional[str] = Field(
-        description="The code for the asset being sent. Appears if the **asset_type** is not **native**."
+        description="The code for the asset being sent. Appears if the **asset_type** is not **native**.",
+        default=None,
     )
     asset_issuer: Optional[str] = Field(
         description="The Stellar address of the issuer of the asset being sent. "
-        "Appears if the **asset_type** is not **native**."
+        "Appears if the **asset_type** is not **native**.",
+        default=None,
     )
     from_: str = Field(
         alias="from",
         description="The payment sender’s public key. This variable should be called `from`, "
         "but `from` is a keyword in Python, so we named it `from_`.",
     )
-    from_muxed: Optional[str]
-    from_muxed_id: Optional[int]
+    from_muxed: Optional[str] = None
+    from_muxed_id: Optional[int] = None
     to: str = Field(description="The payment recipient’s public key.")
-    to_muxed: Optional[str]
-    to_muxed_id: Optional[int]
+    to_muxed: Optional[str] = None
+    to_muxed_id: Optional[int] = None
     amount: Decimal = Field(description="Amount sent.")
 
 
@@ -176,11 +178,13 @@ class PathPaymentStrictReceiveOperation(BaseOperation):
     )
     asset_code: Optional[str] = Field(
         description="The code for the asset being received. Appears if the "
-        "**asset_type** is not **native**."
+        "**asset_type** is not **native**.",
+        default=None,
     )
     asset_issuer: Optional[str] = Field(
         description="The Stellar address of the issuer of the asset being "
-        "received. Appears if the **asset_type** is not **native**."
+        "received. Appears if the **asset_type** is not **native**.",
+        default=None,
     )
     from_: str = Field(
         alias="from",
@@ -207,11 +211,13 @@ class PathPaymentStrictReceiveOperation(BaseOperation):
     )
     source_asset_code: Optional[str] = Field(
         description="The code for the source asset. Appears if the "
-        "**source_asset_type** is not **native**."
+        "**source_asset_type** is not **native**.",
+        default=None,
     )
     source_asset_issuer: Optional[str] = Field(
         description="The Stellar address of the source asset’s issuer. "
-        "Appears if the **source_asset_type** is not **native**."
+        "Appears if the **source_asset_type** is not **native**.",
+        default=None,
     )
 
 
@@ -244,47 +250,56 @@ class SetOptionsOperation(BaseOperation):
     """
 
     home_domain: Optional[str] = Field(
-        description="The home domain used for stellar.toml file discovery."
+        description="The home domain used for stellar.toml file discovery.",
+        default=None,
     )
-    inflation_dest: Optional[str] = Field(description="")
+    inflation_dest: Optional[str] = Field(description="", default=None)
 
     master_key_weight: Optional[int] = Field(
-        description="The weight of the master key. Can range from **1** to **255**."
+        description="The weight of the master key. Can range from **1** to **255**.",
+        default=None,
     )
-    signer_key: Optional[str] = Field(description="The public key of the new signer. ")
+    signer_key: Optional[str] = Field(
+        description="The public key of the new signer. ", default=None
+    )
     signer_weight: Optional[int] = Field(
-        description="The weight of the new signer. Can range from **1** to **255**."
+        description="The weight of the new signer. Can range from **1** to **255**.",
+        default=None,
     )
 
     set_flags: Optional[List[int]] = Field(
         description="The array of numeric values of flags that has been set in "
         "this operation. Options include **1** for **AUTH_REQUIRED_FLAG**, "
-        "**2** for **AUTH_REVOCABLE_FLAG**, and **4** for **AUTH_IMMUTABLE_FLAG**."
+        "**2** for **AUTH_REVOCABLE_FLAG**, and **4** for **AUTH_IMMUTABLE_FLAG**.",
+        default=None,
     )
     set_flags_s: Optional[List[str]] = Field(
         description="The array of string values of flags that has been set in this operation. "
         "Options include **AUTH_REQUIRED_FLAG**, **AUTH_REVOCABLE_FLAG**, "
-        "and **AUTH_IMMUTABLE_FLAG**."
+        "and **AUTH_IMMUTABLE_FLAG**.",
+        default=None,
     )
     clear_flags: Optional[List[int]] = Field(
         description="The array of numeric values of flags that has been cleared in this operation. "
         "Options include **1** for **AUTH_REQUIRED_FLAG**, **2** for "
-        "**AUTH_REVOCABLE_FLAG**, and **4** for **AUTH_IMMUTABLE_FLAG**."
+        "**AUTH_REVOCABLE_FLAG**, and **4** for **AUTH_IMMUTABLE_FLAG**.",
+        default=None,
     )
     clear_flags_s: Optional[List[str]] = Field(
         description="The array of string values of flags that has been cleared in this "
         "operation. Options include **AUTH_REQUIRED_FLAG**, **AUTH_REVOCABLE_FLAG**, "
-        "and **AUTH_IMMUTABLE_FLAG**."
+        "and **AUTH_IMMUTABLE_FLAG**.",
+        default=None,
     )
 
     low_threshold: Optional[int] = Field(
-        description="The sum weight for the low threshold."
+        description="The sum weight for the low threshold.", default=None
     )
     med_threshold: Optional[int] = Field(
-        description="The sum weight for the medium threshold."
+        description="The sum weight for the medium threshold.", default=None
     )
     high_threshold: Optional[int] = Field(
-        description="The sum weight for the high threshold."
+        description="The sum weight for the high threshold.", default=None
     )
 
 
@@ -301,21 +316,21 @@ class ChangeTrustOperation(BaseOperation):
         "**credit_alphanum4**, or **credit_alphanum12**."
     )
     asset_code: Optional[str] = Field(
-        description="The code of the asset being trusted."
+        description="The code of the asset being trusted.", default=None
     )
     asset_issuer: Optional[str] = Field(
-        description="The issuer for the asset being trusted."
+        description="The issuer for the asset being trusted.", default=None
     )
     liquidity_pool_id: Optional[str] = Field(
-        description="The id of the liquidity pool being trusted."
+        description="The id of the liquidity pool being trusted.", default=None
     )
     limit: Decimal = Field(
         description="Limits the amount of an asset that the source account can hold."
     )
-    trustee: Optional[str] = Field(description="The issuing account.")
+    trustee: Optional[str] = Field(description="The issuing account.", default=None)
     trustor: str = Field(description="The source account.")
-    trustor_muxed: Optional[str]
-    trustor_muxed_id: Optional[int]
+    trustor_muxed: Optional[str] = None
+    trustor_muxed_id: Optional[int] = None
 
 
 class AllowTrustOperation(BaseOperation):
@@ -330,18 +345,20 @@ class AllowTrustOperation(BaseOperation):
         description="The type of asset. Either **native**, **credit_alphanum4**, or **credit_alphanum12**."
     )
     asset_code: Optional[str] = Field(
-        description="The code for the asset. Appears if the **asset_type** is not **native**."
+        description="The code for the asset. Appears if the **asset_type** is not **native**.",
+        default=None,
     )
     asset_issuer: Optional[str] = Field(
         description="The Stellar address of the issuer of the asset. "
-        "Appears if the **asset_type** is not **native**."
+        "Appears if the **asset_type** is not **native**.",
+        default=None,
     )
 
     trustee: str = Field(
         description="The issuing account, or source account in this instance."
     )
-    trustee_muxed: Optional[str]
-    trustee_muxed_id: Optional[int]
+    trustee_muxed: Optional[str] = None
+    trustee_muxed_id: Optional[int] = None
     trustor: str = Field(
         description="The trusting account, or the account being authorized or unauthorized."
     )
@@ -364,13 +381,13 @@ class AccountMergeOperation(BaseOperation):
     """
 
     account: str = Field(description="The Stellar address being removed.")
-    account_muxed: Optional[str]
-    account_muxed_id: Optional[int]
+    account_muxed: Optional[str] = None
+    account_muxed_id: Optional[int] = None
     into: str = Field(
         description="The Stellar address receiving the deleted account’s lumens."
     )
-    into_muxed: Optional[str]
-    into_muxed_id: Optional[int]
+    into_muxed: Optional[str] = None
+    into_muxed_id: Optional[int] = None
 
 
 class InflationOperation(BaseOperation):
@@ -440,11 +457,13 @@ class PathPaymentStrictSendOperation(BaseOperation):
     )
     asset_code: Optional[str] = Field(
         description="The code for the asset being send. Appears if the "
-        "**asset_type** is not **native**."
+        "**asset_type** is not **native**.",
+        default=None,
     )
     asset_issuer: Optional[str] = Field(
         description="The Stellar address of the issuer of the asset being "
-        "send. Appears if the **asset_type** is not **native**."
+        "send. Appears if the **asset_type** is not **native**.",
+        default=None,
     )
     from_: str = Field(
         alias="from",
@@ -470,11 +489,13 @@ class PathPaymentStrictSendOperation(BaseOperation):
     )
     source_asset_code: Optional[str] = Field(
         description="The code for the source asset. Appears if the **asset_type** "
-        "is not **native**."
+        "is not **native**.",
+        default=None,
     )
     source_asset_issuer: Optional[str] = Field(
         description="The Stellar address of the source asset’s issuer. "
-        "Appears if the **asset_type** is not **native**."
+        "Appears if the **asset_type** is not **native**.",
+        default=None,
     )
 
 
@@ -507,8 +528,8 @@ class ClaimClaimableBalanceOperation(BaseOperation):
     claimant: str = Field(
         description="The id of the account which claimed the balance."
     )
-    claimant_muxed: Optional[str]
-    claimant_muxed_id: Optional[int]
+    claimant_muxed: Optional[str] = None
+    claimant_muxed_id: Optional[int] = None
 
 
 class BeginSponsoringFutureReservesOperation(BaseOperation):
@@ -533,10 +554,11 @@ class EndSponsoringFutureReservesOperation(BaseOperation):
     """
 
     begin_sponsor: Optional[str] = Field(
-        description="The id of the account which initiated the sponsorship."
+        description="The id of the account which initiated the sponsorship.",
+        default=None,
     )
-    begin_sponsor_muxed: Optional[str]
-    begin_sponsor_muxed_id: Optional[int]
+    begin_sponsor_muxed: Optional[str] = None
+    begin_sponsor_muxed_id: Optional[int] = None
 
 
 class RevokeSponsorshipOperation(BaseOperation):
@@ -548,34 +570,41 @@ class RevokeSponsorshipOperation(BaseOperation):
     """
 
     account_id: Optional[str] = Field(
-        description="The id of the account which is no longer sponsored."
+        description="The id of the account which is no longer sponsored.", default=None
     )
     claimable_balance_id: Optional[str] = Field(
-        description="The id of the claimable balance which is no longer sponsored."
+        description="The id of the claimable balance which is no longer sponsored.",
+        default=None,
     )
     data_account_id: Optional[str] = Field(
-        description="The id of the account whose data entry is no longer sponsored."
+        description="The id of the account whose data entry is no longer sponsored.",
+        default=None,
     )
     data_name: Optional[str] = Field(
-        description="The name of the data entry which is no longer sponsored."
+        description="The name of the data entry which is no longer sponsored.",
+        default=None,
     )
     offer_id: Optional[str] = Field(
-        description="The id of the offer which is no longer sponsored."
+        description="The id of the offer which is no longer sponsored.", default=None
     )
     trustline_account_id: Optional[str] = Field(
-        description="The id of the account whose trustline is no longer sponsored."
+        description="The id of the account whose trustline is no longer sponsored.",
+        default=None,
     )
     trustline_liquidity_pool_id: Optional[str] = Field(
-        default="The liquidity pool of the trustline which is no longer sponsored."
+        description="The liquidity pool of the trustline which is no longer sponsored.",
+        default=None,
     )
     trustline_asset: Optional[str] = Field(
-        description="The asset of the trustline which is no longer sponsored."
+        description="The asset of the trustline which is no longer sponsored.",
+        default=None,
     )
     signer_account_id: Optional[str] = Field(
-        description="The account id of the signer which is no longer sponsored."
+        description="The account id of the signer which is no longer sponsored.",
+        default=None,
     )
     signer_key: Optional[str] = Field(
-        description="The type of the signer which is no longer sponsored."
+        description="The type of the signer which is no longer sponsored.", default=None
     )
 
 
@@ -595,8 +624,8 @@ class ClawbackOperation(BaseOperation):
         description="This variable should be called `from`, "
         "but `from` is a keyword in Python, so we named it `from_`.",
     )
-    from_muxed: Optional[str]
-    from_muxed_id: Optional[int]
+    from_muxed: Optional[str] = None
+    from_muxed_id: Optional[int] = None
     amount: Decimal
 
 
@@ -608,7 +637,7 @@ class ClawbackClaimableBalanceOperation(BaseOperation):
     type_i: 20
     """
 
-    balance_id: Optional[str]
+    balance_id: Optional[str] = None
 
 
 class SetTrustLineFlagsOperation(BaseOperation):
@@ -623,10 +652,10 @@ class SetTrustLineFlagsOperation(BaseOperation):
     asset_code: str
     asset_issuer: str
     trustor: str
-    set_flags: Optional[List[int]]
-    set_flags_s: Optional[List[str]]
-    clear_flags: Optional[List[int]]
-    clear_flags_s: Optional[List[str]]
+    set_flags: Optional[List[int]] = None
+    set_flags_s: Optional[List[str]] = None
+    clear_flags: Optional[List[int]] = None
+    clear_flags_s: Optional[List[str]] = None
 
 
 class LiquidityPoolDepositOperation(BaseOperation):

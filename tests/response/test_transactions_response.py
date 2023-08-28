@@ -8,7 +8,7 @@ from tests.response import load_response_file
 class TestTransactionsResponse(TestCase):
     def test_valid(self):
         raw_data = load_response_file("transactions_response.json")
-        parsed_data = TransactionsResponse.parse_obj(raw_data)
+        parsed_data = TransactionsResponse.model_validate(raw_data)
         self.assertEqual(len(parsed_data.embedded.records), 100)
         for record in parsed_data.embedded.records:
             self.assertTrue(isinstance(record, Transaction))
