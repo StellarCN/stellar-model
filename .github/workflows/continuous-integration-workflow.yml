@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest ]
-        python-version: [ "3.7", "3.8", "3.9", "3.10", "3.11", "pypy3" ]
+        python-version: [ "3.7", "3.8", "3.9", "3.10", "3.11", "pypy3.7" ]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -23,7 +23,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
-        # if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: pip install .
 
       - name: Test with unittest
