@@ -3,7 +3,10 @@ import unittest
 from decimal import Decimal
 
 from stellar_model.model.horizon.operations import *
-from stellar_model.model.horizon.operations import HostFunctionParameter, AssetContractBalanceChange
+from stellar_model.model.horizon.operations import (
+    AssetContractBalanceChange,
+    HostFunctionParameter,
+)
 from tests.model.horizon import load_horizon_file
 
 """
@@ -1063,19 +1066,43 @@ class TestOperations(unittest.TestCase):
             parsed_data.transaction_hash,
             "4ef3d81fba4b7db959080e4894cb8b2575418b8da9aa484f6306a79a3f63de3d",
         )
-        self.assertEqual(parsed_data.function, "HostFunctionTypeHostFunctionTypeInvokeContract")
-        self.assertEqual(parsed_data.parameters, [
-            HostFunctionParameter(value='AAAAEgAAAAGw7oy+G8a9SeTIE5E/EuJYl5JfwF0eZJWk8S7LmE7fwA==', type='Address'),
-            HostFunctionParameter(value='AAAADwAAAAh0cmFuc2Zlcg==', type='Sym'),
-            HostFunctionParameter(value='AAAAEgAAAAAAAAAAwT6e0zIpycpZ5/unUFyQAjXNeSxfmidj8tQWkeD9dCQ=', type='Address'),
-            HostFunctionParameter(value='AAAAEgAAAAAAAAAAWLfEosjyl6qPPSRxKB/fzOyv5I5WYzE+wY4Spz7KmKE=', type='Address'),
-            HostFunctionParameter(value='AAAACgAAAAAAAAAAAAAAASoF8gA=', type='I128')])
+        self.assertEqual(
+            parsed_data.function, "HostFunctionTypeHostFunctionTypeInvokeContract"
+        )
+        self.assertEqual(
+            parsed_data.parameters,
+            [
+                HostFunctionParameter(
+                    value="AAAAEgAAAAGw7oy+G8a9SeTIE5E/EuJYl5JfwF0eZJWk8S7LmE7fwA==",
+                    type="Address",
+                ),
+                HostFunctionParameter(value="AAAADwAAAAh0cmFuc2Zlcg==", type="Sym"),
+                HostFunctionParameter(
+                    value="AAAAEgAAAAAAAAAAwT6e0zIpycpZ5/unUFyQAjXNeSxfmidj8tQWkeD9dCQ=",
+                    type="Address",
+                ),
+                HostFunctionParameter(
+                    value="AAAAEgAAAAAAAAAAWLfEosjyl6qPPSRxKB/fzOyv5I5WYzE+wY4Spz7KmKE=",
+                    type="Address",
+                ),
+                HostFunctionParameter(
+                    value="AAAACgAAAAAAAAAAAAAAASoF8gA=", type="I128"
+                ),
+            ],
+        )
         self.assertEqual(parsed_data.address, "")
         self.assertEqual(parsed_data.salt, "")
-        self.assertEqual(parsed_data.asset_balance_changes, [
-            AssetContractBalanceChange(asset_type='credit_alphanum12', asset_code='Hello',
-                                       asset_issuer='GDJKBIYIPBE2NC5XIZX6GCFZHVWFUA7ONMQUOOVTLIM3BESTI4BYADAN',
-                                       type='transfer',
-                                       from_='GDAT5HWTGIU4TSSZ4752OUC4SABDLTLZFRPZUJ3D6LKBNEPA7V2CIG54',
-                                       to='GBMLPRFCZDZJPKUPHUSHCKA737GOZL7ERZLGGMJ6YGHBFJZ6ZKMKCZTM',
-                                       amount=Decimal(500))])
+        self.assertEqual(
+            parsed_data.asset_balance_changes,
+            [
+                AssetContractBalanceChange(
+                    asset_type="credit_alphanum12",
+                    asset_code="Hello",
+                    asset_issuer="GDJKBIYIPBE2NC5XIZX6GCFZHVWFUA7ONMQUOOVTLIM3BESTI4BYADAN",
+                    type="transfer",
+                    from_="GDAT5HWTGIU4TSSZ4752OUC4SABDLTLZFRPZUJ3D6LKBNEPA7V2CIG54",
+                    to="GBMLPRFCZDZJPKUPHUSHCKA737GOZL7ERZLGGMJ6YGHBFJZ6ZKMKCZTM",
+                    amount=Decimal(500),
+                )
+            ],
+        )

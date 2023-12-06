@@ -2,7 +2,7 @@ from datetime import datetime
 from decimal import Decimal
 from typing import List, Optional, Union
 
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 from stellar_model.model.horizon.asset import Asset
 from stellar_model.model.horizon.claimable_balance import Claimant
