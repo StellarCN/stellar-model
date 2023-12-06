@@ -59,6 +59,8 @@ __all__ = [
     "LiquidityPoolCreatedEffect",
     "LiquidityPoolRemovedEffect",
     "LiquidityPoolRevokedEffect",
+    "EffectContractCreditedEffect",
+    "EffectContractDebitedEffect",
 ]
 
 from stellar_model.model.horizon.liquidity_pool_asset_amount import (
@@ -749,6 +751,54 @@ class LiquidityPoolRevokedEffect(BaseEffect):
     shares_revoked: Decimal
 
 
+class EffectContractCreditedEffect(BaseEffect):
+    """
+    Occurs when a contract receives balance.
+
+    type: contract_credited
+    type_i: 96
+    """
+
+    asset_type: str
+    asset_code: Optional[str] = None
+    asset_issuer: Optional[str] = None
+    contract: str
+    amount: Decimal
+
+
+class EffectContractDebitedEffect(BaseEffect):
+    """
+    Occurs when a contract sends balance.
+
+    type: contract_debited
+    type_i: 97
+    """
+
+    asset_type: str
+    asset_code: Optional[str] = None
+    asset_issuer: Optional[str] = None
+    contract: str
+    amount: Decimal
+
+
+# class EffectBumpFootprintExpirationEffect(BaseEffect):
+#     """
+#     Occurs when bumps contract's footprint expiration.
+#
+#     type: bump_footprint_expiration
+#     type_i: 98
+#     """
+#
+#
+# class EffectRestoreFootprintEffect(BaseEffect):
+#     """
+#     Occurs when restores contract's footprint.
+#
+#     type: restore_footprint
+#     type_i: 99
+#     """
+
+
 _EFFECT_TYPE_I_MAP = {
     0: AccountCreatedEffect,
     1: AccountRemovedEffect,
@@ -801,6 +851,8 @@ _EFFECT_TYPE_I_MAP = {
     93: LiquidityPoolCreatedEffect,
     94: LiquidityPoolRemovedEffect,
     95: LiquidityPoolRevokedEffect,
+    96: EffectContractCreditedEffect,
+    97: EffectContractDebitedEffect,
 }
 
 _EFFECT_TYPE_UNION = Union[
@@ -855,4 +907,6 @@ _EFFECT_TYPE_UNION = Union[
     LiquidityPoolCreatedEffect,
     LiquidityPoolRemovedEffect,
     LiquidityPoolRevokedEffect,
+    EffectContractCreditedEffect,
+    EffectContractDebitedEffect,
 ]

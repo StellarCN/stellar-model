@@ -2,7 +2,7 @@ from datetime import datetime
 from decimal import Decimal
 from typing import List, Optional, Union
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 from stellar_model.model.horizon.asset import Asset
 from stellar_model.model.horizon.claimable_balance import Claimant
@@ -38,6 +38,9 @@ __all__ = [
     "SetTrustLineFlagsOperation",
     "LiquidityPoolDepositOperation",
     "LiquidityPoolWithdrawOperation",
+    "InvokeHostFunctionOperation",
+    "BumpFootprintExpirationOperation",
+    "RestoreFootprintOperation",
 ]
 
 
@@ -690,6 +693,60 @@ class LiquidityPoolWithdrawOperation(BaseOperation):
     reserves_received: List[LiquidityPoolAssetAmount]
 
 
+class HostFunctionParameter(BaseModel):
+    value: str
+    type: str
+
+
+class AssetContractBalanceChange(BaseModel):
+    asset_type: str
+    asset_code: Optional[str] = None
+    asset_issuer: Optional[str] = None
+    type: str
+    from_: Optional[str] = Field(
+        alias="from",
+        default=None,
+    )
+    to: Optional[str] = None
+    amount: Decimal
+    model_config = ConfigDict(populate_by_name=True)
+
+
+class InvokeHostFunctionOperation(BaseOperation):
+    """
+    Represents a single operations whose type is InvokeHostFunction.
+
+    type: invoke_host_function
+    type_i: 24
+    """
+
+    function: str
+    parameters: List[HostFunctionParameter]
+    address: str
+    salt: str
+    asset_balance_changes: List[AssetContractBalanceChange]
+
+
+class BumpFootprintExpirationOperation(BaseOperation):
+    """
+    Represents a single operations whose type is BumpFootprintExpiration.
+
+    type: bump_footprint_expiration
+    type_i: 25
+    """
+
+    extend_to: int
+
+
+class RestoreFootprintOperation(BaseOperation):
+    """
+    Represents a single operations whose type is RestoreFootprint.
+
+    type: restore_footprint
+    type_i: 26
+    """
+
+
 _OPERATION_TYPE_UNION = Union[
     CreateAccountOperation,
     PaymentOperation,
@@ -715,6 +772,9 @@ _OPERATION_TYPE_UNION = Union[
     SetTrustLineFlagsOperation,
     LiquidityPoolDepositOperation,
     LiquidityPoolWithdrawOperation,
+    InvokeHostFunctionOperation,
+    BumpFootprintExpirationOperation,
+    RestoreFootprintOperation,
 ]
 
 _PAYMENT_TYPE_UNION = Union[
@@ -750,4 +810,7 @@ _OPERATION_TYPE_I_MAP = {
     21: SetTrustLineFlagsOperation,
     22: LiquidityPoolDepositOperation,
     23: LiquidityPoolWithdrawOperation,
+    24: InvokeHostFunctionOperation,
+    25: BumpFootprintExpirationOperation,
+    26: RestoreFootprintOperation,
 }

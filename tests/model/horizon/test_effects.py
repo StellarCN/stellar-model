@@ -1139,3 +1139,33 @@ class TestEffects(unittest.TestCase):
 
     def test_liquidity_pool_revoked(self):
         pass
+
+    def test_contract_credited(self):
+        raw_data = load_horizon_file("effects/contract_credited.json")
+        parsed_data = EffectContractCreditedEffect.model_validate(raw_data)
+        self.assertEqual(parsed_data.id, "0000021517786157057-0000000002")
+        self.assertEqual(parsed_data.paging_token, "21517786157057-2")
+        self.assertEqual(parsed_data.account, "GDAT5HWTGIU4TSSZ4752OUC4SABDLTLZFRPZUJ3D6LKBNEPA7V2CIG54")
+        self.assertEqual(parsed_data.type, "contract_credited")
+        self.assertEqual(parsed_data.type_i, 96)
+        self.assertEqual(parsed_data.created_at,
+                         datetime.datetime(2023, 9, 19, 5, 43, 12, tzinfo=datetime.timezone.utc))
+        self.assertEqual(parsed_data.asset_type, "native")
+        self.assertEqual(parsed_data.asset_code, None)
+        self.assertEqual(parsed_data.asset_issuer, None)
+        self.assertEqual(parsed_data.amount, Decimal("100"))
+
+    def test_contract_debited(self):
+        raw_data = load_horizon_file("effects/contract_debited.json")
+        parsed_data = EffectContractCreditedEffect.model_validate(raw_data)
+        self.assertEqual(parsed_data.id, "0000021517786157057-0000000002")
+        self.assertEqual(parsed_data.paging_token, "21517786157057-2")
+        self.assertEqual(parsed_data.account, "GDAT5HWTGIU4TSSZ4752OUC4SABDLTLZFRPZUJ3D6LKBNEPA7V2CIG54")
+        self.assertEqual(parsed_data.type, "contract_debited")
+        self.assertEqual(parsed_data.type_i, 97)
+        self.assertEqual(parsed_data.created_at,
+                         datetime.datetime(2023, 9, 19, 5, 43, 12, tzinfo=datetime.timezone.utc))
+        self.assertEqual(parsed_data.asset_type, "native")
+        self.assertEqual(parsed_data.asset_code, None)
+        self.assertEqual(parsed_data.asset_issuer, None)
+        self.assertEqual(parsed_data.amount, Decimal("100"))

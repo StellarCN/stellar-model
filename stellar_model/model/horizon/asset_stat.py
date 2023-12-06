@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Optional
 
 from pydantic import BaseModel, Field
 
@@ -41,6 +42,7 @@ class AssetStat(BaseModel):
     asset_code: str = Field(description="This asset's code")
     asset_issuer: str = Field(description="The Stellar address of this asset's issuer.")
     paging_token: str = Field(description="A cursor value for use in pagination.")
+    contract_id: Optional[str] = Field(description="The contract ID of this asset.")
     num_accounts: int = Field(
         description="The numnber of accounts that have issued a trustline to this asset. If the **auth_required** flag for this asset's issuer is set to **true**, this number only includes the accounts who have both set up a trustline to the asset and have been authorized to hold the asset."
     )
@@ -50,6 +52,7 @@ class AssetStat(BaseModel):
     num_liquidity_pools: int = Field(
         description="The current number of liquidity_pools for this asset."
     )
+    num_contracts: int
     amount: Decimal = Field(description="The number of units issued for this asset.")
     accounts: AssetStatAccounts = Field(
         description="The number of accounts grouped by each trustline flag state."
@@ -60,6 +63,7 @@ class AssetStat(BaseModel):
     liquidity_pools_amount: Decimal = Field(
         description="The number of units in liquidity pools for this asset."
     )
+    contracts_amount: Decimal
     balances: AssetStatBalances = Field(
         description="The number of units issued for this asset grouped by each trustline flag state."
     )
