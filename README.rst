@@ -29,7 +29,7 @@ Please check the list `here <https://github.com/StellarCN/stellar-model/issues/2
 
 .. code-block:: text
 
-    pip install stellar-model==0.5.3
+    pip install stellar-model==0.5.4
 
 Example
 =======
