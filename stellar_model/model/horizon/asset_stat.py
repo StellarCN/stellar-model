@@ -43,9 +43,6 @@ class AssetStat(BaseModel):
     asset_issuer: str = Field(description="The Stellar address of this asset's issuer.")
     paging_token: str = Field(description="A cursor value for use in pagination.")
     contract_id: Optional[str] = Field(description="The contract ID of this asset.")
-    num_accounts: int = Field(
-        description="The numnber of accounts that have issued a trustline to this asset. If the **auth_required** flag for this asset's issuer is set to **true**, this number only includes the accounts who have both set up a trustline to the asset and have been authorized to hold the asset."
-    )
     num_claimable_balances: int = Field(
         description="The current number of claimable_balances for this asset."
     )
@@ -53,7 +50,6 @@ class AssetStat(BaseModel):
         description="The current number of liquidity_pools for this asset."
     )
     num_contracts: int
-    amount: Decimal = Field(description="The number of units issued for this asset.")
     accounts: AssetStatAccounts = Field(
         description="The number of accounts grouped by each trustline flag state."
     )

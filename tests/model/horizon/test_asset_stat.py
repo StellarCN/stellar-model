@@ -19,10 +19,8 @@ class TestAssetStat(unittest.TestCase):
             parsed_data.paging_token,
             "ZX2_GDBSQA2GDRBRZVWOMRLZ6V4ZN2UESRQAEIHGKCZDR3YO4QIMC3CLHPR3_credit_alphanum4",
         )
-        self.assertEqual(parsed_data.num_accounts, 1)
         self.assertEqual(parsed_data.num_claimable_balances, 0)
         self.assertEqual(parsed_data.num_liquidity_pools, 0)
-        self.assertEqual(parsed_data.amount, Decimal("1001"))
         self.assertEqual(parsed_data.accounts.authorized, 1)
         self.assertEqual(parsed_data.accounts.authorized_to_maintain_liabilities, 0)
         self.assertEqual(parsed_data.accounts.unauthorized, 0)

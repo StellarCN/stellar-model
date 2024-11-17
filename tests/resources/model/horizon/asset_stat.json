@@ -9,11 +9,9 @@
   "asset_issuer": "GDBSQA2GDRBRZVWOMRLZ6V4ZN2UESRQAEIHGKCZDR3YO4QIMC3CLHPR3",
   "paging_token": "ZX2_GDBSQA2GDRBRZVWOMRLZ6V4ZN2UESRQAEIHGKCZDR3YO4QIMC3CLHPR3_credit_alphanum4",
   "contract_id": "CCCPUUUK5HZCTPW6RM2EY5IXGDEOML672CJ7VDCCSLSQLT2Z5R755QHD",
-  "num_accounts": 1,
   "num_claimable_balances": 0,
   "num_liquidity_pools": 0,
   "num_contracts": 2,
-  "amount": "1001.0000000",
   "accounts": {
     "authorized": 1,
     "authorized_to_maintain_liabilities": 0,
