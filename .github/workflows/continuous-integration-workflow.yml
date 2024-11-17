@@ -4,14 +4,14 @@ on:
   push:
   pull_request:
   release:
-    types: [created]
+    types: [ created ]
 
 jobs:
   test:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ ubuntu-latest ]
         python-version:
           [
             "3.8",
@@ -38,3 +38,21 @@ jobs:
 
       - name: Test with unittest
         run: python -m unittest
+
+    deploy:
+      needs: test
+      runs-on: ubuntu-latest
+      if: github.event_name == 'release' && github.event.action == 'created'
+      permissions:
+        id-token: write
+      steps:
+        - uses: actions/checkout@v3
+
+        - name: Install poetry
+          run: pipx install poetry
+
+        - name: Build Packages
+          run: poetry build
+
+        - name: Publish package distributions to PyPI
+          uses: pypa/gh-action-pypi-publish@release/v1
