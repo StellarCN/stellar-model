@@ -121,4 +121,4 @@ class ClaimableBalance(BaseModel):
     links: Links = Field(alias="_links")
 
 
-ClaimPredicate.update_forward_refs()
+ClaimPredicate.model_rebuild()

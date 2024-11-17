@@ -13,7 +13,7 @@ stellar-model
     :alt: PyPI
     :target: https://pypi.python.org/pypi/stellar-model
 
-.. image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8%20%7C%203.9-blue?style=flat
+.. image:: https://img.shields.io/badge/python-3.8+-blue?style=flat
     :alt: Python - Version
     :target: https://pypi.python.org/pypi/stellar-model
 
@@ -29,7 +29,7 @@ Please check the list `here <https://github.com/StellarCN/stellar-model/issues/2
 
 .. code-block:: text
 
-    pip install stellar-model==0.5.4
+    pip install stellar-model==0.6.0
 
 Example
 =======

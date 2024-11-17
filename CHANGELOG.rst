@@ -4,6 +4,10 @@ Change Log
 
 This document records all notable changes to `stellar-model <https://github.com/StellarCN/stellar-model/>`_.
 
+0.6.0
+----------------------------
+* feat: add support for Horizon v22.0.0. (`#63 <https://github.com/StellarCN/stellar-model/pull/63/>`_)
+
 0.5.4
 ----------------------------
 * feat: add support for Horizon v2.27.0. (`#59 <https://github.com/StellarCN/stellar-model/pull/59/>`_)
