@@ -161,16 +161,6 @@ class Transaction(BaseModel):
     signatures: List[str] = Field(
         description="An array of signatures used to sign this transaction."
     )
-    valid_after: Optional[datetime] = Field(
-        description="The datetime after which a transaction is valid. This field is deprecated in lieu "
-        "of `preconditions.time_bounds.min_time` and will be removed in Horizon v3.",
-        default=None,
-    )
-    valid_before: Optional[datetime] = Field(
-        description="The datetime before which a transaction is valid. This field is deprecated in lieu "
-        "of `preconditions.time_bounds.max_time` and will be removed in Horizon v3.",
-        default=None,
-    )
     preconditions: Optional[TransactionPreconditions] = Field(
         description="A set of transaction preconditions affecting its validity.",
         default=None,

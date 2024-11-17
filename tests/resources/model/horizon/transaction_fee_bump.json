@@ -49,8 +49,6 @@
   "signatures": [
     "KbfbHT6jbk7gCOyyKZ+cyGQPnNoTAHy3lZgGqbrPkNWE8ekJSnicNScamUQYzngXkyd2ekTdmQxTaPkEHleTBQ=="
   ],
-  "valid_after": "2021-04-24T01:52:57Z",
-  "valid_before": "2021-04-24T01:57:52Z",
   "fee_bump_transaction": {
     "hash": "ac8cf91a1c0559091ba26573c0966191ae81466d5df4931af302f135d99c0d72",
     "signatures": [

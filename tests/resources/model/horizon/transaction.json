@@ -47,8 +47,6 @@
   "signatures": [
     "zktIGIVFAq0VhE+k1pvBW68iFlJVENpqN/QrNhqomaBpcCUVpM5jJhzXVi7FQzUXOXVVPhQRsjbYG87/wfNSBA=="
   ],
-  "valid_after": "1970-01-01T00:00:00Z",
-  "valid_before": "2022-05-06T05:29:45Z",
   "preconditions": {
     "timebounds": {
       "min_time": "1970-01-01T00:00:00Z",

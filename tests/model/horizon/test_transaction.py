@@ -60,14 +60,6 @@ class TestTransaction(unittest.TestCase):
             "zktIGIVFAq0VhE+k1pvBW68iFlJVENpqN/QrNhqomaBpcCUVpM5jJhzXVi7FQzUXOXVVPhQRsjbYG87/wfNSBA==",
         )
         self.assertEqual(
-            parsed_data.valid_after,
-            datetime.datetime(1970, 1, 1, 0, 0, tzinfo=datetime.timezone.utc),
-        )
-        self.assertEqual(
-            parsed_data.valid_before,
-            datetime.datetime(2022, 5, 6, 5, 29, 45, tzinfo=datetime.timezone.utc),
-        )
-        self.assertEqual(
             parsed_data.preconditions.timebounds.min_time,
             datetime.datetime(1970, 1, 1, 0, 0, tzinfo=datetime.timezone.utc),
         )
@@ -149,14 +141,6 @@ class TestTransaction(unittest.TestCase):
         self.assertEqual(
             parsed_data.signatures[0],
             "KbfbHT6jbk7gCOyyKZ+cyGQPnNoTAHy3lZgGqbrPkNWE8ekJSnicNScamUQYzngXkyd2ekTdmQxTaPkEHleTBQ==",
-        )
-        self.assertEqual(
-            parsed_data.valid_after,
-            datetime.datetime(2021, 4, 24, 1, 52, 57, tzinfo=datetime.timezone.utc),
-        )
-        self.assertEqual(
-            parsed_data.valid_before,
-            datetime.datetime(2021, 4, 24, 1, 57, 52, tzinfo=datetime.timezone.utc),
         )
         self.assertEqual(
             parsed_data.fee_bump_transaction.hash,
