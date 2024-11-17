@@ -39,20 +39,20 @@ jobs:
       - name: Test with unittest
         run: python -m unittest
 
-    deploy:
-      needs: test
-      runs-on: ubuntu-latest
-      if: github.event_name == 'release' && github.event.action == 'created'
-      permissions:
-        id-token: write
-      steps:
-        - uses: actions/checkout@v3
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.action == 'created'
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
 
-        - name: Install poetry
-          run: pipx install poetry
+      - name: Install poetry
+        run: pipx install poetry
 
-        - name: Build Packages
-          run: poetry build
+      - name: Build Packages
+        run: poetry build
 
-        - name: Publish package distributions to PyPI
-          uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
