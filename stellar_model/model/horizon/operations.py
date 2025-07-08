@@ -709,6 +709,7 @@ class AssetContractBalanceChange(BaseModel):
     )
     to: Optional[str] = None
     amount: Decimal
+    destination_muxed_id: Optional[int] = None
     model_config = ConfigDict(populate_by_name=True)
 
 
