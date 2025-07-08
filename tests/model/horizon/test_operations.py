@@ -1103,6 +1103,8 @@ class TestOperations(unittest.TestCase):
                     from_="GDAT5HWTGIU4TSSZ4752OUC4SABDLTLZFRPZUJ3D6LKBNEPA7V2CIG54",
                     to="GBMLPRFCZDZJPKUPHUSHCKA737GOZL7ERZLGGMJ6YGHBFJZ6ZKMKCZTM",
                     amount=Decimal(500),
+                    destination_muxed_id_type="uint64",
+                    destination_muxed_id="123456789",
                 )
             ],
         )
